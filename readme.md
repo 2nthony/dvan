@@ -10,3 +10,5 @@ dvan dev
 # show help
 dvan dev -h
 ```
+
+Just write `.vue` files in pages directory.

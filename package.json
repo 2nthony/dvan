@@ -4,6 +4,10 @@
   "main": "lib/index.js",
   "author": "evila <ijoec123@gmail.com>",
   "bin": "bin/cli.js",
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "dev": "node bin/cli.js dev",
     "build": "node bin/cli.js build",
@@ -14,6 +18,11 @@
     "type": "git"
   },
   "license": "MIT",
+  "keywords": [
+    "vue",
+    "website",
+    "static"
+  ],
   "dependencies": {
     "@babel/core": "^7.0.0-rc.1",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-rc.1",
@@ -21,7 +30,10 @@
     "babel-loader": "^8.0.0-beta.4",
     "cac": "^5.0.10",
     "css-loader": "^1.0.0",
+    "fast-async": "^6.3.7",
+    "fs-extra": "^7.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "upath": "^1.1.0",
     "vue": "^2.5.17",
     "vue-loader": "^15.3.0",
     "vue-meta": "^1.5.2",

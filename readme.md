@@ -1,6 +1,6 @@
 # dvan
 
-️⚡️ Still developing!
+️⚡️ Still WIP(Work In Progress)!
 
 ```bash
 yarn add dvan
@@ -12,3 +12,5 @@ dvan dev -h
 ```
 
 Just write `.vue` files in pages directory.
+
+Support css pre-processors now, but you should download by yourself.

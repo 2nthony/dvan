@@ -6,7 +6,8 @@
   "bin": "bin/cli.js",
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "docs"
   ],
   "scripts": {
     "dev": "node bin/cli.js dev example",

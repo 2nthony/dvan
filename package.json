@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "dev": "node bin/cli.js dev example",
-    "build": "node bin/cli.js build"
+    "build": "node bin/cli.js build",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "url": "evillt/dvan",
@@ -52,6 +54,7 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vuepress": "^0.14.2"
   }
 }

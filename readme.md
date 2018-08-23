@@ -1,5 +1,5 @@
 # Dvan
-> Dark ♂ Van.
+> Dark Van.
 
 [![NPM Version](https://img.shields.io/npm/v/dvan.svg?style=popout-square)](https://npmjs.com/package/dvan)
 ![NPM Downloads](https://img.shields.io/npm/dm/dvan.svg?style=popout-square)

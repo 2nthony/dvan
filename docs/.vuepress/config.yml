@@ -1,6 +1,10 @@
-title: Dvan♂
-description: A zero-config website generator for Vue
+title: Dvan
+description: A zero-config webapp generator for Vue
 themeConfig:
   nav:
+    - text: Guide
+      link: /guide/
+    - text: Config
+      link: /config/
     - text: GitHub
       link: https://github.com/evillt/dvan

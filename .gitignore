@@ -2,3 +2,4 @@ node_modules/
 yarn-error.log
 .npmignore
 lib/app/engine
+dist/

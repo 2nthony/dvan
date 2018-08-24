@@ -19,6 +19,6 @@ yarn add dvan
 // package.json
 "scripts": {
   "dev": "dvan dev",
-  "build": "dvan build" // comming soon
+  "build": "dvan build"
 }
 ```

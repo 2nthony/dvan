@@ -1,7 +1,7 @@
 {
   "name": "dvan",
   "description": "Website generator.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "lib/index.js",
   "author": "evila <ijoec123@gmail.com>",
   "bin": "bin/cli.js",

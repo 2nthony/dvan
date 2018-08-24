@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "dev": "node bin/cli.js dev example",
-    "build": "node bin/cli.js build",
+    "build": "node bin/cli.js build example",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -50,7 +50,8 @@
     "webpack": "^4.16.5",
     "webpack-chain": "^4.9.0",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpackbar": "^2.6.3"
   },
   "devDependencies": {
     "node-sass": "^4.9.3",

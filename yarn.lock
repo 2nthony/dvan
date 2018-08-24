@@ -8024,7 +8024,7 @@ webpack@^4.8.1:
     watchpack "^1.5.0"
     webpack-sources "^1.0.1"
 
-webpackbar@^2.6.1:
+webpackbar@^2.6.1, webpackbar@^2.6.3:
   version "2.6.3"
   resolved "https://registry.npmjs.org/webpackbar/-/webpackbar-2.6.3.tgz#4f2d0078375acfe95c0e55227771a2ed98ecc5c9"
   dependencies:

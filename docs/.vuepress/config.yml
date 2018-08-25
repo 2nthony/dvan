@@ -8,3 +8,4 @@ themeConfig:
       link: /config/
     - text: GitHub
       link: https://github.com/evillt/dvan
+evergreen: true

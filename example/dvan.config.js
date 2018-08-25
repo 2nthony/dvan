@@ -1,3 +1,6 @@
 module.exports = {
-  title: 'Dvan example'
+  head: {
+    title: 'Example - Dvan'
+  },
+  chainWebpack: config => {}
 }

@@ -9,6 +9,10 @@ cli
     (input, flags) => {
       return app(Object.assign({ baseDir: input[0] }, flags)).dev()
     })
+  .option('host', {
+    desc: 'Host for dev server',
+    type: 'string'
+  })
   .option('port', {
     desc: 'Port for dev server',
     type: 'number'

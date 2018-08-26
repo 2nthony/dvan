@@ -1,11 +1,20 @@
 title: Dvan
-description: A zero-config webapp generator for Vue
+description: A config-free web app generator for Vue
 themeConfig:
+  displayAllHeaders: true
   nav:
     - text: Guide
-      link: /guide/
+      link: /guide/introduction
     - text: Config
       link: /config/
     - text: GitHub
       link: https://github.com/evillt/dvan
+  sidebar:
+    - title: Getting Started
+      collapsable: false
+      children:
+        - /guide/introduction
+        - /guide/quick-started
+        - /guide/configuration
+        - /guide/directory-structure
 evergreen: true

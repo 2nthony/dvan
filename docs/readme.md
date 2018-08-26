@@ -1,16 +1,13 @@
 ---
 home: true
-actionText: Get Started 👉
-actionLink: /guide/
+actionText: Get Started →
+actionLink: /guide/introduction
 features:
-  - title: Easier To Use
-    details: One command, engine will up without basic config.
-  - title: Simplicity
-    details: Minimal setup with Vue components as pages.
+  - title: Config-free
+    details: Develop web app with no config required by default.
+  - title: Extensible
+    details: Support additional Vue plugins and Vue librarys.
   - title: Modern Web Tech
     details: Enjoy the power of Vue + webpack, use Vue components as pages.
+footer: MIT Licensed | Copyright © 2018-present evila
 ---
-
-<div class='footer'>
-  MIT Licensed | Copyright &copy; 2018-present | Powered by <a href="https://vuepress.vuejs.org" target="_blank">Vuepress</a>
-</div>

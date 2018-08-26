@@ -18,7 +18,7 @@ cli
     type: 'number'
   })
 
-cli.command('build', 'Build website to static HTML files',
+cli.command('build', 'Build webapp to static HTML files',
   (input, flags) => {
     return app(Object.assign({ baseDir: input[0] }, flags)).build()
   })

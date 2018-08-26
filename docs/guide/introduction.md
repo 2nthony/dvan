@@ -5,20 +5,19 @@ Dvan now is a SPA generator powered by modern web tech, using Vue and webpack.
 
 Dark♂ Van(Van Darkholme) is a character who I realy like in some unserious videos
 
-“	My name is Van. I'm an artist. I'm a performance artist. I'm hired for people to fulfill their fantasies, their DEEP♂DARK♂FANTASIES.	” ---- Van Darkholme
+“ My name is Van. I'm an artist. I'm a performance artist. I'm hired for people to fulfill their fantasies, their DEEP♂DARK♂FANTASIES.  ” ---- Van Darkholme
 
 ## Features
--	🚀 Zero config by default
--	📦 Out of box
--	💪 Powered of Vue and webpack
--	🔧 Hot reload with dev server
--	🔗 Built-in support `CSS` `Stylus`
--	🔨 Zero config support `Sass` `Less`
+- 🚀 Zero config by default
+- 📦 Out of box
+- 💪 Powered of Vue and webpack
+- 🔧 Hot reload with dev server
+- 🔗 Built-in support `CSS` `Stylus`
+- 🔨 Zero config support `Sass` `Less`
 
-If something wrong with `node-sass`, here a way to resolve:
+If something wrong with `node-sass`, try:
 ```bash
-npm i -g mirror-config-china --registry=https://registry.npm.taobao.org
-npm i node-sass
+yarn add -D node-sass --registry=https://registry.npm.taobao.org
 ```
 
 ## Why Not Vue-Cli or Nuxt?

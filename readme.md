@@ -3,7 +3,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/dvan.svg?style=popout-square)](https://npmjs.com/package/dvan)
 ![NPM Downloads](https://img.shields.io/npm/dt/dvan.svg?style=popout-square)
-![Npm License](https://img.shields.io/npm/l/dvan.svg?style=popout-square)
+![NPM License](https://img.shields.io/npm/l/dvan.svg?style=popout-square)
 ![Project Status](https://img.shields.io/badge/status-beta-yellow.svg?style=popout-square)
 
 ## Introduction
@@ -19,5 +19,9 @@ yarn add dvan
 ```
 
 ## Usage
+Develop
 - `dvan dev` to run
-- `dvan build` to build
+- `pages/*.vue` to write your pages
+
+Build
+- `dvan build`

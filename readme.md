@@ -7,7 +7,7 @@
 ![Project Status](https://img.shields.io/badge/status-beta-yellow.svg?style=popout-square)
 
 ## Introduction
-Dvan now is a SPA generator powered by modern web tech, using Vue and webpack.
+Dvan is a SPA generator powered by modern web tech, using Vue and webpack.
 
 Check out the [documentation](https://dvan.evila.me).
 
@@ -15,7 +15,7 @@ Check out the [documentation](https://dvan.evila.me).
 Recommanded to install dvan into your project:
 ```bash
 cd your-project
-yarn add dvan
+yarn add dvan -D
 ```
 
 ## Usage

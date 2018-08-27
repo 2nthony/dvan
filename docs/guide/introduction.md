@@ -15,11 +15,6 @@ Dark♂ Van(Van Darkholme) is a character who I realy like in some unserious vid
 - 🔗 Built-in support `CSS` `Stylus`
 - 🔨 Zero config support `Sass` `Less`
 
-If something wrong with `node-sass`, try:
-```bash
-yarn add -D node-sass --registry=https://registry.npm.taobao.org
-```
-
 ## Why Not Vue-Cli or Nuxt?
 All is designed for building applications.
 

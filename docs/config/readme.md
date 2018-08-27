@@ -18,6 +18,12 @@ Details for the site with [vue-meta](https://github.com/declandewet/vue-meta), g
 
 The output directory for `dvan build`
 
+### assetsDir
+- Type: `string`
+- Default: `assets`
+
+A directory (relative to `dest`) to nest generated static assets (js, css, images, fonts) under
+
 ### host
 - Type: `string`
 - Default: `0.0.0.0`

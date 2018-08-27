@@ -10,7 +10,7 @@ sidebar: auto
 - Type: `object`
 - Default: `{}`
 
-Details for the site with [vue-meta](https://github.com/declandewet/vue-meta), usually is for the `title` and `description`
+Details for the site with [vue-meta](https://github.com/declandewet/vue-meta), generally is `title`, `description` and `manifest` for webapp
 
 ### dest
 - Type: `string`

@@ -42,7 +42,7 @@ The directory to your page files
 
 The root path of your site
 
-If you want to deploy your site under a sub path, for example `https://site.com/webapp`, you should set it to `webapp`
+If you want to deploy your site under a sub path, for example `https://site.com/webapp/`, you should set it to `/webapp/`
 
 
 ## Build Pipeline

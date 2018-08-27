@@ -73,7 +73,6 @@ typings/
 .serverless
 
 .DS_Store
-example
 engine
 dist
 .npmignore

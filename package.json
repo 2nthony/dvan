@@ -1,7 +1,7 @@
 {
   "name": "dvan",
   "description": "Webapp generator.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "lib/index.js",
   "author": "evila <ijoec123@gmail.com>",
   "bin": "bin/cli.js",

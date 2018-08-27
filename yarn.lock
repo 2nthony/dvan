@@ -3196,6 +3196,13 @@ file-loader@^1.1.11:
     loader-utils "^1.0.2"
     schema-utils "^0.4.5"
 
+file-loader@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/file-loader/download/file-loader-2.0.0.tgz#39749c82f020b9e85901dcff98e8004e6401cfde"
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^1.0.0"
+
 filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
@@ -7107,7 +7114,7 @@ url-join@^4.0.0:
 
 url-loader@^1.0.1:
   version "1.1.1"
-  resolved "https://registry.npmjs.org/url-loader/-/url-loader-1.1.1.tgz#4d1f3b4f90dde89f02c008e662d604d7511167c1"
+  resolved "http://registry.npm.taobao.org/url-loader/download/url-loader-1.1.1.tgz#4d1f3b4f90dde89f02c008e662d604d7511167c1"
   dependencies:
     loader-utils "^1.1.0"
     mime "^2.0.3"

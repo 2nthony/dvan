@@ -12,7 +12,7 @@ sidebar: auto
 
 Details for the site with [vue-meta](https://github.com/declandewet/vue-meta), generally is `title`, `description` and `manifest` for webapp
 
-### dest
+### outputDir
 - Type: `string`
 - Default: `.dvan/dist`
 
@@ -22,7 +22,7 @@ The output directory for `dvan build`
 - Type: `string`
 - Default: `assets`
 
-A directory (relative to `dest`) to nest generated static assets (js, css, images, fonts) under
+A directory (relative to `outputDir`) to nest generated static assets (js, css, images, fonts) under
 
 ### host
 - Type: `string`

@@ -1,5 +1,5 @@
 # Introduction
-Dvan now is a SPA generator powered by modern web tech, using Vue and webpack.
+Dvan is a SPA generator powered by modern web tech, using Vue and webpack.
 
 ### Why named is Dvan?
 

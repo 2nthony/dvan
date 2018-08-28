@@ -23,8 +23,9 @@
   "keywords": [
     "vue",
     "webapp",
-    "static",
-    "generator"
+    "static-site",
+    "generator",
+    "webapp-generator"
   ],
   "dependencies": {
     "@babel/core": "^7.0.0-rc.1",

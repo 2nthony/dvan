@@ -1,6 +1,6 @@
 {
   "name": "dvan",
-  "description": "Webapp generator.",
+  "description": "A config-free webapp generator for Vue.",
   "version": "1.0.7",
   "main": "lib/index.js",
   "author": "evila <ijoec123@gmail.com>",
@@ -23,7 +23,8 @@
   "keywords": [
     "vue",
     "webapp",
-    "static"
+    "static",
+    "generator"
   ],
   "dependencies": {
     "@babel/core": "^7.0.0-rc.1",
@@ -39,6 +40,7 @@
     "fs-extra": "^7.0.0",
     "globby": "^8.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.2",
     "stylus": "^0.54.5",

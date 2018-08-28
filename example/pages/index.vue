@@ -8,5 +8,6 @@
 
 <style lang="stylus">
 .index
-  color #2a7
+  color #58a
+  font-size 2em
 </style>

@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "node bin/cli.js dev example",
     "build": "node bin/cli.js build example",
+    "ssg": "node bin/cli.js ssg example",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -51,8 +52,8 @@
     "upath": "^1.1.0",
     "vue": "^2.5.17",
     "vue-loader": "^15.3.0",
-    "vue-meta": "^1.5.2",
     "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.17",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.16.5",
     "webpack-chain": "^4.9.0",

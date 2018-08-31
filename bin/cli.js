@@ -18,14 +18,9 @@ cli
     type: 'number'
   })
 
-cli.command('build', 'Build webapp to static HTML files',
+cli.command('build', 'Build static HTML files',
   (input, flags) => {
     return app(Object.assign({ baseDir: input[0] }, flags)).build()
-  })
-
-cli.command('ssg', 'Build static HTML files',
-  (input, flags) => {
-    return app(Object.assign({ baseDir: input[0] }, flags)).ssg()
   })
 
 cli.parse()

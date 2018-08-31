@@ -30,4 +30,3 @@ To generate static assets:
 ```bash
 yarn build
 ```
-By default the built files will be in `.dvan/dist`, it can be configured the `outputDir` field in `dvan.config.js`.

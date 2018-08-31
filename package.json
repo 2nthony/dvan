@@ -12,7 +12,6 @@
   "scripts": {
     "dev": "node bin/cli.js dev example",
     "build": "node bin/cli.js build example",
-    "ssg": "node bin/cli.js ssg example",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },

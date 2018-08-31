@@ -1,5 +1,5 @@
 # Introduction
-Dvan is a SPA generator powered by modern web tech, using Vue and webpack.
+Dvan is a static website generator powered by Vue server-side rendering and webpack.
 
 ## Features
 - 🚀 Zero config by default

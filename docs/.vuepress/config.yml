@@ -1,5 +1,5 @@
 title: Dvan
-description: A config-free web app generator for Vue
+description: A config-free static site generator for Vue
 themeConfig:
   displayAllHeaders: true
   nav:

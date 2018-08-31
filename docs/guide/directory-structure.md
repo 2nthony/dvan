@@ -13,7 +13,7 @@ A basic project structure looks like:
 | File / Directory | Description |
 | --- | --- |
 | pages/ | Write your pages |
-| dvan.config.js | Configure the webapp |
+| dvan.config.js | Configure the website |
 | package.json | Define npm scripts and dependencies |
 
 You can configure the `pages` directory you want, configured the `pagesDir` field in `dvan.config.js`.

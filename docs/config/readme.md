@@ -6,23 +6,31 @@ sidebar: auto
 
 ## Basic Config
 
-### head
+### title
 - Type: `object`
-- Default: `{}`
+- Default: `''`
 
-Details for the site with [vue-meta](https://github.com/declandewet/vue-meta), generally is `title`, `description` and `manifest` for webapp
+Title for the site
 
-### outputDir
-- Type: `string`
-- Default: `.dvan/dist`
+### description
+- Type: `object`
+- Default: `''`
 
-The output directory for `dvan build`
+Description for the site
 
-### assetsDir
-- Type: `string`
-- Default: `assets`
+### head
+- Type: `array`
+- Default: `[]`
 
-A directory (relative to `outputDir`) to nest generated static assets (js, css, images, fonts) under
+Extra tags to be injected to the page HTML `<head>`. Each tag can be specified in the form of `[tagName, { attrName: attrValue }, innerHTML?]`. For example, to add a custom favicon:
+
+```js
+module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }]
+  ]
+}
+```
 
 ### host
 - Type: `string`
@@ -48,7 +56,7 @@ The directory to your page files
 
 The root path of your site
 
-If you want to deploy your site under a sub path, for example `https://site.com/webapp/`, you should set it to `/webapp/`
+If you want to deploy your site under a sub path, for example `https://site.com/website/`, you should set it to `/website/`
 
 
 ## Build Pipeline

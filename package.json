@@ -1,7 +1,7 @@
 {
   "name": "dvan",
   "description": "A config-free static site generator for Vue.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "lib/index.js",
   "author": "evila <ijoec123@gmail.com>",
   "bin": "bin/cli.js",

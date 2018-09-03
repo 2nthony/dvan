@@ -7,13 +7,13 @@ sidebar: auto
 ## Basic Config
 
 ### title
-- Type: `object`
+- Type: `string`
 - Default: `''`
 
 Title for the site
 
 ### description
-- Type: `object`
+- Type: `string`
 - Default: `''`
 
 Description for the site

@@ -76,3 +76,4 @@ typings/
 engine
 dist
 .npmignore
+example/**/manifest

@@ -4,6 +4,7 @@ A basic project structure looks like:
 ```
 .
 ├── pages
+│   │── 404.vue     # optional
 │   └── index.vue
 ├── .gitignore
 ├── dvan.config.js
@@ -29,6 +30,7 @@ Will be resolve under `src/pages` directory Vue components as pages:
 .
 ├── src
 │   └── pages
+│       │── 404.vue     # optional
 │       │── about.vue
 │       └── index.vue
 ├── .gitignore

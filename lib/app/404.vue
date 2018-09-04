@@ -1,4 +1,8 @@
-<!-- Borrow from vuepress -->
+<!--
+  Borrow from vuepress
+  https://github.com/vuejs/vuepress
+  vuepress/lib/default-theme/NotFound.vue
+-->
 <template>
   <div class="content">
     <h1>404</h1>

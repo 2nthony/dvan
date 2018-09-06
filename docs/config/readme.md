@@ -21,8 +21,9 @@ Description for the site
 ### head
 - Type: `array`
 - Default: `[]`
+  - `[tagName, { attrName: attrValue }, innerHTML?]`
 
-Extra tags to be injected to the page HTML `<head>`. Each tag can be specified in the form of `[tagName, { attrName: attrValue }, innerHTML?]`. For example, to add a custom favicon:
+Extra tags in `<head>`. For example, to add a custom favicon:
 
 ```js
 module.exports = {

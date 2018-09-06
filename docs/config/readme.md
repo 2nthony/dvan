@@ -107,7 +107,20 @@ Internal webpack config with [webpack-chain](https://github.com/neutrinojs/webpa
 ```js
 module.exports = {
   chainWebpack: config => {
-    // add config
+    // configure something
   }
 }
 ```
+
+::: tip A part of chainWebpack reference
+- `entry`
+  - `app`
+- `resolve`
+  - `alias`
+    - `@app` root dir (**not [root](#root)**)
+    - `@pages` pages dir (depends on [pagesDir](#pagesdir))
+  - `extensions`
+    - `.vue`
+    - `.js`
+    - `.json`
+:::

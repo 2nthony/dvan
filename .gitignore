@@ -77,3 +77,4 @@ engine
 dist
 .npmignore
 example/**/manifest
+.engine

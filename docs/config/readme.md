@@ -51,6 +51,12 @@ Same with [host](#host)
 
 The directory to your page files
 
+### exts
+- Type: `array`
+- Default: `['vue']`
+
+The page file extension type under [pagesDir](#pagesdir), for example `['vue', 'js']` will auto load vue and js extension file as page
+
 ### root
 - Type: `string`
 - Default: `/`

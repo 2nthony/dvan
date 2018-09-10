@@ -43,7 +43,7 @@ The host for the dev server, you can set it in command-line `--host 0.0.0.0`
 - Type: `number`
 - Default: `8080`
 
-Same with [host](#host)
+Same with [host](#host), port auto matches from `8080`
 
 ### pagesDir
 - Type: `string`

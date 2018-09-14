@@ -57,6 +57,43 @@ The directory to your page files
 
 The page file extension type under [pagesDir](#pagesdir), for example `['vue', 'js']` will auto load vue and js extension file as page
 
+### pwa
+- Type: `boolean|object`
+- Default: `false`
+
+PWA(Progressive Web Application) support  
+If set it `true` or any `object` will enable PWA for your site
+
+```js
+// Default values when `true`
+{
+  // Update notifier config
+  updateText: 'New content is available.',
+  updateButtonText: 'Refresh'
+}
+```
+
+::: warning PWA NOTES
+Only enabled in production  
+Also, service worker can only be registered under HTTPs URLs
+:::
+
+This `pwa` options only do:
+- Caches content
+- Offline use
+- Notify update content
+
+To make your site fully PWA-compliant, you will need to provide the [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) and icons in `pwa/`, `manifest.json` will auto inject each html file
+```
+.
+├── pages
+├── pwa
+│   │── images
+│   └── manifest.json
+├── dvan.config.js
+└── package.json
+```
+
 ### root
 - Type: `string`
 - Default: `/`

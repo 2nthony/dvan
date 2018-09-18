@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .sw-update-popup
   position fixed
   right 1em

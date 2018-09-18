@@ -94,6 +94,12 @@ To make your site fully PWA-compliant, you will need to provide the [Web App Man
 └── package.json
 ```
 
+Override `sw-update-popup` with your own style:
+```css
+.sw-update-popup {}
+/* <transition name="sw-update-popup"> */
+```
+
 ### root
 - Type: `string`
 - Default: `/`

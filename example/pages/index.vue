@@ -2,7 +2,7 @@
   <div class="index">
     <router-link to="bar">bar</router-link>
     <router-link to="main/foo">main-foo</router-link>
-    <router-link to="asd">check 404</router-link>
+    <router-link to="asd">goto 404</router-link>
   </div>
 </template>
 

@@ -16,7 +16,7 @@ module.exports = {
 The full list of configuration options check out [Config](/config/).
 
 ## Enhancement
-If you want to develop a more powerful website. You can create a file `.dvan/enhanceApp.js`, it will be imported into the app if it present. The file should  `export default` a hook function which will receive an object containing some app values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+To make your website more features. You can create a file `.dvan/enhanceApp.js`, it will be imported into the app if it present. The file should  `export default` a hook function which will receive an object containing some app values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
 ```js
 export default ({
   Vue, // the version of Vue being used in the dvan app

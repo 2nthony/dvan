@@ -5,7 +5,7 @@ themeConfig:
   repoLabel: GitHub
   docsDir: docs
   editLinks: true
-  editLinkText: Help us improve this page!
+  editLinkText: Improve this page!
   displayAllHeaders: true
   nav:
     - text: Guide

@@ -1,14 +1,17 @@
 title: Dvan
 description: A config-free static site generator for Vue
 themeConfig:
+  repo: evillt/dvan
+  repoLabel: GitHub
+  docsDir: docs
+  editLinks: true
+  editLinkText: Help us improve this page!
   displayAllHeaders: true
   nav:
     - text: Guide
       link: /guide/introduction
     - text: Config
       link: /config/
-    - text: GitHub
-      link: https://github.com/evillt/dvan
   sidebar:
     - title: Getting Started
       collapsable: false

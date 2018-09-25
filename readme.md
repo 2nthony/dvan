@@ -25,3 +25,14 @@ Develop
 
 Build
 - `dvan build` to generate static assets
+
+## Contribute
+1. Fork this repo
+2. Create your feature or bug-fix branch
+3. Push your changes
+4. New pull request :)
+
+## License
+MIT
+> GitHub: [evillt](https://github.com/evillt)
+> Twitter: [evillt](https://twitter.com/evillt)

@@ -20,4 +20,3 @@ themeConfig:
         - /guide/quick-started
         - /guide/configuration
         - /guide/directory-structure
-evergreen: true

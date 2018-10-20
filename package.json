@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.4.3"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": "https://github.com/ddfv/dvan",
+  "author": "evila <ijoec123@gmail.com>",
+  "license": "MIT"
+}

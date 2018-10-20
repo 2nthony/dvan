@@ -1,0 +1,27 @@
+title = 'Dvan'
+description = 'A config-free static site generator for Vue'
+
+[themeConfig]
+repo = 'ddfv/dvan'
+repoLabel = 'GitHub'
+docsDir = 'docs'
+editLinks = true
+displayAllHeaders = true
+
+[[themeConfig.nav]]
+text = 'Guild'
+link = '/guide/introduction'
+
+[[themeConfig.nav]]
+text = 'Config'
+link = '/config/'
+
+[[themeConfig.sidebar]]
+title = 'Getting Started'
+collapsable = false
+children = [
+  '/guide/introduction',
+  '/guide/quick-started',
+  '/guide/configuration',
+  '/guide/directory-structure'
+]

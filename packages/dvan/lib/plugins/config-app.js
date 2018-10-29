@@ -18,12 +18,21 @@ exports.extend = api => {
     config
       .plugin('html-plugin')
       .use('html-webpack-plugin', [
-        Object.assign({
-          template: path.resolve(__dirname, '../app/template.html'),
-          inject: true,
-          filename: 'index.html',
-          title: 'Dvan App'
-        }, html)
+        Object.assign(
+          {
+            inject: true,
+            filename: 'index.html',
+            title: 'Dvan App'
+          },
+          html,
+          {
+            template: html.template
+              ? html.template.startsWith('.')
+                ? api.resolve(html.template)
+                : html.template
+              : path.resolve(__dirname, '../app/template.html')
+          }
+        )
       ])
 
     config

@@ -4,10 +4,12 @@ module.exports = ({
 }) => ({
   outDir: 'dist',
   publicPath: '/',
+  html: {},
   pagesDir: 'pages',
   sourceMap: true,
   minimize: 'auto',
   plugins: [],
+  constants: {},
 
   // configure webpack-dev-server
   devServer: {

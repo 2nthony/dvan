@@ -4,8 +4,6 @@ themeConfig:
   repo: evillt/dvan
   repoLabel: GitHub
   docsDir: docs
-  editLinks: true
-  editLinkText: Improve this page!
   displayAllHeaders: true
   nav:
     - text: Guide

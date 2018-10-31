@@ -4,7 +4,7 @@ import routes from 'vue-auto-routes'
 
 Vue.use(Router)
 
-export const createRouter = () => {
+export default () => {
   const router = new Router({
     mode: 'hash',
     routes

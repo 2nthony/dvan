@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import { createRouter } from './router'
+import createRouter from './router'
 
-export const createApp = () => {
+export default () => {
   const router = createRouter()
 
   const app = new Vue({

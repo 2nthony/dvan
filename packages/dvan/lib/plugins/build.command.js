@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const fs = require('fs-extra')
 
 exports.extend = api => {
@@ -17,19 +16,7 @@ exports.extend = api => {
     if (api.flags.clean) {
       fs.emptyDirSync(api.resolve(api.config.outDir))
     }
-
-    return new Promise((resolve, reject) => {
-      webpack(api.resolveWebpackConfig(), (err, stats) => {
-        if (err) return reject(err)
-        if (stats.hasErrors()) {
-          stats.toJson().errors.forEach(err => {
-            console.error(err)
-          })
-          return reject(new Error('Failed to build with error.'))
-        }
-        resolve(stats.toJson())
-      })
-    })
+    return api.compiler(api.resolveWebpackConfig())
   }
 
   if (api.command === 'build') {

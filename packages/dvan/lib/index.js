@@ -1,7 +1,8 @@
 const path = require('upath')
 const Plugin = require('./plugin')
-const loadConfig = require('./utils/load-config')
-const loadPlugins = require('./utils/load-plugins')
+const Hooks = require('./hooks')
+const loadConfig = require('./utils/loadConfig')
+const loadPlugins = require('./utils/loadPlugins')
 
 class Dvan {
   constructor (options, flags) {
@@ -11,18 +12,18 @@ class Dvan {
     this.mode = options.command === 'dev' ? 'development' : 'production'
     this.command = options.command
     this.flags = flags
+    this.hooks = new Hooks()
     this.cli = require('cac')()
 
     this.config = Object.assign(
-      require('./config-preset')(flags),
+      require('./preset.config')(flags),
       loadConfig({
         matches: ['dvan.config.*'],
         dir: this.options.baseDir
       })
     )
 
-    this.pkg = Object.assign(
-      {},
+    this.pkg = Object.assign({},
       loadConfig({
         files: ['package.json'],
         dir: this.options.baseDir
@@ -32,10 +33,10 @@ class Dvan {
 
   applyPlugins () {
     let plugins = [
-      require('./plugins/config-base'),
-      require('./plugins/config-app'),
-      require('./plugins/command-dev'),
-      require('./plugins/command-build')
+      require('./plugins/base.config'),
+      require('./plugins/app.config'),
+      require('./plugins/dev.command'),
+      require('./plugins/build.command')
     ]
 
     plugins = plugins.concat(

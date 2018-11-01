@@ -1,5 +1,3 @@
-const path = require('upath')
-
 exports.extend = api => {
   const {
     html,
@@ -9,7 +7,7 @@ exports.extend = api => {
   api.chainWebpack(config => {
     config
       .entry('app')
-      .add(path.resolve(__dirname, '../app/entry-client'))
+      .add('@dvan/app/client.entry')
 
     config.resolve.alias
       .set('@app', api.resolve())
@@ -30,7 +28,7 @@ exports.extend = api => {
               ? html.template.startsWith('.')
                 ? api.resolve(html.template)
                 : html.template
-              : path.resolve(__dirname, '../app/template.html')
+              : require.resolve('@dvan/app/template.html')
           }
         )
       ])
@@ -39,8 +37,7 @@ exports.extend = api => {
       .plugin('auto-routes')
       .use('vue-auto-routes/lib/plugin', [{
         dir: api.resolve(pagesDir),
-        env: api.mode,
-        esm: false
+        env: api.mode
       }])
   })
 }

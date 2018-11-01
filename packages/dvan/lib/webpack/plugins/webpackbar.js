@@ -1,8 +1,8 @@
-module.exports = (config, name) => {
+module.exports = config => {
   config
     .plugin('webpackbar')
     .use(require('webpackbar'), [{
-      name: name || 'Client',
+      name: 'client',
       color: '#2a7'
     }])
 }

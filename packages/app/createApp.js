@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import createRouter from './router'
 
-export default () => {
-  const router = createRouter()
+export default opts => {
+  opts = Object.assign({}, opts)
+
+  const router = createRouter(opts)
 
   const app = new Vue({
     router,

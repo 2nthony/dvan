@@ -1,3 +1,5 @@
+exports.name = 'built-in:app.config'
+
 exports.extend = api => {
   const {
     html,

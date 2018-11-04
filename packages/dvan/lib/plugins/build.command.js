@@ -1,5 +1,7 @@
 const fs = require('fs-extra')
 
+exports.name = 'built-in:build.command'
+
 exports.extend = api => {
   const command = api.registerCommand(
     'build',

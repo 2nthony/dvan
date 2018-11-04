@@ -1,6 +1,8 @@
 const path = require('upath')
 const fs = require('fs-extra')
 
+exports.name = 'static-site-generate'
+
 exports.extend = api => {
   api.registerCommand(
     'generate',

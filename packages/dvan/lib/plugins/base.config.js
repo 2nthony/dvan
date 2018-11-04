@@ -1,9 +1,11 @@
+exports.name = 'built-in:webpack.base.config'
+
 exports.extend = api => {
   api.chainWebpack((config, { type }) => {
     config.mode(api.mode)
 
     config.output
-      .filename(require('path').join('assets', 'js', '[name].[chunkhash:6].js'))
+      .filename(require('upath').join('assets', 'js', '[name].[chunkhash:6].js'))
       .publicPath(api.config.publicPath)
 
     config.devtool(api.mode === 'production' ? false : 'cheap-dev-source')

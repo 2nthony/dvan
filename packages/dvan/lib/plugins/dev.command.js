@@ -1,3 +1,5 @@
+exports.name = 'built-in:dev.command'
+
 exports.extend = api => {
   const webpack = require('webpack')
 

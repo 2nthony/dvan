@@ -2,8 +2,9 @@ const webpack = require('webpack')
 const path = require('upath')
 
 module.exports = class Plugin {
-  constructor (d) {
+  constructor (d, name) {
     this.root = d
+    this.name = name
     this.options = d.options
     this.command = d.command
     this.flags = d.flags
@@ -11,6 +12,7 @@ module.exports = class Plugin {
     this.hooks = d.hooks
     this.config = d.config
     this.pkg = d.pkg
+    this.commands = new Map()
   }
 
   chainWebpack (fn) {
@@ -19,6 +21,16 @@ module.exports = class Plugin {
   }
 
   registerCommand (command, desc, handler) {
+    if (this.commands.has(command)) {
+      console.info(
+        `Plugin "${
+          this.name
+        }" overrided the "${command}" that was previously added by "${
+          this.commands.get(command)
+        }"`
+      )
+    }
+    this.commands.set(command, this.name)
     return this.root.cli.command(command, desc, handler)
   }
 

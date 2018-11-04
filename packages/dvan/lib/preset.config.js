@@ -4,7 +4,9 @@ module.exports = ({
 }) => ({
   outDir: 'dist',
   publicPath: '/',
-  html: {},
+  html: {
+    title: 'Dvan App'
+  },
   pagesDir: 'pages',
   sourceMap: true,
   minimize: 'auto',

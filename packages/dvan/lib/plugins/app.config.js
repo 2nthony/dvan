@@ -19,8 +19,7 @@ exports.extend = api => {
         Object.assign(
           {
             inject: true,
-            filename: 'index.html',
-            title: 'Dvan App'
+            filename: 'index.html'
           },
           html,
           {
@@ -37,6 +36,7 @@ exports.extend = api => {
       .plugin('auto-routes')
       .use('vue-auto-routes/lib/plugin', [{
         dir: api.resolve(pagesDir),
+        dynamicImport: true,
         env: api.mode
       }])
   })

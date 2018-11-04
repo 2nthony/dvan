@@ -18,12 +18,12 @@ module.exports = class Plugin {
     return this
   }
 
-  resolve (...args) {
-    return path.join(this.options.baseDir, ...args)
+  registerCommand (command, desc, handler) {
+    return this.root.cli.command(command, desc, handler)
   }
 
-  resolveDvan (...args) {
-    return this.resolve('.dvan', ...args)
+  resolve () {
+    return path.join(this.options.baseDir, ...arguments)
   }
 
   resolveWebpackConfig (opts) {
@@ -35,10 +35,6 @@ module.exports = class Plugin {
     this.hooks.invoke('chainWebpack', config, opts)
 
     return config.toConfig()
-  }
-
-  registerCommand (command, desc, handler) {
-    return this.root.cli.command(command, desc, handler)
   }
 
   compiler (config) {
@@ -54,5 +50,10 @@ module.exports = class Plugin {
         resolve(stats.toJson())
       })
     })
+  }
+
+  build (config) {
+    this.compiler(config)
+    return this
   }
 }

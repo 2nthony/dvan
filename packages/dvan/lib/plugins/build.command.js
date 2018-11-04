@@ -6,24 +6,18 @@ exports.extend = api => {
     'Build app',
     async () => {
       if (api.flags.help) return
+      if (api.flags.clean) {
+        fs.emptyDirSync(api.resolve(api.config.outDir))
+      }
 
-      await build()
+      await api.build(api.resolveWebpackConfig())
     }
   )
   command.option('clean', 'Clean output directory before build app')
 
-  function build () {
-    if (api.flags.clean) {
-      fs.emptyDirSync(api.resolve(api.config.outDir))
-    }
-    return api.compiler(api.resolveWebpackConfig())
-  }
-
   if (api.command === 'build') {
     api.chainWebpack(config => {
-      config.output
-        .path(api.resolve(api.config.outDir))
-        .publicPath(api.config.publicPath)
+      config.output.path(api.resolve(api.config.outDir))
     })
   }
 }

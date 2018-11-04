@@ -1,0 +1,10 @@
+{
+  "name": "@dvan/meta",
+  "version": "2.0.0-alpha.1",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {
+    "deepmerge": "^2.2.1",
+    "lodash.isplainobject": "^4.0.6"
+  }
+}

@@ -1,10 +1,10 @@
 exports.extend = api => {
-  api.chainWebpack(config => {
+  api.chainWebpack((config, { type }) => {
     config.mode(api.mode)
 
-    config.output.filename(
-      require('path').join('assets', 'js', '[name].[chunkhash:6].js')
-    )
+    config.output
+      .filename(require('path').join('assets', 'js', '[name].[chunkhash:6].js'))
+      .publicPath(api.config.publicPath)
 
     config.devtool(api.mode === 'production' ? false : 'cheap-dev-source')
 
@@ -43,7 +43,7 @@ exports.extend = api => {
     require('../webpack/rules/babel')(config)
     require('../webpack/rules/vue')(config)
     require('../webpack/rules/media')(config)
-    require('../webpack/rules/css')(config, api)
+    require('../webpack/rules/css')(config, api, type === 'server')
     require('../webpack/rules/yaml')(config)
     require('../webpack/rules/toml')(config)
 

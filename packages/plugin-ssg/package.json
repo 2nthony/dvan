@@ -1,0 +1,15 @@
+{
+  "name": "@dvan/plugin-ssg",
+  "version": "2.0.0-alpha.1",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {
+    "@dvan/meta": "2.0.0-alpha.1",
+    "vue-server-renderer": "^2.5.17",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

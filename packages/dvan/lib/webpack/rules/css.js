@@ -1,6 +1,6 @@
 const path = require('upath')
 
-module.exports = (config, api) => {
+module.exports = (config, api, isServer) => {
   const { loaderOptions, extract } = api.config.css
   const { sourceMap } = api.config
   const shouldExtractCSS =
@@ -10,17 +10,22 @@ module.exports = (config, api) => {
 
   const createCSSRule = (lang, test, loader, options) => {
     const applyLoader = (rule, modules = false) => {
-      if (shouldExtractCSS) {
-        rule
-          .use('css-extract-loader')
-          .loader(require('mini-css-extract-plugin').loader)
-      } else {
-        rule.use('vue-style-loader').loader('vue-style-loader').options({ sourceMap })
+      if (!isServer) {
+        if (shouldExtractCSS) {
+          rule
+            .use('css-extract-loader')
+            .loader(require('mini-css-extract-plugin').loader)
+        } else {
+          rule
+            .use('vue-style-loader')
+            .loader('vue-style-loader')
+            .options({ sourceMap })
+        }
       }
 
       rule
         .use('css-loader')
-        .loader('css-loader')
+        .loader(isServer ? 'css-loader/locals' : 'css-loader')
         .options(Object.assign(
           {
             modules,

@@ -81,8 +81,10 @@ module.exports = (api, paths) => {
 
   function handlePath (url) {
     if (url === '/') {
-      url = 'index'
+      url = '/index'
     }
-    return /index|404/.test(url) ? `${url}.html` : `${url}/index.html`
+    return url === '/index' || url === '/404'
+      ? `${url}.html`
+      : `${url}/index.html`
   }
 }

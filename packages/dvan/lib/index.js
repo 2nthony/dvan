@@ -39,14 +39,21 @@ class Dvan {
       require('./plugins/build.command')
     ]
 
-    plugins = plugins.concat(
-      loadPlugins(this.options.baseDir, this.config.plugins)
-    )
+    if (this.config.plugins.length > 0) {
+      plugins = plugins.concat(
+        loadPlugins(this.options.baseDir, this.config.plugins)
+      )
+    }
+
     this.plugins = plugins
 
     for (const plugin of plugins) {
+      if (!plugin.name.startsWith('built-in')) {
+        console.info(`Using plugin '${plugin.name}'`)
+      }
+
       if (plugin.extend) {
-        const rootAPI = new Plugin(this)
+        const rootAPI = new Plugin(this, plugin.name)
         plugin.extend(rootAPI)
       }
     }

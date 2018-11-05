@@ -8202,10 +8202,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-auto-routes@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/vue-auto-routes/-/vue-auto-routes-1.0.2.tgz#11c02e61c172dd7e7a857e88b0cfdda7689f7111"
-  integrity sha512-NDIfcJmcEKU5I+DbGeciS7ukoaKP/lyW2BtnQBD7cX+4OWV0b91x82sZ57eSf/yQK9HGLBFojLRhvc07qBlVzQ==
+vue-auto-routes@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/vue-auto-routes/-/vue-auto-routes-1.0.3.tgz#041d7c55d07c02e1d7397899dbcf9ee4dfddaed1"
+  integrity sha512-B0VOc4ct+3EQHpovphv3SpLHPyk7bP1v3KuDLOh9DZQ68VpEYynPQ81F0j4tgBCmKWZ9mr8R4+VX8yJxDzmh8w==
   dependencies:
     chokidar "^2.0.4"
     globby "^8.0.1"

@@ -45,7 +45,7 @@
     "upath": "^1.1.0",
     "url-loader": "^1.1.2",
     "vue": "^2.5.17",
-    "vue-auto-routes": "^1.0.2",
+    "vue-auto-routes": "^1.0.3",
     "vue-loader": "^15.3.0",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17",

@@ -8,11 +8,6 @@ exports.extend = api => {
     'generate',
     'Generate static HTML files.',
     async () => {
-      const paths =
-        fs.readFileSync(require.resolve('vue-auto-routes'), 'utf8')
-          .match(/path:\s+(\S+)/gi)
-          .map(route => route.match(/'(\S+)'/)[1])
-
       await fs.emptyDir(api.resolve(api.config.outDir))
 
       const clientConfig = api.resolveWebpackConfig()
@@ -22,6 +17,14 @@ exports.extend = api => {
         api.compiler(clientConfig),
         api.compiler(serverConfig)
       ])
+
+      const paths =
+        (
+          fs.readFileSync(require.resolve('vue-auto-routes'), 'utf8')
+            .match(/path:\s+(\S+)/gi) ||
+          []
+        )
+          .map(route => route.match(/'(\S+)'/)[1])
 
       await require('./renderHTML')(api, paths)
     }

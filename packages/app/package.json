@@ -2,6 +2,9 @@
   "name": "@dvan/app",
   "version": "2.0.0-alpha.1",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "vue": "^2.5.17",
     "vue-auto-routes": "^1.0.2",

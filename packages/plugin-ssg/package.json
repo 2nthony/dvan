@@ -3,6 +3,9 @@
   "version": "2.0.0-alpha.1",
   "license": "MIT",
   "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@dvan/meta": "2.0.0-alpha.1",
     "vue-server-renderer": "^2.5.17",

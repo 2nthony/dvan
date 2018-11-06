@@ -27,7 +27,7 @@
     "@babel/preset-env": "^7.0.0-rc.1",
     "@dvan/app": "^2.0.0-alpha.4",
     "autoprefixer": "^9.1.2",
-    "babel-loader": "^8.0.0-beta.4",
+    "babel-loader": "^8.0.4",
     "cac": "^5.0.13",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",

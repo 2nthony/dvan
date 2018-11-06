@@ -33,13 +33,5 @@ exports.extend = api => {
           }
         )
       ])
-
-    config
-      .plugin('auto-routes')
-      .use('vue-auto-routes/lib/plugin', [{
-        dir: api.resolve(pagesDir),
-        dynamicImport: true,
-        env: api.mode
-      }])
   })
 }

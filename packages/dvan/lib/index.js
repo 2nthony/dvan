@@ -36,7 +36,8 @@ class Dvan {
       require('./plugins/base.config'),
       require('./plugins/app.config'),
       require('./plugins/dev.command'),
-      require('./plugins/build.command')
+      require('./plugins/build.command'),
+      require('@dvan/app')
     ]
 
     if (this.config.plugins.length > 0) {

@@ -17,7 +17,7 @@ class Logger {
   }
 
   error () {
-    console.error(chalk.red(...arguments))
+    console.error(chalk.hex('#f04')(...arguments))
   }
 
   tips () {
@@ -32,6 +32,10 @@ class Logger {
       chalk.yellow('warning'),
       ...arguments
     )
+  }
+
+  color (color, text) {
+    return chalk[color](text)
   }
 }
 

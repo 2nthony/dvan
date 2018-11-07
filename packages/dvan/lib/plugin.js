@@ -1,10 +1,12 @@
 const webpack = require('webpack')
 const path = require('upath')
+const logger = require('@dvan/cli-utils/logger')
 
 module.exports = class Plugin {
   constructor (d, name) {
     this.root = d
     this.name = name
+    this.logger = logger
     this.options = d.options
     this.command = d.command
     this.flags = d.flags
@@ -22,7 +24,7 @@ module.exports = class Plugin {
 
   registerCommand (command, desc, handler) {
     if (this.commands.has(command)) {
-      console.info(
+      logger.warning(
         `Plugin "${
           this.name
         }" overrided the "${command}" that was previously added by "${
@@ -55,7 +57,7 @@ module.exports = class Plugin {
         if (err) return reject(err)
         if (stats.hasErrors()) {
           stats.toJson().errors.forEach(err => {
-            console.error(err)
+            logger.error(err)
           })
           return reject(new Error('Failed to build with error.'))
         }

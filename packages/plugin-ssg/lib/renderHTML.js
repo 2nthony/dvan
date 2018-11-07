@@ -69,7 +69,7 @@ module.exports = (api, paths) => {
       html
     )
 
-    console.log(
+    api.logger.success(
       `> Generated file ${
         path.relative(
           process.cwd(),

@@ -22,10 +22,11 @@
     "url": "https://github.com/ddfv/dvan/issues"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
     "@dvan/app": "^2.0.0-alpha.4",
+    "@dvan/cli-utils": "^2.0.0-alpha.4",
     "autoprefixer": "^9.1.2",
     "babel-loader": "^8.0.4",
     "cac": "^5.0.13",

@@ -3,6 +3,7 @@ const Plugin = require('./plugin')
 const Hooks = require('./hooks')
 const loadConfig = require('./utils/loadConfig')
 const loadPlugins = require('./utils/loadPlugins')
+const logger = require('@dvan/cli-utils/logger')
 
 class Dvan {
   constructor (options, flags) {
@@ -51,7 +52,7 @@ class Dvan {
     for (const plugin of plugins) {
       if (plugin.extend) {
         if (!plugin.name.startsWith('built-in')) {
-          console.info(`Using plugin: '${plugin.name}'`)
+          logger.tips(`Using plugin: '${plugin.name}'`)
         }
 
         const rootAPI = new Plugin(this, plugin.name)

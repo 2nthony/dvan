@@ -1,0 +1,11 @@
+{
+  "name": "@dvan/cli-utils",
+  "version": "2.0.0-alpha.4",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}

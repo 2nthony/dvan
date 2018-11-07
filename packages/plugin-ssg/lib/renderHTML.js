@@ -2,7 +2,7 @@ const path = require('upath')
 const fs = require('fs-extra')
 const { createBundleRenderer } = require('vue-server-renderer')
 
-module.exports = (api, paths) => {
+module.exports = async (api, paths) => {
   const clientManifest = require(
     api.resolve(
       api.config.outDir,
@@ -27,12 +27,12 @@ module.exports = (api, paths) => {
     basedir: api.resolve()
   })
 
-  paths.forEach(path => {
-    renderHTML(path)
+  paths.forEach(async path => {
+    await renderHTML(path)
   })
 
   // Also render 404
-  renderHTML('/404')
+  await renderHTML('/404')
 
   async function renderHTML (url) {
     const context = { url }
@@ -70,14 +70,27 @@ module.exports = (api, paths) => {
     )
 
     api.logger.success(
-      `> Generated file ${
-        path.relative(
-          process.cwd(),
-          api.resolve(api.config.outDir, handlePath(url))
+      `Generated file ${
+        api.logger.color('cyan',
+          path.relative(
+            process.cwd(),
+            api.resolve(api.config.outDir, handlePath(url))
+          )
         )
       }`
     )
   }
+
+  // Done!
+  api.logger.log(
+    api.logger.color('green', `Done! Check out`),
+    api.logger.color('cyan',
+      path.relative(
+        process.cwd(),
+        api.resolve(api.config.outDir)
+      )
+    )
+  )
 
   function handlePath (url) {
     if (url === '/') {

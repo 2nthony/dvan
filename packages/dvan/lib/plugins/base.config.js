@@ -50,7 +50,8 @@ exports.extend = api => {
     require('../webpack/rules/toml')(config)
 
     // plugins
-    require('../webpack/plugins/webpackbar')(config)
+    // require('../webpack/plugins/webpackbar')(config)
+    require('../webpack/plugins/progress')(config, type)
     require('../webpack/plugins/constants')(config, api)
 
     return config

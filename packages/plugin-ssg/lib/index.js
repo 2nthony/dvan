@@ -70,14 +70,14 @@ exports.extend = api => {
             })
           ])
 
-        config
+        /* config
           .plugin('webpackbar')
           .tap(([options]) => [
             Object.assign(options, {
               name: 'server',
               color: '#58a'
             })
-          ])
+          ]) */
       } else if (type === 'client') {
         config
           .entry('client')

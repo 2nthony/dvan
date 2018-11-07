@@ -39,6 +39,7 @@
     "mini-css-extract-plugin": "^0.4.2",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^3.0.0",
+    "progress": "^2.0.1",
     "resolve-from": "^4.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",

@@ -82,7 +82,7 @@ module.exports = async (api, paths) => {
   }
 
   // Done!
-  api.logger.log(
+  /* api.logger.log(
     api.logger.color('green', `Done! Check out`),
     api.logger.color('cyan',
       path.relative(
@@ -90,7 +90,7 @@ module.exports = async (api, paths) => {
         api.resolve(api.config.outDir)
       )
     )
-  )
+  ) */
 
   function handlePath (url) {
     if (url === '/') {

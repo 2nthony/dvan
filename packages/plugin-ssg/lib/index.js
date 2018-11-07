@@ -13,10 +13,8 @@ exports.extend = api => {
       const clientConfig = api.resolveWebpackConfig()
       const serverConfig = api.resolveWebpackConfig({ type: 'server' })
 
-      await Promise.all([
-        api.compiler(clientConfig),
-        api.compiler(serverConfig)
-      ])
+      await api.compiler(serverConfig)
+      await api.compiler(clientConfig)
 
       const paths =
         (
@@ -69,15 +67,6 @@ exports.extend = api => {
               whitelist: /\.css$/
             })
           ])
-
-        /* config
-          .plugin('webpackbar')
-          .tap(([options]) => [
-            Object.assign(options, {
-              name: 'server',
-              color: '#58a'
-            })
-          ]) */
       } else if (type === 'client') {
         config
           .entry('client')

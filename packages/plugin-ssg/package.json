@@ -3,6 +3,10 @@
   "version": "2.0.0-alpha.6",
   "license": "MIT",
   "main": "lib/index.js",
+  "files": [
+    "app",
+    "lib"
+  ],
   "publishConfig": {
     "access": "public"
   },

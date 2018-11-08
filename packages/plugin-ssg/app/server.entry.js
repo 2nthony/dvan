@@ -12,7 +12,7 @@ Vue.use(Meta, {
 
 export default context => {
   return new Promise((resolve, reject) => {
-    const { app, router } = createApp({ mode: 'history' })
+    const { app, router } = createApp()
     router.push(context.url)
     context.meta = app.$meta()
     router.onReady(() => resolve(app), reject)

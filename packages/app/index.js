@@ -6,6 +6,8 @@ exports.extend = api => {
       .plugin('constants')
       .tap(([options]) => [
         Object.assign({}, options, {
+          // https://router.vuejs.org/api/#mode
+          // keep router.mode default in client side
           __ROUTER_MODE__: JSON.stringify(undefined)
         })
       ])

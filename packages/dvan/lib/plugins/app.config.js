@@ -14,6 +14,7 @@ exports.extend = api => {
     config.resolve.alias
       .set('@app', api.resolve())
       .set('@pages', api.resolve(pagesDir))
+      .set('@modules', api.resolve('node_modules'))
 
     config
       .plugin('html-plugin')

@@ -24,13 +24,12 @@ exports.extend = api => {
         )
           .map(route => route.match(/'(\S+)'/)[1])
 
-      await require('./renderHTML')(api, paths)
+      await require('./renderHTML')(api, { paths })
     }
   )
 
   if (api.command === 'generate') {
     api.chainWebpack((config, { type }) => {
-      config.entryPoints.delete('app')
       config.plugins.delete('html-plugin')
 
       config
@@ -43,6 +42,8 @@ exports.extend = api => {
           })
         ])
       if (type === 'server') {
+        config.entryPoints.delete('app')
+
         config.target('node')
 
         config
@@ -68,10 +69,6 @@ exports.extend = api => {
             })
           ])
       } else if (type === 'client') {
-        config
-          .entry('client')
-          .add(path.join(__dirname, '../app/client.entry'))
-
         config
           .plugin('vue-ssr')
           .use(require('vue-server-renderer/client-plugin'), [

@@ -2,7 +2,7 @@ const path = require('upath')
 const fs = require('fs-extra')
 const { createBundleRenderer } = require('vue-server-renderer')
 
-module.exports = async (api, paths) => {
+module.exports = async (api, { paths }) => {
   const clientManifest = require(
     api.resolve(
       api.config.outDir,

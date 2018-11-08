@@ -1,13 +1,13 @@
 import Vue from 'vue'
-import Meta from '@dvan/meta'
-import createApp from '@dvan/app/createApp'
+import Meta from '@modules/@dvan/meta'
+import createApp from '@modules/@dvan/app/createApp'
 
 Vue.use(Meta, {
   keyName: 'head',
   attribute: 'data-dvan-attr',
   ssrAttribute: 'data-dvan-server-rendered',
   tagIDKeyName: 'dvanid',
-  globalMeta: __GLOBAL_META__
+  globalMeta: __GLOBAL_META__ // eslint-disable-line no-undef
 })
 
 export default context => {

@@ -51,9 +51,7 @@ class Dvan {
 
     for (const plugin of plugins) {
       if (plugin.extend) {
-        if (!plugin.name.startsWith('built-in')) {
-          logger.tips(`Using plugin: '${plugin.name}'`)
-        }
+        logger.tips(`Using plugin: '${plugin.name}'`)
 
         const rootAPI = new Plugin(this, plugin.name)
         plugin.extend(rootAPI)

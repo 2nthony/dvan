@@ -4,9 +4,9 @@ import routes from '@modules/vue-auto-routes'
 
 Vue.use(Router)
 
-export default ({ mode }) => {
+export default () => {
   const router = new Router({
-    mode,
+    mode: __ROUTER_MODE__,
     base: __PUBLIC_PATH__,
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {

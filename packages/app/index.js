@@ -3,6 +3,14 @@ exports.name = 'built-in:app'
 exports.extend = api => {
   api.chainWebpack(config => {
     config
+      .plugin('constants')
+      .tap(([options]) => [
+        Object.assign({}, options, {
+          __ROUTER_MODE__: JSON.stringify(undefined)
+        })
+      ])
+
+    config
       .plugin('vue-auto-routes')
       .use('vue-auto-routes/lib/plugin', [{
         dir: api.resolve(api.config.pagesDir),

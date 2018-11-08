@@ -1,7 +1,7 @@
 const path = require('upath')
 const fs = require('fs-extra')
 
-exports.name = 'static-site-generate'
+exports.name = 'dvan:static-site-generate'
 
 exports.extend = api => {
   api.registerCommand(
@@ -38,7 +38,8 @@ exports.extend = api => {
           Object.assign({}, options, {
             'process.server': JSON.stringify(type === 'server'),
             'process.client': JSON.stringify(type === 'client'),
-            '__GLOBAL_META__': JSON.stringify(api.config.html)
+            __ROUTER_MODE__: JSON.stringify('history'),
+            __GLOBAL_META__: JSON.stringify(api.config.html)
           })
         ])
       if (type === 'server') {

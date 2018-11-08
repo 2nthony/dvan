@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import routes from 'vue-auto-routes'
+import routes from '@modules/vue-auto-routes'
 
 Vue.use(Router)
 
 export default ({ mode }) => {
   const router = new Router({
-    mode: mode || undefined,
+    mode,
     base: __PUBLIC_PATH__,
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {

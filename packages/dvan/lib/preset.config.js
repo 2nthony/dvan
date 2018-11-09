@@ -8,6 +8,7 @@ module.exports = ({
     title: 'Dvan App'
   },
   pagesDir: 'pages',
+  exts: ['vue'],
   sourceMap: true,
   minimize: 'auto',
   plugins: [],

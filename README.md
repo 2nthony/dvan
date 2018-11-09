@@ -6,7 +6,7 @@
 ![NPM License](https://flat.badgen.net/npm/license/dvan)
 ![Project Status](https://flat.badgen.net/badge/status/alpha/yellow)
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+[![Standard Code Style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## Here are something you have to know
 
@@ -16,7 +16,7 @@
 - Q: Why would you do that?  
   A: For training.
 - Q: Which should I choose?  
-  A: [Poi](https://github.com/egoist/poi). Better experience and less bugs.
+  A: [Poi](https://github.com/egoist/poi). **More features**, better experience and less bugs.
 
 ## Start
 

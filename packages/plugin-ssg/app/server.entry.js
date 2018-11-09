@@ -1,3 +1,5 @@
+/* global __GLOBAL_META__ */
+
 import Vue from 'vue'
 import Meta from '@modules/@dvan/meta'
 import createApp from '@modules/@dvan/app/createApp'
@@ -7,7 +9,7 @@ Vue.use(Meta, {
   attribute: 'data-dvan-attr',
   ssrAttribute: 'data-dvan-server-rendered',
   tagIDKeyName: 'dvanid',
-  globalMeta: __GLOBAL_META__ // eslint-disable-line no-undef
+  globalMeta: __GLOBAL_META__
 })
 
 export default context => {

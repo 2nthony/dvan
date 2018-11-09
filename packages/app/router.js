@@ -1,3 +1,5 @@
+/* global __ROUTER_MODE__, __PUBLIC_PATH__ */
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from '@modules/vue-auto-routes'

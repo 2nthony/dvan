@@ -35,7 +35,6 @@ class Dvan {
   applyPlugins () {
     let plugins = [
       require('./plugins/base.config'),
-      require('./plugins/app.config'),
       require('./plugins/dev.command'),
       require('./plugins/build.command'),
       require('@dvan/app')

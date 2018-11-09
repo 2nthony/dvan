@@ -35,8 +35,8 @@ exports.extend = api => {
     api.chainWebpack(config => {
       config.output.filename('[name].js')
 
-      config.entryPoints
-        .get('app')
+      config
+        .entry('app')
         .add('webpack-dev-server/client?/')
         .add('webpack/hot/dev-server')
 

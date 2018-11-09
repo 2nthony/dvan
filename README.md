@@ -16,7 +16,7 @@
 - Q: Why would you do that?  
   A: For training.
 - Q: Which should I choose?  
-  A: [Poi](https://github.com/egoist/poi). Better experience and less bugs.
+  A: [Poi](https://github.com/egoist/poi). **More features**, better experience and less bugs.
 
 ## Start
 

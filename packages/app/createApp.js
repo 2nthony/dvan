@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import createRouter from './router'
-import _App from './App.vue'
 
 export default ({
   App
@@ -9,7 +8,7 @@ export default ({
 
   const app = new Vue({
     router,
-    render: h => h(App || _App)
+    render: h => h(App || require('./App.vue').default)
   })
 
   return { app, router }

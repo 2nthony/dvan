@@ -2,7 +2,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import routes from '@modules/vue-auto-routes'
+import { routes } from '@modules/vue-auto-routes'
 
 Vue.use(Router)
 

@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "vue": "^2.5.17",
-    "vue-auto-routes": "^1.0.3",
+    "vue-auto-routes": "^1.1.14",
     "vue-router": "^3.0.1"
   }
 }

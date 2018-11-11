@@ -2,7 +2,7 @@ const path = require('upath')
 const fs = require('fs-extra')
 const { createBundleRenderer } = require('vue-server-renderer')
 
-module.exports = async (api, { paths }) => {
+module.exports = async (api, { routesMap }) => {
   const clientManifest = require(
     api.resolve(
       api.config.outDir,
@@ -27,8 +27,8 @@ module.exports = async (api, { paths }) => {
     basedir: api.resolve()
   })
 
-  paths.forEach(async path => {
-    await renderHTML(path)
+  routesMap.forEach(async route => {
+    await renderHTML(route)
   })
 
   // Also render 404

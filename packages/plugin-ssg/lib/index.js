@@ -13,18 +13,12 @@ exports.extend = api => {
       const clientConfig = api.resolveWebpackConfig()
       const serverConfig = api.resolveWebpackConfig({ type: 'server' })
 
-      await api.compiler(serverConfig)
       await api.compiler(clientConfig)
+      await api.compiler(serverConfig)
 
-      const paths =
-        (
-          fs.readFileSync(require.resolve('vue-auto-routes'), 'utf8')
-            .match(/path:\s+(\S+)/gi) ||
-          []
-        )
-          .map(route => route.match(/'(\S+)'/)[1])
+      const { routesMap } = require('vue-auto-routes')
 
-      await require('./renderHTML')(api, { paths })
+      await require('./renderHTML')(api, { routesMap })
     }
   )
 
@@ -61,6 +55,14 @@ exports.extend = api => {
             {
               filename: 'ssr/server.bundle.json'
             }
+          ])
+
+        config
+          .plugin('vue-auto-routes')
+          .tap(([options]) => [
+            Object.assign({}, options, {
+              routesMap: true
+            })
           ])
 
         config

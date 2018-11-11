@@ -21,11 +21,7 @@ export default () => {
       {
         path: '*',
         name: '404',
-        component: () => {
-          return import(/* webpackChunkName: "404" */
-            './404.vue'
-          )
-        }
+        component: () => import(/* webpackChunkName: "404" */ './404.vue')
       }
     ]
   })

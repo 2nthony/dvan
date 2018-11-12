@@ -2,13 +2,13 @@ module.exports = ({
   host,
   port
 }) => ({
-  outDir: 'dist',
+  outDir: '__dist',
   publicPath: '/',
   html: {
     title: 'Dvan App'
   },
   pagesDir: 'pages',
-  exts: ['vue'],
+  match: 'vue',
   sourceMap: true,
   minimize: 'auto',
   plugins: [],

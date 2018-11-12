@@ -48,6 +48,10 @@ module.exports = class Plugin {
 
     this.hooks.invoke('chainWebpack', config, opts)
 
+    if (this.config.chainWebpack) {
+      this.config.chainWebpack(config, opts)
+    }
+
     return config.toConfig()
   }
 

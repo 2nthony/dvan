@@ -1,5 +1,6 @@
 const path = require('upath')
 const globby = require('globby')
+const resolveFrom = require('resolve-from')
 
 module.exports = ({
   files = [],
@@ -18,7 +19,7 @@ module.exports = ({
     for (const configFile of configFiles) {
       configFilePath = path.join(dir, configFile)
       config = Object.assign({},
-        require(configFilePath),
+        resolveConfig(dir, configFilePath),
         { path: configFilePath }
       )
       if (config && config !== '{}') break
@@ -26,4 +27,22 @@ module.exports = ({
   }
 
   return config
+}
+
+function resolveConfig (dir, fp) {
+  if (/\.js$/.test(fp)) {
+    return require(fp)
+  } else {
+    const readFileSync = require('fs').readFileSync
+
+    if (/\.toml$/.test(fp)) {
+      return require(resolveFrom(dir, 'toml')).parse(
+        readFileSync(fp, 'utf8')
+      )
+    } else if (/\.ya?ml$/.test(fp)) {
+      return require(resolveFrom(dir, 'js-yaml')).safeLoad(
+        readFileSync(fp, 'utf8')
+      )
+    }
+  }
 }

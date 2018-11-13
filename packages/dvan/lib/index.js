@@ -62,8 +62,8 @@ class Dvan {
     return new Promise(resolve => {
       logger.tips(`Using config: '${
         this.config.path
-          ? `user:${path.relative(process.cwd(), this.config.path)}`
-          : 'built-in:preset.config.js'
+          ? `user:${colorful(path.relative(process.cwd(), this.config.path))}`
+          : `built-in:${colorful('preset.config.js')}`
       }'`)
 
       this.applyPlugins()
@@ -80,3 +80,15 @@ class Dvan {
 }
 
 module.exports = (...args) => new Dvan(...args)
+
+function colorful (fp) {
+  if (/\.js$/.test(fp)) {
+    return logger.color('yellow', fp)
+  } else {
+    if (/\.toml$/.test(fp)) {
+      return logger.color('cyan', fp)
+    } else if (/\.ya?ml$/.test(fp)) {
+      return logger.color('red', fp)
+    }
+  }
+}

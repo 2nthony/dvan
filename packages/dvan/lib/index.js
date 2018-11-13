@@ -60,7 +60,14 @@ class Dvan {
 
   start () {
     return new Promise(resolve => {
+      logger.tips(`Using config: '${
+        this.config.path
+          ? `user:${path.relative(process.cwd(), this.config.path)}`
+          : 'built-in:preset.config.js'
+      }'`)
+
       this.applyPlugins()
+
       this.cli.parse([
         this.command
       ])

@@ -3,18 +3,14 @@ const fs = require('fs-extra')
 const { createBundleRenderer } = require('vue-server-renderer')
 
 module.exports = async (api, { routesMap }) => {
-  const clientManifest = require(
-    api.resolve(
-      api.config.outDir,
-      'ssr/client.manifest.json'
-    )
-  )
-  const serverBundle = require(
-    api.resolve(
-      api.config.outDir,
-      'ssr/server.bundle.json'
-    )
-  )
+  const clientManifest = require(api.resolve(
+    api.config.outDir,
+    'ssr/client.manifest.json'
+  ))
+  const serverBundle = require(api.resolve(
+    api.config.outDir,
+    'ssr/server.bundle.json'
+  ))
   const template = fs.readFileSync(
     path.join(__dirname, '../app/template.static.html'),
     'utf8'
@@ -34,7 +30,7 @@ module.exports = async (api, { routesMap }) => {
   // Also render 404
   await renderHTML('/404')
 
-  async function renderHTML (url) {
+  async function renderHTML(url) {
     const context = { url }
 
     const app = await renderer.renderToString(context)
@@ -51,33 +47,30 @@ module.exports = async (api, { routesMap }) => {
 
     const html = template
       .replace('{htmlAttrs}', htmlAttrs.text())
-      .replace('{head}',
+      .replace(
+        '{head}',
         `${title.text()}${meta.text()}${link.text()}${style.text()}`
       )
       .replace('{bodyAttrs}', bodyAttrs.text())
       .replace('{script}', script.text())
       .replace('{noscript}', noscript.text())
-      // from renderer
+      // From renderer
       .replace('{app}', app)
       .replace('{styles}', () => context.renderStyles())
       .replace('{state}', () => context.renderState())
       .replace('{scripts}', () => context.renderScripts())
       .replace('{resourceHints}', () => context.renderResourceHints())
 
-    await fs.outputFile(
-      api.resolve(api.config.outDir, handlePath(url)),
-      html
-    )
+    await fs.outputFile(api.resolve(api.config.outDir, handlePath(url)), html)
 
     api.logger.success(
-      `Generated file ${
-        api.logger.color('cyan',
-          path.relative(
-            process.cwd(),
-            api.resolve(api.config.outDir, handlePath(url))
-          )
+      `Generated file ${api.logger.color(
+        'cyan',
+        path.relative(
+          process.cwd(),
+          api.resolve(api.config.outDir, handlePath(url))
         )
-      }`
+      )}`
     )
   }
 
@@ -92,7 +85,7 @@ module.exports = async (api, { routesMap }) => {
     )
   ) */
 
-  function handlePath (url) {
+  function handlePath(url) {
     if (url === '/') {
       url = '/index'
     }

@@ -12,7 +12,7 @@ export default () => {
   const router = new Router({
     mode: __ROUTER_MODE__,
     base: __PUBLIC_PATH__,
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
       }

@@ -1,40 +1,40 @@
 const chalk = require('chalk')
 
 class Logger {
-  constructor (options) {
-    this.options = Object({}, options)
+  constructor(options) {
+    this.options = Object.assign({}, options)
   }
 
-  log () {
-    console.log(...arguments)
+  log(...args) {
+    console.log(...args)
   }
 
-  success () {
+  success(...args) {
     console.log(
       chalk.green('success'),
-      ...arguments
+      ...args
     )
   }
 
-  error () {
-    console.error(chalk.hex('#f04')(...arguments))
+  error(...args) {
+    console.error(chalk.hex('#f04')(...args))
   }
 
-  tips () {
+  tips(...args) {
     console.log(
       chalk.cyan('tips'),
-      ...arguments
+      ...args
     )
   }
 
-  warning () {
+  warning(...args) {
     console.warn(
       chalk.yellow('warning'),
-      ...arguments
+      ...args
     )
   }
 
-  color (color, text) {
+  color(color, text) {
     return chalk[color](text)
   }
 }

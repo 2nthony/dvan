@@ -10,5 +10,10 @@
     "vue": "^2.5.17",
     "vue-auto-routes": "^1.1.14",
     "vue-router": "^3.0.1"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "prettier": true
   }
 }

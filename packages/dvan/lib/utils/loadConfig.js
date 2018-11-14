@@ -2,26 +2,19 @@ const path = require('upath')
 const globby = require('globby')
 const resolveFrom = require('resolve-from')
 
-module.exports = ({
-  files = [],
-  matches = [],
-  dir
-}) => {
+module.exports = ({ files = [], matches = [], dir }) => {
   const matchFiles = files.concat(matches)
-  const configFiles = globby.sync(
-    matchFiles,
-    { cwd: dir }
-  )
+  const configFiles = globby.sync(matchFiles, { cwd: dir })
 
-  let config, configFilePath
+  let config
+  let configFilePath
 
   if (configFiles.length > 0) {
     for (const configFile of configFiles) {
       configFilePath = path.join(dir, configFile)
-      config = Object.assign({},
-        resolveConfig(dir, configFilePath),
-        { path: configFilePath }
-      )
+      config = Object.assign({}, resolveConfig(dir, configFilePath), {
+        path: configFilePath
+      })
       if (config && config !== '{}') break
     }
   }
@@ -29,20 +22,18 @@ module.exports = ({
   return config
 }
 
-function resolveConfig (dir, fp) {
+function resolveConfig(dir, fp) {
   if (/\.js$/.test(fp)) {
     return require(fp)
-  } else {
-    const readFileSync = require('fs').readFileSync
+  }
+  const { readFileSync } = require('fs')
 
-    if (/\.toml$/.test(fp)) {
-      return require(resolveFrom(dir, 'toml')).parse(
-        readFileSync(fp, 'utf8')
-      )
-    } else if (/\.ya?ml$/.test(fp)) {
-      return require(resolveFrom(dir, 'js-yaml')).safeLoad(
-        readFileSync(fp, 'utf8')
-      )
-    }
+  if (/\.toml$/.test(fp)) {
+    return require(resolveFrom(dir, 'toml')).parse(readFileSync(fp, 'utf8'))
+  }
+  if (/\.ya?ml$/.test(fp)) {
+    return require(resolveFrom(dir, 'js-yaml')).safeLoad(
+      readFileSync(fp, 'utf8')
+    )
   }
 }

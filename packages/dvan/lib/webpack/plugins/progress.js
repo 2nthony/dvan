@@ -1,9 +1,8 @@
 const ProgressBar = require('progress')
 
 module.exports = (config, type) => {
-  config
-    .plugin('progress')
-    .use(require('webpack').ProgressPlugin, [(percent) => {
+  config.plugin('progress').use(require('webpack').ProgressPlugin, [
+    percent => {
       const bar = new ProgressBar(
         `Building ${type} [:bar] ${Math.floor(percent * 100)}%`,
         {
@@ -15,5 +14,6 @@ module.exports = (config, type) => {
       )
 
       bar.update(percent)
-    }])
+    }
+  ])
 }

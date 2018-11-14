@@ -3,7 +3,7 @@ const path = require('upath')
 const logger = require('@dvan/cli-utils/logger')
 
 module.exports = class Plugin {
-  constructor (d, name) {
+  constructor(d, name) {
     this.root = d
     this.name = name
     this.logger = logger
@@ -17,30 +17,31 @@ module.exports = class Plugin {
     this.commands = new Map()
   }
 
-  chainWebpack (fn) {
+  chainWebpack(fn) {
     this.hooks.add('chainWebpack', fn)
     return this
   }
 
-  registerCommand (command, desc, handler) {
+  registerCommand(command, desc, handler) {
     if (this.commands.has(command)) {
       logger.warning(
         `Plugin "${
           this.name
-        }" overrided the "${command}" that was previously added by "${
-          this.commands.get(command)
-        }"`
+        }" overrided the "${command}" that was previously added by "${this.commands.get(
+          command
+        )}"`
       )
     }
     this.commands.set(command, this.name)
+
     return this.root.cli.command(command, desc, handler)
   }
 
-  resolve () {
-    return path.join(this.options.baseDir, ...arguments)
+  resolve(...args) {
+    return path.join(this.options.baseDir, ...args)
   }
 
-  resolveWebpackConfig (opts) {
+  resolveWebpackConfig(opts) {
     const WebpackChain = require('webpack-chain')
     const config = new WebpackChain()
 
@@ -55,7 +56,7 @@ module.exports = class Plugin {
     return config.toConfig()
   }
 
-  compiler (config) {
+  compiler(config) {
     return new Promise((resolve, reject) => {
       webpack(config, (err, stats) => {
         if (err) return reject(err)
@@ -70,8 +71,9 @@ module.exports = class Plugin {
     })
   }
 
-  build (config) {
+  build(config) {
     this.compiler(config)
+
     return this
   }
 }

@@ -5,7 +5,8 @@ const isLocalPlugin = p => /^[./]|(^[a-zA-Z]:)/.test(p)
 module.exports = (baseDir, plugins) => {
   return plugins.map(plugin => {
     if (plugin && typeof plugin === 'object') {
-      if (!plugin.name) plugin.name = 'Unnamed plugin from "dvan.config".plugins'
+      if (!plugin.name)
+        plugin.name = 'Unnamed plugin from "dvan.config".plugins'
 
       return plugin
     }

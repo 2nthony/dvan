@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import createRouter from './router'
 
-export default ({
-  App
-} = {}) => {
+export default ({ App } = {}) => {
   const router = createRouter()
 
   const app = new Vue({

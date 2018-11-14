@@ -10,12 +10,14 @@ module.exports = config => {
         .test(test)
         .use(loader)
         .loader(loader)
-        .options(Object.assign(
-          {
-            name: path.join('assets', type, '[name].[hash:6].[ext]')
-          },
-          loader === 'url-loader' ? { limit: inlineMaxLimit } : {}
-        ))
+        .options(
+          Object.assign(
+            {
+              name: path.join('assets', type, '[name].[hash:6].[ext]')
+            },
+            loader === 'url-loader' ? { limit: inlineMaxLimit } : {}
+          )
+        )
     }
   }
 

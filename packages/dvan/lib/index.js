@@ -1,12 +1,12 @@
 const path = require('upath')
+const logger = require('@dvan/cli-utils/logger')
 const Plugin = require('./plugin')
 const Hooks = require('./hooks')
 const loadConfig = require('./utils/loadConfig')
 const loadPlugins = require('./utils/loadPlugins')
-const logger = require('@dvan/cli-utils/logger')
 
 class Dvan {
-  constructor (options, flags) {
+  constructor(options, flags) {
     this.options = Object.assign({}, options, {
       baseDir: path.resolve(options.baseDir || '.')
     })
@@ -24,7 +24,8 @@ class Dvan {
       })
     )
 
-    this.pkg = Object.assign({},
+    this.pkg = Object.assign(
+      {},
       loadConfig({
         files: ['package.json'],
         dir: this.options.baseDir
@@ -32,7 +33,7 @@ class Dvan {
     )
   }
 
-  applyPlugins () {
+  applyPlugins() {
     let plugins = [
       require('./plugins/base.config'),
       require('./plugins/dev.command'),
@@ -58,19 +59,19 @@ class Dvan {
     }
   }
 
-  start () {
+  start() {
     return new Promise(resolve => {
-      logger.tips(`Using config: '${
-        this.config.path
-          ? `user:${colorful(path.relative(process.cwd(), this.config.path))}`
-          : `built-in:${colorful('preset.config.js')}`
-      }'`)
+      logger.tips(
+        `Using config: '${
+          this.config.path
+            ? `user:${colorful(path.relative(process.cwd(), this.config.path))}`
+            : `built-in:${colorful('preset.config.js')}`
+        }'`
+      )
 
       this.applyPlugins()
 
-      this.cli.parse([
-        this.command
-      ])
+      this.cli.parse([this.command])
       if (this.flags.help) {
         this.cli.showHelp()
       }
@@ -81,14 +82,14 @@ class Dvan {
 
 module.exports = (...args) => new Dvan(...args)
 
-function colorful (fp) {
+function colorful(fp) {
   if (/\.js$/.test(fp)) {
     return logger.color('yellow', fp)
-  } else {
-    if (/\.toml$/.test(fp)) {
-      return logger.color('cyan', fp)
-    } else if (/\.ya?ml$/.test(fp)) {
-      return logger.color('red', fp)
-    }
+  }
+  if (/\.toml$/.test(fp)) {
+    return logger.color('cyan', fp)
+  }
+  if (/\.ya?ml$/.test(fp)) {
+    return logger.color('red', fp)
   }
 }

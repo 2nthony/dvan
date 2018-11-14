@@ -26,45 +26,51 @@ module.exports = (config, api, isServer) => {
       rule
         .use('css-loader')
         .loader(isServer ? 'css-loader/locals' : 'css-loader')
-        .options(Object.assign(
-          {
-            modules,
-            sourceMap,
-            importLoaders: 1,
-            localIdentName: '[local]_[hash:base64:6]'
-          },
-          loaderOptions.css
-        ))
+        .options(
+          Object.assign(
+            {
+              modules,
+              sourceMap,
+              importLoaders: 1,
+              localIdentName: '[local]_[hash:base64:6]'
+            },
+            loaderOptions.css
+          )
+        )
 
       rule
         .use('postcss-loader')
         .loader('postcss-loader')
-        .options(Object.assign(
-          {
-            plugins: [
-              require('autoprefixer')({
-                browsers: ['ie>9', '>1%']
-              })
-            ]
-          },
-          loaderOptions.postcss
-        ))
+        .options(
+          Object.assign(
+            {
+              plugins: [
+                require('autoprefixer')({
+                  browsers: ['ie>9', '>1%']
+                })
+              ]
+            },
+            loaderOptions.postcss
+          )
+        )
 
       if (loader) {
         rule
           .use(loader)
           .loader(loader)
-          .options(Object.assign(
-            {},
-            options,
-            loaderOptions[loader.replace('-loader', '')]
-          ))
+          .options(
+            Object.assign(
+              {},
+              options,
+              loaderOptions[loader.replace('-loader', '')]
+            )
+          )
       }
     }
 
     const baseRule = config.module.rule(lang).test(test)
 
-    // this matches `<style module>`
+    // This matches `<style module>`
     const moduleRule = baseRule.oneOf('module').resourceQuery(/module/)
     applyLoader(moduleRule, true)
 
@@ -84,10 +90,10 @@ module.exports = (config, api, isServer) => {
   createCSSRule('scss', /\.scss$/, 'sass-loader')
 
   if (shouldExtractCSS) {
-    config
-      .plugin('css-extract')
-      .use('mini-css-extract-plugin', [{
+    config.plugin('css-extract').use('mini-css-extract-plugin', [
+      {
         filename: path.join('assets', 'css', 'styles.[chunkhash:6].css')
-      }])
+      }
+    ])
   }
 }

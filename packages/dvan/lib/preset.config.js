@@ -1,7 +1,4 @@
-module.exports = ({
-  host,
-  port
-}) => ({
+module.exports = ({ host, port } = {}) => ({
   outDir: '__dist',
   publicPath: '/',
   html: {
@@ -14,7 +11,7 @@ module.exports = ({
   plugins: [],
   constants: {},
 
-  // configure webpack-dev-server
+  // Configure webpack-dev-server
   devServer: {
     host: process.env.HOST || host || '0.0.0.0',
     port: process.env.PORT || port || 4000

@@ -2,9 +2,9 @@
 module.exports = config => {
   config.module
     .rule('js')
-    .test(/\.js$/)
+    .test(/\.m?js$/)
     .exclude.add(file => (
-      /node_modules/.test(file) && !/\.js/.test(file)
+      /node_modules/.test(file) && !/\.m?js/.test(file)
     ))
     .end()
     .use('babel-loader')

@@ -5,9 +5,7 @@
 ![NPM Downloads](https://flat.badgen.net/npm/dt/dvan)
 ![NPM License](https://flat.badgen.net/npm/license/dvan)
 ![Project Status](https://flat.badgen.net/badge/status/alpha/yellow)
-
-[![Standard Code Style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-
+![XO code style](https://flat.badgen.net/xo/status/chalk)
 ## Here are something you have to know
 
 #### This project has big reference from [poi](https://github.com/egoist/poi).

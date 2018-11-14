@@ -14,7 +14,7 @@ exports.extend = api => {
     config.resolve.extensions.add('.js').add('.json')
 
     // minimize
-    const { minimize } = api.config.minimize
+    const { minimize } = api.config
     const isMinimizeObject = typeof minimize === 'object'
     const shouldMinimize =
       minimize === 'auto' || minimize === undefined || isMinimizeObject

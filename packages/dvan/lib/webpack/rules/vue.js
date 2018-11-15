@@ -11,5 +11,5 @@ module.exports = config => {
     .use('vue-loader')
     .loader('vue-loader')
 
-  config.plugin('vue-loader').use('vue-loader/lib/plugin')
+  config.plugin('vue-loader').use(require('vue-loader/lib/plugin'))
 }

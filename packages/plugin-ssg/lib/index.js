@@ -13,7 +13,9 @@ exports.extend = api => {
     await api.compiler(clientConfig)
     await api.compiler(serverConfig)
 
-    const { routesMap } = require('vue-auto-routes')
+    const routesMap = require('vue-auto-routes').routesMap.filter(
+      route => route !== '/404'
+    )
 
     await require('./renderHTML')(api, { routesMap })
   })

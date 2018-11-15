@@ -29,7 +29,7 @@
     "@dvan/cli-utils": "^2.0.0-alpha.9",
     "autoprefixer": "^9.1.2",
     "babel-loader": "^8.0.4",
-    "cac": "^5.0.13",
+    "cac": "^5.0.15",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "fs-extra": "^7.0.0",

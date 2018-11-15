@@ -1247,6 +1247,11 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
   integrity sha512-yprFYuno9FtNsSHVlSWd+nRlmGoAbqbeCwOryP6sC/zoCjhpArcRMYp19EvpSUSizJAlsXEwJv+wcWS9XaXdMw==
 
+"@types/minimist@^1.2.0":
+  version "1.2.0"
+  resolved "http://registry.npmjs.org/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
+  integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
+
 "@vue/component-compiler-utils@^2.0.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@vue/component-compiler-utils/-/component-compiler-utils-2.2.0.tgz#bbbb7ed38a9a8a7c93abe7ef2e54a90a04b631b4"
@@ -2012,14 +2017,14 @@ bytes@3.0.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
   integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
 
-cac@^5.0.13:
-  version "5.0.13"
-  resolved "https://registry.yarnpkg.com/cac/-/cac-5.0.13.tgz#ccbc03c2200977543031d83c1d8f4e8622ac971f"
-  integrity sha512-GMfSsNeIOu3lfHfaqhBsMLv6EW760w6x33H19XKlrTbAnTI5aqA0ncDUgtzddZ9eBbgy6GOrXUmVcnrP3R75sA==
+cac@^5.0.15:
+  version "5.0.15"
+  resolved "https://registry.npmjs.org/cac/-/cac-5.0.15.tgz#01fb2de24d8fc81050e4ec6ee1fe2b81003431ad"
+  integrity sha512-8jTquyS9whajPHyT34giTxj3dUtim/+g01/3A7nJ2YPlat9O5SjsQ0hynF3lZp0+Pe7f9dh571jyDYBM9gVFdw==
   dependencies:
-    chalk "^2.3.2"
-    joycon "^2.1.1"
-    minimost "^1.1.0"
+    chalk "^2.4.1"
+    joycon "^2.1.2"
+    minimost "^1.2.0"
     redent "^2.0.0"
     string-width "^2.1.1"
     text-table "^0.2.0"
@@ -2154,7 +2159,7 @@ chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^2.0.0, chalk@^2.3.1, chalk@^2.3.2, chalk@^2.4.1:
+chalk@^2.0.0, chalk@^2.3.1, chalk@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   integrity sha512-ObN6h1v2fTJSmUXoS3nMQ92LbDK9be4TV+6G+omQlGJFdcUX5heKi1LZ1YnRMIgwTLEj3E24bT6tYni50rlCfQ==
@@ -4742,9 +4747,9 @@ javascript-stringify@^1.6.0:
   resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-1.6.0.tgz#142d111f3a6e3dae8f4a9afd77d45855b5a9cce3"
   integrity sha1-FC0RHzpuPa6PSpr9d9RYVbWpzOM=
 
-joycon@^2.1.1:
+joycon@^2.1.2:
   version "2.1.2"
-  resolved "https://registry.yarnpkg.com/joycon/-/joycon-2.1.2.tgz#565739af7d07b844834c799c1630a9ffab75044e"
+  resolved "https://registry.npmjs.org/joycon/-/joycon-2.1.2.tgz#565739af7d07b844834c799c1630a9ffab75044e"
   integrity sha512-nJlP8JLfIgArXcipjcqEk49nv91FFEsC+yK9fAGF5vAGKEnFrmFpcSwUK7Yu6qBY1ri1Ae7M6XWAZugFQmQBaQ==
 
 js-levenshtein@^1.1.3:
@@ -5318,11 +5323,12 @@ minimist@~0.0.1:
   resolved "http://registry.npmjs.org/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
   integrity sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
 
-minimost@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/minimost/-/minimost-1.1.0.tgz#b0356d50fec059c965743d72ce4d202d262a9705"
-  integrity sha1-sDVtUP7AWclldD1yzk0gLSYqlwU=
+minimost@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/minimost/-/minimost-1.2.0.tgz#a37f91d60395fc003180d208ca9e0316bcc4e3a2"
+  integrity sha512-/+eWyOtXw41WIUV9rBgrXna11bxbqymebSeW2arsfp/MCGCwe+2czzsOueEtLZgH4xb4QXhje5H9MLCsCPibLA==
   dependencies:
+    "@types/minimist" "^1.2.0"
     minimist "^1.2.0"
 
 minipass@^2.2.1, minipass@^2.3.3:
@@ -6517,11 +6523,6 @@ prettier@1.13.7:
   version "1.13.7"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.7.tgz#850f3b8af784a49a6ea2d2eaa7ed1428a34b7281"
   integrity sha512-KIU72UmYPGk4MujZGYMFwinB7lOf2LsDNGSOC8ufevsrPLISrZbNJlWstRi3m0AMuszbH+EFSQ/r6w56RSPK6w==
-
-prettier@^1.14.0:
-  version "1.14.3"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.3.tgz#90238dd4c0684b7edce5f83b0fb7328e48bd0895"
-  integrity sha512-qZDVnCrnpsRJJq5nSsiHCE3BYMED2OtsI+cmzIzF1QIfqm5ALf8tEJcO27zV1gKNKRPdhjO0dNWnrzssDQ1tFg==
 
 pretty-error@^2.0.2:
   version "2.1.1"
@@ -8183,14 +8184,13 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-auto-routes@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/vue-auto-routes/-/vue-auto-routes-1.0.3.tgz#041d7c55d07c02e1d7397899dbcf9ee4dfddaed1"
-  integrity sha512-B0VOc4ct+3EQHpovphv3SpLHPyk7bP1v3KuDLOh9DZQ68VpEYynPQ81F0j4tgBCmKWZ9mr8R4+VX8yJxDzmh8w==
+vue-auto-routes@^1.1.14:
+  version "1.1.18"
+  resolved "https://registry.npmjs.org/vue-auto-routes/-/vue-auto-routes-1.1.18.tgz#934bc25dbb64c31d7a24c37f51aff397a78d92a2"
+  integrity sha512-sAwyj/BZHzN9iLKabxYOr8/57VsZ7qBC16xI/nD2HXelbJTOM1ATCHe4kxjL9TzUB8ZVC7KYcc199y7yQkVCCQ==
   dependencies:
     chokidar "^2.0.4"
-    globby "^8.0.1"
-    prettier "^1.14.0"
+    lodash.sortby "^4.7.0"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"

@@ -60,7 +60,7 @@ module.exports = (config, api, isServer) => {
           .loader(loader)
           .options(
             Object.assign(
-              {},
+              { sourceMap },
               options,
               loaderOptions[loader.replace('-loader', '')]
             )

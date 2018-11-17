@@ -1,9 +1,8 @@
-// Need to configurable
 module.exports = config => {
   config.module
     .rule('js')
     .test(/\.m?js$/)
-    .exclude.add(file => /node_modules/.test(file) && !/\.m?js/.test(file))
+    .include.add(file => !/node_modules/.test(file))
     .end()
     .use('babel-loader')
     .loader('babel-loader')

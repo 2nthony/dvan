@@ -6,8 +6,6 @@ module.exports = config => {
   config.module
     .rule('vue')
     .test(/\.vue$/)
-    .exclude.add(file => /node_modules/.test(file) && !/\.vue/.test(file))
-    .end()
     .use('vue-loader')
     .loader('vue-loader')
 

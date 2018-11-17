@@ -92,7 +92,7 @@ module.exports = (config, api, isServer) => {
   if (shouldExtractCSS) {
     config.plugin('css-extract').use('mini-css-extract-plugin', [
       {
-        filename: path.join('assets', 'css', 'styles.[chunkhash:6].css')
+        filename: path.join('__assets', 'css', 'styles.[chunkhash:6].css')
       }
     ])
   }

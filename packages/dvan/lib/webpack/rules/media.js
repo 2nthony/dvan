@@ -13,7 +13,7 @@ module.exports = config => {
         .options(
           Object.assign(
             {
-              name: path.join('assets', type, '[name].[hash:6].[ext]')
+              name: path.join('__assets', type, '[name].[hash:6].[ext]')
             },
             loader === 'url-loader' ? { limit: inlineMaxLimit } : {}
           )

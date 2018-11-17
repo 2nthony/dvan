@@ -6,7 +6,7 @@ exports.extend = api => {
 
     config.output
       .filename(
-        require('upath').join('assets', 'js', '[name].[chunkhash:6].js')
+        require('upath').join('__assets', 'js', '[name].[chunkhash:6].js')
       )
       .publicPath(api.config.publicPath)
       .path(api.resolve(api.config.outDir))

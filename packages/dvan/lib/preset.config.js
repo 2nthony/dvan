@@ -1,4 +1,4 @@
-module.exports = ({ host, port } = {}) => ({
+module.exports = ({ host, port, jsx } = {}) => ({
   outDir: '__dist',
   publicPath: '/',
   html: {
@@ -20,5 +20,8 @@ module.exports = ({ host, port } = {}) => ({
   css: {
     extract: 'auto',
     loaderOptions: {}
-  }
+  },
+
+  // vue-jsx
+  jsx: jsx || false
 })

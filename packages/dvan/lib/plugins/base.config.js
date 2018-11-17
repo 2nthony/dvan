@@ -48,7 +48,7 @@ exports.extend = api => {
     }
 
     // Rules
-    require('../webpack/rules/babel')(config)
+    require('../webpack/rules/babel')(config, api.config.jsx)
     require('../webpack/rules/vue')(config)
     require('../webpack/rules/media')(config)
     require('../webpack/rules/css')(config, api, type === 'server')

@@ -12,14 +12,16 @@ r.keys().forEach(fp => {
 export default ({ App } = {}) => {
   const router = createRouter()
 
-  const app = new Vue({
+  const options = {
     router,
     render: h => h(App || require('./App.vue').default)
-  })
+  }
 
   if (enhances.size > 0) {
-    enhances.forEach(e => e({ Vue, app, router }))
+    enhances.forEach(e => e({ Vue, options, router }))
   }
+
+  const app = new Vue(options)
 
   return { app, router }
 }

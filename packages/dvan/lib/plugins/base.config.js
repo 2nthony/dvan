@@ -11,7 +11,7 @@ exports.extend = api => {
       .publicPath(api.config.publicPath)
       .path(api.resolve(api.config.outDir))
 
-    config.devtool(api.mode === 'production' ? false : 'cheap-dev-source')
+    config.devtool(api.mode === 'production' ? false : 'cheap-source-map')
 
     config.resolve.extensions.add('.js').add('.json')
 

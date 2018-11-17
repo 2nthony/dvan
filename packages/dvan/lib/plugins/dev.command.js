@@ -1,3 +1,5 @@
+const setSharedCLIOptions = require('./utils/shared.cli.options')
+
 exports.name = 'built-in:dev.command'
 
 exports.extend = api => {
@@ -32,6 +34,8 @@ exports.extend = api => {
 
     server.listen(actualPort, host)
   })
+
+  setSharedCLIOptions(command)
   command.option('host', 'Specify server host. (default: 0.0.0.0)')
   command.option('port', 'Specify server port. (default: 4000)')
 

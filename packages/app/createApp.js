@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import createRouter from './router'
 
-const r = require.context('@app/enhanceApp', false, /\.m?js$/)
+const r = require.context('@app/enhancements', false, /\.m?js$/)
 const enhances = new Set()
 r.keys().forEach(fp => {
   if (r(fp).default) {
@@ -18,7 +18,7 @@ export default ({ App } = {}) => {
   })
 
   if (enhances.size > 0) {
-    enhances.forEach(enhanceApp => enhanceApp({ Vue, app, router }))
+    enhances.forEach(e => e({ Vue, app, router }))
   }
 
   return { app, router }

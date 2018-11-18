@@ -9,13 +9,15 @@ module.exports = (config, jsx) => {
   // https://github.com/vuejs/jsx
   if (jsx) {
     options.presets.push(
-      require.resolve('@vue/babel-preset-jsx')
+      '@vue/babel-preset-jsx'
     )
   }
 
+  config.resolve.extensions.add('.jsx')
+
   config.module
     .rule('js')
-    .test(/\.m?js$/)
+    .test(/\.m?jsx?$/)
     .include.add(file => !/node_modules/.test(file))
     .end()
     .use('babel-loader')

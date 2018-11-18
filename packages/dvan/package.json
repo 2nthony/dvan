@@ -16,10 +16,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ddfv/dvan.git"
+    "url": "git+https://github.com/dvanjs/dvan.git"
   },
   "bugs": {
-    "url": "https://github.com/ddfv/dvan/issues"
+    "url": "https://github.com/dvanjs/dvan/issues"
   },
   "dependencies": {
     "@babel/core": "^7.1.5",

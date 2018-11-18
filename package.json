@@ -6,7 +6,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "repository": "https://github.com/ddfv/dvan",
+  "repository": "https://github.com/dvanjs/dvan",
   "author": "evila <ijoec123@gmail.com>",
   "license": "MIT"
 }

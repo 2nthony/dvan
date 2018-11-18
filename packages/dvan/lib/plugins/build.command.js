@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const setSharedCLIOptions = require('./utils/shared.cli.options')
+const setSharedCLIOptions = require('@dvan/cli-utils/sharedOptions')
 
 exports.name = 'built-in:build.command'
 

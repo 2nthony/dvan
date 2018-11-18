@@ -1,10 +1,13 @@
 const path = require('upath')
 const fs = require('fs-extra')
+const setSharedCLIOptions = require('@dvan/cli-utils/sharedOptions')
 
 exports.name = 'dvan:static-site-generate'
 
 exports.extend = api => {
-  api.registerCommand('generate', 'Generate static HTML files.', async () => {
+  const command = api.registerCommand('generate', 'Generate static HTML files.', async () => {
+    if (api.flags.help) return
+
     await fs.emptyDir(api.resolve(api.config.outDir))
 
     const clientConfig = api.resolveWebpackConfig()
@@ -19,6 +22,8 @@ exports.extend = api => {
 
     await require('./renderHTML')(api, { routesMap })
   })
+
+  setSharedCLIOptions(command)
 
   if (api.command === 'generate') {
     api.chainWebpack((config, { type }) => {

@@ -20,7 +20,7 @@
 
 > This branch for `Next`. Or switch branch to [v1.3.x](https://github.com/evillt/dvan/tree/v1.3.x)
 
-Check out the [documentation(WIP)](https://dvan.evila.me) for details.
+Check out the [documentation(WIP)](https://dvan.js.org) for details.
 
 Write something here later.
 

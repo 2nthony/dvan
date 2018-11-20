@@ -1,3 +1,8 @@
+> Stop work this repo for a while  
+> until I get a official job again 😂  
+> 如果有觉得我合适的求砸我啊!!~~ 都是泪啊 😂
+
+
 # Dvan
 
 [![NPM Version](https://flat.badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)

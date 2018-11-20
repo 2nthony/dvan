@@ -6,10 +6,11 @@ module.exports = (config, jsx) => {
   }
 
   // vue-jsx preset
-  // https://github.com/vuejs/jsx
+  // https://github.com/dvanjs/dvan/tree/master/packages/babel-preset-jsx
+  // for temporary
   if (jsx) {
     options.presets.push(
-      '@vue/babel-preset-jsx'
+      '@dvan/babel-preset-jsx'
     )
   }
 

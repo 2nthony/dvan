@@ -1,5 +1,5 @@
 > Stop work this repo for a while  
-> until I get a official job again 😂  
+> until I get an official job again 😂  
 > 如果有觉得我合适的工作机会求砸我啊!!~~ 都是泪啊 😂
 
 

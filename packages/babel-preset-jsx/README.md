@@ -8,6 +8,10 @@ Maybe they're too busy to work on this issue 😂
 
 Options and usage see [vuejs/jsx](https://github.com/vuejs/jsx) and check `packages` for each options.
 
+# Guide
+
+See [jsx-documentation](https://dvan.js.org/guide/advanced/jsx.html)
+
 # License
 
 MIT

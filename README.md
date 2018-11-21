@@ -1,16 +1,19 @@
 > Stop work this repo for a while  
 > until I get an official job again 😂  
-> 如果有觉得我合适的工作机会求砸我啊!!~~ 都是泪啊 😂
+> 如果有觉得我合适的工作机会求砸我啊!!~~ 都是泪啊 😂  
+> TG: evillt  
+> 欢迎骚扰 🤔
 
 
 # Dvan
 
 [![NPM Version](https://flat.badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)
-[![NPM Next Version](https://flat.badgen.net/npm/v/dvan/next?icon=npm)](https://npmjs.com/package/dvan/next)
+[![NPM Next Version](https://flat.badgen.net/npm/v/dvan/next?icon=npm)](https://npmjs.com/package/dvan/v/next)
 ![NPM Downloads](https://flat.badgen.net/npm/dt/dvan)
 ![NPM License](https://flat.badgen.net/npm/license/dvan)
 ![Project Status](https://flat.badgen.net/badge/status/alpha/yellow)
 ![XO code style](https://flat.badgen.net/xo/status/chalk)
+
 ## Here are something you have to know
 
 #### This project has big reference from [poi](https://github.com/egoist/poi).
@@ -27,7 +30,7 @@
 
 Check out the [documentation(WIP)](https://dvan.js.org) for details.
 
-Write something here later.
+You can check how to use Dvan to run an App via [dvan-example](https://github.com/dvanjs/dvan-example)
 
 ## License
 MIT [@evillt](https://github.com/evillt)

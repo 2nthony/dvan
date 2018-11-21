@@ -54,6 +54,7 @@ exports.extend = api => {
     require('../webpack/rules/css')(config, api, type === 'server')
     require('../webpack/rules/yaml')(config)
     require('../webpack/rules/toml')(config)
+    require('../webpack/rules/graphql')(config)
 
     // Plugins
     require('../webpack/plugins/progress')(config, type)

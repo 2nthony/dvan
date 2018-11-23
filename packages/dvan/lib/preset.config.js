@@ -5,7 +5,6 @@ module.exports = ({ host, port, jsx } = {}) => ({
   html: {
     title: 'Dvan App'
   },
-  pagesDir: 'pages',
   match: 'vue',
   sourceMap: true,
   minimize: 'auto',

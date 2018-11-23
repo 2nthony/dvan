@@ -1,7 +1,7 @@
 {
   "name": "@dvan/babel-preset-jsx",
   "description": "Babel preset for Vue JSX",
-  "version": "2.0.0-alpha.14",
+  "version": "2.0.0-alpha.15",
   "main": "dist/plugin.cjs.js",
   "module": "dist/plugin.js",
   "files": [

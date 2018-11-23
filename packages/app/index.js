@@ -3,7 +3,7 @@ const path = require('upath')
 exports.name = 'built-in:app.config'
 
 exports.extend = api => {
-  const { html, pagesDir } = api.config
+  const { html, pagesDir, srcDir, match } = api.config
 
   api.chainWebpack(config => {
     if (api.mode === 'production') {
@@ -29,8 +29,9 @@ exports.extend = api => {
     config.entry('app').add(path.join(__dirname, 'client.entry'))
 
     config.resolve.alias
-      .set('@app', api.resolve())
-      .set('@pages', api.resolve(pagesDir))
+      .set('@@', api.resolve())
+      .set('@', api.resolve(srcDir))
+      .set('@pages', api.resolve(srcDir, pagesDir))
       .set('@modules', api.resolve('node_modules'))
 
     config.plugin('html-plugin').use('html-webpack-plugin', [
@@ -62,8 +63,8 @@ exports.extend = api => {
       .plugin('vue-auto-routes')
       .use(require('vue-auto-routes/lib/plugin'), [
         {
-          pagesDir: api.resolve(api.config.pagesDir),
-          match: api.config.match,
+          pagesDir: api.resolve(srcDir, pagesDir),
+          match,
           env: api.mode
         }
       ])

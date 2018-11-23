@@ -1,4 +1,5 @@
 module.exports = ({ host, port, jsx } = {}) => ({
+  srcDir: 'src',
   outDir: '__dist',
   publicPath: '/',
   html: {

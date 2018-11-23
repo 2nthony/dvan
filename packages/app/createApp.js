@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import createRouter from './router'
 
-const r = require.context('@app/enhancements', false, /\.m?js$/)
+const r = require.context('@', true, /\.\/plugins\/\S*\.m?js$/)
 const enhances = new Set()
 r.keys().forEach(fp => {
   if (r(fp).default) {

@@ -56,6 +56,5 @@
     "space": true,
     "semicolon": false,
     "prettier": true
-  },
-  "gitHead": "ec2c798003923b37ff1cc7d68f8912bef3e23e9b"
+  }
 }

@@ -7,14 +7,15 @@
     "access": "public"
   },
   "dependencies": {
-    "vue": "^2.5.17",
     "vue-auto-routes": "^1.1.14",
     "vue-router": "^3.0.1"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.17"
   },
   "xo": {
     "space": true,
     "semicolon": false,
     "prettier": true
-  },
-  "gitHead": "ec2c798003923b37ff1cc7d68f8912bef3e23e9b"
+  }
 }

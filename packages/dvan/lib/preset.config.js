@@ -22,6 +22,6 @@ module.exports = ({ host, port, jsx } = {}) => ({
     loaderOptions: {}
   },
 
-  // vue-jsx
+  // Vue-jsx
   jsx: jsx || false
 })

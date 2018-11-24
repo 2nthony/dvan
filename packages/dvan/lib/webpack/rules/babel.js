@@ -5,13 +5,11 @@ module.exports = (config, jsx) => {
     plugins: [require.resolve('@babel/plugin-syntax-dynamic-import')]
   }
 
-  // vue-jsx preset
+  // Vue-jsx preset
   // https://github.com/dvanjs/dvan/tree/master/packages/babel-preset-jsx
   // for temporary
   if (jsx) {
-    options.presets.push(
-      '@dvan/babel-preset-jsx'
-    )
+    options.presets.push('@dvan/babel-preset-jsx')
   }
 
   config.resolve.extensions.add('.jsx')

@@ -1,5 +1,8 @@
-module.exports = config => {
-  config.resolve.alias.set('vue$', 'vue/dist/vue.esm')
+module.exports = (config, api) => {
+  config.resolve.alias.set(
+    'vue',
+    api.resolve('node_modules', 'vue/dist/vue.esm')
+  )
 
   config.resolve.extensions.add('.vue')
 

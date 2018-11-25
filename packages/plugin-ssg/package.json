@@ -1,6 +1,6 @@
 {
   "name": "@dvan/plugin-ssg",
-  "version": "2.0.0-alpha.16",
+  "version": "2.0.0-alpha.17",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@dvan/meta": "^2.0.0-alpha.16",
+    "@dvan/meta": "^2.0.0-alpha.17",
     "vue-server-renderer": "^2.5.17",
     "webpack-node-externals": "^1.7.2"
   }

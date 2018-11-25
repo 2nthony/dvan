@@ -1,3 +1,3 @@
 exports.name = 'blogging'
 
-exports.extend = api => {}
+exports.extend = () => {}

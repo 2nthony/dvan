@@ -1,3 +1,3 @@
 exports.name = 'PWA'
 
-exports.extend = api => {}
+exports.extend = () => {}

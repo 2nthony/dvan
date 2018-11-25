@@ -20,18 +20,21 @@ export default () => {
     },
 
     routes: [
-      ...(routes.filter(route => {
+      ...routes.filter(route => {
         if (route.path !== '/404') {
           return route
-        } else {
-          NotFound = route
         }
-      })),
+        NotFound = route
+      }),
 
       // 404
-      Object.assign({
-        component: () => import(/* webpackChunkName: "404" */ './404.vue')
-      }, NotFound, { path: '*' })
+      Object.assign(
+        {
+          component: () => import(/* webpackChunkName: "404" */ './404.vue')
+        },
+        NotFound,
+        { path: '*' }
+      )
     ]
   })
 

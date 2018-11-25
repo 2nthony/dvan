@@ -2,7 +2,7 @@ import Vue from 'vue'
 import createRouter from './router'
 
 import ClientOnly from './components/ClientOnly'
-// component for client-only content
+// Component for client-only content
 Vue.component('ClientOnly', ClientOnly)
 
 const r = require.context('@', true, /\.\/plugins\/\S*\.m?js$/)

@@ -15,7 +15,7 @@ const options = {
 
 const app = require('../lib')(options, flags)
 
-app.start().catch(err => {
-  console.error(err)
+app.start().catch(error => {
+  console.error(error)
   process.exit()
 })

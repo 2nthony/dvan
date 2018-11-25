@@ -10,10 +10,7 @@ class Logger {
   }
 
   success(...args) {
-    console.log(
-      chalk.green('success'),
-      ...args
-    )
+    console.log(chalk.green('success'), ...args)
   }
 
   error(...args) {
@@ -21,17 +18,11 @@ class Logger {
   }
 
   tips(...args) {
-    console.log(
-      chalk.cyan('tips'),
-      ...args
-    )
+    console.log(chalk.cyan('tips'), ...args)
   }
 
   warning(...args) {
-    console.warn(
-      chalk.yellow('warning'),
-      ...args
-    )
+    console.warn(chalk.yellow('warning'), ...args)
   }
 
   color(color, text) {

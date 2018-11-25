@@ -5,23 +5,27 @@ const setSharedCLIOptions = require('@dvan/cli-utils/sharedOptions')
 exports.name = 'dvan:static-site-generate'
 
 exports.extend = api => {
-  const command = api.registerCommand('generate', 'Generate static HTML files.', async () => {
-    if (api.flags.help) return
+  const command = api.registerCommand(
+    'generate',
+    'Generate static HTML files.',
+    async () => {
+      if (api.flags.help) return
 
-    await fs.emptyDir(api.resolve(api.config.outDir))
+      await fs.emptyDir(api.resolve(api.config.outDir))
 
-    const clientConfig = api.resolveWebpackConfig()
-    const serverConfig = api.resolveWebpackConfig({ type: 'server' })
+      const clientConfig = api.resolveWebpackConfig()
+      const serverConfig = api.resolveWebpackConfig({ type: 'server' })
 
-    await api.compiler(clientConfig)
-    await api.compiler(serverConfig)
+      await api.compiler(clientConfig)
+      await api.compiler(serverConfig)
 
-    const routesMap = require('vue-auto-routes').routesMap.filter(
-      route => route !== '/404'
-    )
+      const routesMap = require('vue-auto-routes').routesMap.filter(
+        route => route !== '/404'
+      )
 
-    await require('./renderHTML')(api, { routesMap })
-  })
+      await require('./renderHTML')(api, { routesMap })
+    }
+  )
 
   setSharedCLIOptions(command)
 

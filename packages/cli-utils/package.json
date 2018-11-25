@@ -10,10 +10,5 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1"
-  },
-  "xo": {
-    "space": true,
-    "semicolon": false,
-    "prettier": true
   }
 }

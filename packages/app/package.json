@@ -12,10 +12,5 @@
   },
   "peerDependencies": {
     "vue": "^2.5.17"
-  },
-  "xo": {
-    "space": true,
-    "semicolon": false,
-    "prettier": true
   }
 }

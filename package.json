@@ -12,6 +12,7 @@
     "husky": "^1.2.0",
     "lerna": "^3.4.3",
     "lint-staged": "^8.1.0",
+    "prettier": "^1.15.2",
     "xo": "^0.23.0"
   },
   "lint-staged": {
@@ -38,5 +39,10 @@
       "import/no-unresolved": 0,
       "array-callback-return": 1
     }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": true
   }
 }

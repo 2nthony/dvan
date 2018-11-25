@@ -10,25 +10,25 @@ class Dvan {
     this.options = Object.assign({}, options, {
       baseDir: path.resolve(options.baseDir || '.')
     })
+
     this.mode = options.command === 'dev' ? 'development' : 'production'
     this.command = options.command
     this.flags = flags
     this.hooks = new Hooks()
     this.cli = require('cac')()
 
-    this.config = Object.assign(
-      require('./preset.config')(flags),
-      loadConfig({
-        matches: ['dvan.config.*'],
-        dir: this.options.baseDir
-      })
-    )
+    this.pkg = loadConfig({
+      files: ['package.json'],
+      dir: this.options.baseDir
+    })
 
-    this.pkg = Object.assign(
-      {},
+    this.config = Object.assign(
+      require('./preset.config')(flags, this.pkg),
       loadConfig({
         files: ['package.json'],
-        dir: this.options.baseDir
+        matches: ['dvan.config.*'],
+        dir: this.options.baseDir,
+        packageKey: 'dvan'
       })
     )
   }
@@ -83,7 +83,7 @@ class Dvan {
 module.exports = (...args) => new Dvan(...args)
 
 function colorful(fp) {
-  if (/\.js$/.test(fp)) {
+  if (/\.js(on)?$/.test(fp)) {
     return logger.color('yellow', fp)
   }
   if (/\.toml$/.test(fp)) {

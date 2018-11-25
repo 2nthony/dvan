@@ -1,9 +1,17 @@
-module.exports = ({ host, port, jsx } = {}) => ({
+module.exports = ({ host, port, jsx } = {}, pkg) => ({
   srcDir: 'src',
   outDir: '__dist',
   publicPath: '/',
   html: {
-    title: 'Dvan App'
+    title: pkg.name || 'Dvan App',
+    meta: pkg.description
+      ? [
+          {
+            name: 'description',
+            content: pkg.description
+          }
+        ]
+      : []
   },
   match: 'vue',
   sourceMap: true,

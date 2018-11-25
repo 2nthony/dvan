@@ -10,6 +10,9 @@
     "vue-auto-routes": "^1.1.14",
     "vue-router": "^3.0.1"
   },
+  "devDependencies": {
+    "vue": "^2.5.17"
+  },
   "peerDependencies": {
     "vue": "^2.5.17"
   }

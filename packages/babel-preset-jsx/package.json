@@ -26,6 +26,7 @@
     "@vue/babel-sugar-v-on": "^0.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
     "rollup": "^0.67.3",
     "rollup-plugin-babel-minify": "^6.1.1"
   }

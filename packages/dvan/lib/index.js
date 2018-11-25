@@ -53,8 +53,8 @@ class Dvan {
       if (plugin.extend) {
         logger.tips(`Using plugin: '${plugin.name}'`)
 
-        const rootAPI = new Plugin(this, plugin.name)
-        plugin.extend(rootAPI)
+        const pluginAPI = new Plugin(this, plugin.name)
+        plugin.extend(pluginAPI)
       }
     }
   }

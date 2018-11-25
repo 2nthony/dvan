@@ -12,7 +12,6 @@
 ![NPM Downloads](https://flat.badgen.net/npm/dt/dvan)
 ![NPM License](https://flat.badgen.net/npm/license/dvan)
 ![Project Status](https://flat.badgen.net/badge/status/alpha/yellow)
-![XO code style](https://flat.badgen.net/xo/status/chalk)
 
 ## Here are something you have to know
 
@@ -28,7 +27,7 @@
 
 > This branch for `Next`. Or switch branch to [v1.3.x](https://github.com/evillt/dvan/tree/v1.3.x)
 
-Check out the [documentation(WIP)](https://dvan.js.org) for details.
+Check out the [documentation](https://dvan.js.org) for details.
 
 You can check how to use Dvan to run an App via [dvan-example](https://github.com/dvanjs/dvan-example)
 

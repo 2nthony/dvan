@@ -36,8 +36,9 @@ exports.extend = api => {
   })
 
   setSharedCLIOptions(command)
-  command.option('host', 'Specify server host. (default: 0.0.0.0)')
-  command.option('port', 'Specify server port. (default: 4000)')
+  command
+    .option('host', 'Specify server host. (default: 0.0.0.0)')
+    .option('port', 'Specify server port. (default: 4000)')
 
   if (api.command === 'dev') {
     api.chainWebpack(config => {

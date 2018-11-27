@@ -64,7 +64,7 @@ module.exports = async (api, { routesMap }) => {
     await fs.outputFile(api.resolve(api.config.outDir, handlePath(url)), html)
 
     api.logger.success(
-      `Generated file ${api.logger.color(
+      `Generated static file ${api.logger.color(
         'cyan',
         path.relative(
           process.cwd(),

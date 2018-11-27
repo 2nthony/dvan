@@ -10,14 +10,13 @@ exports.extend = api => {
       fs.emptyDirSync(api.resolve(api.config.outDir))
     }
 
-    await api.build(api.resolveWebpackConfig())
+    await api.compiler(api.resolveWebpackConfig())
   })
 
   setSharedCLIOptions(command)
-  command.option(
-    'clean',
-    'Clean output directory before compile. (default: true)'
-  )
+  command
+    .option('spa', 'Only build spa(Client-side). (default: false)')
+    .option('clean', 'Clean output directory before compile. (default: true)')
 
   if (api.command === 'build') {
     api.chainWebpack(config => {

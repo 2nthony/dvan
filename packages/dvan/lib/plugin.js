@@ -70,10 +70,4 @@ module.exports = class Plugin {
       })
     })
   }
-
-  build(config) {
-    this.compiler(config)
-
-    return this
-  }
 }

@@ -1,14 +1,16 @@
 const ProgressBar = require('progress')
+const chalk = require('chalk')
 
 module.exports = (config, type) => {
   config.plugin('progress').use(require('webpack').ProgressPlugin, [
-    percent => {
+    (percent, msg, modules, active) => {
       const bar = new ProgressBar(
-        `Building ${type} [:bar] ${Math.floor(percent * 100)}%`,
+        chalk.hex('#2a7')(
+          `>>> Compiling ${chalk.bold(type)} ${Math.floor(
+            percent * 100
+          )}% ${modules || ''} ${active || ''}`
+        ),
         {
-          complete: '=',
-          incomplete: ' ',
-          width: 25,
           total: 100
         }
       )

@@ -17,10 +17,4 @@ exports.extend = api => {
   command
     .option('spa', 'Only build spa(Client-side). (default: false)')
     .option('clean', 'Clean output directory before compile. (default: true)')
-
-  if (api.command === 'build') {
-    api.chainWebpack(config => {
-      config.output.path(api.resolve(api.config.outDir))
-    })
-  }
 }

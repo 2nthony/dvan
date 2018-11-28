@@ -17,7 +17,11 @@ exports.extend = api => {
   )
 
   setSharedCLIOptions(command)
-  command.option('--clean [bool]', 'Clean output directory before compile.', {
-    default: true
-  })
+  command
+    .option('--clean', 'Clean output directory before compile.', {
+      default: true
+    })
+    .option('--nossr', 'Do not generate ssr file.', {
+      default: false
+    })
 }

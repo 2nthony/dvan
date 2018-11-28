@@ -39,10 +39,10 @@ exports.extend = api => {
 
   setSharedCLIOptions(command)
   command
-    .option('--host [string]', 'Specify server host.', {
+    .option('--host', 'Specify server host.', {
       default: '0.0.0.0'
     })
-    .option('--port [number]', 'Specify server port.', {
+    .option('--port', 'Specify server port.', {
       default: 4000
     })
 

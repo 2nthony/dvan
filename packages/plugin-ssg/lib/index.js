@@ -5,27 +5,58 @@ const setSharedCLIOptions = require('@dvan/cli-utils/sharedOptions')
 exports.name = 'dvan:static-site-generate'
 
 exports.extend = api => {
+  const __clientManifest__ = '__ssr/client.manifest.json'
+  const __serverBundle__ = '__ssr/server.bundle.json'
+
   const command = api.registerCommand(
     'generate [dir]?',
-    'Generate static HTML files.',
+    'Build App and prerender to static HTML files.',
     async () => {
-      await fs.emptyDir(api.resolve(api.config.outDir))
+      if (api.flags.clean) {
+        await fs.emptyDir(api.resolve(api.config.outDir))
+      }
 
-      const clientConfig = api.resolveWebpackConfig()
-      const serverConfig = api.resolveWebpackConfig({ type: 'server' })
+      // RoutesMap for render static HTML files
+      const {
+        collectRoutes,
+        renderRoutesMap
+      } = require('vue-auto-routes/lib/collect-fs-routes')
 
-      await api.compiler(clientConfig)
-      await api.compiler(serverConfig)
+      const routes = await collectRoutes({
+        pagesDir: api.resolve(api.config.srcDir, 'pages'),
+        match: api.config.match
+      })
 
-      const routesMap = require('vue-auto-routes').routesMap.filter(
+      const routesMap = JSON.parse(renderRoutesMap(routes)).filter(
         route => route !== '/404'
       )
 
-      await require('./renderHTML')(api, { routesMap })
+      // Check is need to build client assets
+      if (
+        !(await fs.exists(api.resolve(api.config.outDir, __clientManifest__)))
+      ) {
+        await api.compiler(api.resolveWebpackConfig())
+      }
+
+      // Check is need to build server bundle
+      if (
+        !(await fs.exists(api.resolve(api.config.outDir, __serverBundle__)))
+      ) {
+        await api.compiler(api.resolveWebpackConfig({ type: 'server' }))
+      }
+
+      await require('./renderHTML')(api, {
+        routesMap,
+        __clientManifest__,
+        __serverBundle__
+      })
     }
   )
 
   setSharedCLIOptions(command)
+  command.option('--clean', 'Clean output directory before compile.', {
+    default: false
+  })
 
   if (api.command === 'generate') {
     api.chainWebpack((config, { type }) => {
@@ -39,6 +70,7 @@ exports.extend = api => {
           __GLOBAL_META__: JSON.stringify(api.config.html)
         })
       ])
+
       if (type === 'server') {
         config.entryPoints.delete('app')
 
@@ -54,27 +86,30 @@ exports.extend = api => {
           .plugin('vue-ssr')
           .use(require('vue-server-renderer/server-plugin'), [
             {
-              filename: 'ssr/server.bundle.json'
+              filename: __serverBundle__
             }
           ])
-
-        config.plugin('vue-auto-routes').tap(([options]) => [
-          Object.assign({}, options, {
-            routesMap: true
-          })
-        ])
 
         config.externals([
           require('webpack-node-externals')({
             whitelist: /\.css$/
           })
         ])
-      } else if (type === 'client') {
+      }
+    })
+  }
+
+  if (
+    api.command === 'generate' ||
+    (api.command === 'build' && !api.flags.nossr)
+  ) {
+    api.chainWebpack((config, { type }) => {
+      if (type === 'client') {
         config
           .plugin('vue-ssr')
           .use(require('vue-server-renderer/client-plugin'), [
             {
-              filename: 'ssr/client.manifest.json'
+              filename: __clientManifest__
             }
           ])
       }

@@ -2,15 +2,15 @@ const path = require('upath')
 const fs = require('fs-extra')
 const { createBundleRenderer } = require('vue-server-renderer')
 
-module.exports = async (api, { routesMap }) => {
+module.exports = async (
+  api,
+  { routesMap, __clientManifest__, __serverBundle__ }
+) => {
   const clientManifest = require(api.resolve(
     api.config.outDir,
-    'ssr/client.manifest.json'
+    __clientManifest__
   ))
-  const serverBundle = require(api.resolve(
-    api.config.outDir,
-    'ssr/server.bundle.json'
-  ))
+  const serverBundle = require(api.resolve(api.config.outDir, __serverBundle__))
   const template = fs.readFileSync(
     path.join(__dirname, '../app/template.static.html'),
     'utf8'

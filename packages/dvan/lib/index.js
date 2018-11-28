@@ -71,10 +71,10 @@ class Dvan {
 
       this.applyPlugins()
 
-      this.cli.parse([this.command])
-      if (this.flags.help) {
-        this.cli.showHelp()
-      }
+      this.cli.help()
+
+      this.cli.parse()
+
       return resolve()
     })
   }

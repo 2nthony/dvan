@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-const cac = require('cac')
+const cli = require('cac')()
 
-const { input, flags } = cac.parse(process.argv.slice(2))
+const { args: input, options: flags } = cli.parse()
 
 if (flags.version || flags.v) {
-  console.log(require('../package').version)
+  console.info(require('chalk').hex('#58a')(require('../package.json').version))
   process.exit()
 }
 

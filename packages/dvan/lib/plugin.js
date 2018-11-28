@@ -6,6 +6,9 @@ module.exports = class Plugin {
   constructor(d, name) {
     this.root = d
     this.name = name
+
+    d.commands = d.commands || new Map()
+
     this.logger = logger
     this.options = d.options
     this.command = d.command
@@ -14,7 +17,7 @@ module.exports = class Plugin {
     this.hooks = d.hooks
     this.config = d.config
     this.pkg = d.pkg
-    this.commands = new Map()
+    this.commands = d.commands
   }
 
   chainWebpack(fn) {
@@ -34,7 +37,7 @@ module.exports = class Plugin {
     }
     this.commands.set(command, this.name)
 
-    return this.root.cli.command(command, desc, handler)
+    return this.root.cli.command(command, desc).action(handler)
   }
 
   resolve(...args) {

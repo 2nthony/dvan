@@ -8,8 +8,6 @@ exports.extend = api => {
     'build',
     'Build App as an SPA.',
     async () => {
-      if (api.flags.help) return
-
       if (!api.flags.clean) {
         await fs.emptyDir(api.resolve(api.config.outDir))
       }
@@ -20,6 +18,10 @@ exports.extend = api => {
 
   setSharedCLIOptions(command)
   command
-    .option('spa', 'Only build spa(Client-side). (default: false)')
-    .option('clean', 'Clean output directory before compile. (default: true)')
+    .option('--spa [bool]', 'Only build spa(Client-side).', {
+      default: false
+    })
+    .option('--clean [bool]', 'Clean output directory before compile.', {
+      default: true
+    })
 }

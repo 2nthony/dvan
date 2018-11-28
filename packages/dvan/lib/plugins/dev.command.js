@@ -9,8 +9,6 @@ exports.extend = api => {
     'dev',
     'Run App as develope mode.',
     async () => {
-      if (api.flags.help) return
-
       api.chainWebpack(config => {
         config
           .entry('app')
@@ -41,8 +39,12 @@ exports.extend = api => {
 
   setSharedCLIOptions(command)
   command
-    .option('host', 'Specify server host. (default: 0.0.0.0)')
-    .option('port', 'Specify server port. (default: 4000)')
+    .option('--host [string]', 'Specify server host.', {
+      default: '0.0.0.0'
+    })
+    .option('--port [number]', 'Specify server port.', {
+      default: 4000
+    })
 
   if (api.command === 'dev') {
     api.chainWebpack(config => {

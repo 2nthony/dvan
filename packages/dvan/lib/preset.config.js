@@ -31,5 +31,5 @@ module.exports = ({ host, port, jsx } = {}, pkg) => ({
   },
 
   // Vue-jsx
-  jsx: jsx || false
+  jsx: Boolean(jsx)
 })

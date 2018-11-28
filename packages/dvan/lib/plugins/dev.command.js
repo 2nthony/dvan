@@ -6,7 +6,7 @@ exports.extend = api => {
   const webpack = require('webpack')
 
   const command = api.registerCommand(
-    'dev',
+    'dev [dir]?',
     'Run App as develope mode.',
     async () => {
       api.chainWebpack(config => {

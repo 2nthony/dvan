@@ -5,7 +5,7 @@ exports.name = 'built-in:build.command'
 
 exports.extend = api => {
   const command = api.registerCommand(
-    'build',
+    'build [dir]?',
     'Build App as an SPA.',
     async () => {
       if (!api.flags.clean) {

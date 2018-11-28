@@ -6,11 +6,9 @@ exports.name = 'dvan:static-site-generate'
 
 exports.extend = api => {
   const command = api.registerCommand(
-    'generate',
+    'generate [dir]?',
     'Generate static HTML files.',
     async () => {
-      if (api.flags.help) return
-
       await fs.emptyDir(api.resolve(api.config.outDir))
 
       const clientConfig = api.resolveWebpackConfig()

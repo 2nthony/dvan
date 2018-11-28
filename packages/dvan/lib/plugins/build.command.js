@@ -17,11 +17,7 @@ exports.extend = api => {
   )
 
   setSharedCLIOptions(command)
-  command
-    .option('--spa [bool]', 'Only build spa(Client-side).', {
-      default: false
-    })
-    .option('--clean [bool]', 'Clean output directory before compile.', {
-      default: true
-    })
+  command.option('--clean [bool]', 'Clean output directory before compile.', {
+    default: true
+  })
 }

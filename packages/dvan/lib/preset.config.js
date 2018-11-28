@@ -1,4 +1,4 @@
-module.exports = ({ host, port, jsx } = {}, pkg) => ({
+module.exports = ({ host, port, jsx } = {}, pkg = {}) => ({
   srcDir: 'src',
   outDir: '__dist',
   publicPath: '/',

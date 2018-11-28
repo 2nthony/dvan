@@ -25,7 +25,7 @@ module.exports = class Plugin {
     return this
   }
 
-  registerCommand(command, desc, handler) {
+  registerCommand(command, desc, action) {
     if (this.commands.has(command)) {
       logger.warning(
         `Plugin "${
@@ -37,7 +37,7 @@ module.exports = class Plugin {
     }
     this.commands.set(command, this.name)
 
-    return this.root.cli.command(command, desc).action(handler)
+    return this.root.cli.command(command, desc).action(action)
   }
 
   resolve(...args) {

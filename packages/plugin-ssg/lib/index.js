@@ -31,17 +31,21 @@ exports.extend = api => {
         route => route !== '/404'
       )
 
-      // Check is need to build client assets
-      if (
-        !(await fs.exists(api.resolve(api.config.outDir, __clientManifest__)))
-      ) {
+      // Check is need to build client manifest
+      if (await fs.exists(api.resolve(api.config.outDir, __clientManifest__))) {
+        api.logger.warning(
+          `SSR: 'client.manifest.json' is exists, skip compiling client.`
+        )
+      } else {
         await api.compiler(api.resolveWebpackConfig())
       }
 
       // Check is need to build server bundle
-      if (
-        !(await fs.exists(api.resolve(api.config.outDir, __serverBundle__)))
-      ) {
+      if (await fs.exists(api.resolve(api.config.outDir, __serverBundle__))) {
+        api.logger.warning(
+          `SSR: 'server.bundle.json' is exists, skip compiling server.`
+        )
+      } else {
         await api.compiler(api.resolveWebpackConfig({ type: 'server' }))
       }
 

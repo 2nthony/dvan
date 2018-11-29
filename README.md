@@ -1,8 +1,9 @@
-> Stop work this repo for a while  
-> until I get an official job again 😂  
+> ~~Stop work this repo for a while~~  
+> ~~until I get an official job again 😂~~  
 > 如果有觉得我合适的工作机会求砸我啊!!~~ 都是泪啊 😂  
 > TG: evillt  
-> 欢迎骚扰 🤔
+> 欢迎骚扰 🤔  
+> Real stop working. Until get a job. Except if necessary.
 
 
 # Dvan

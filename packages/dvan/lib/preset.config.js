@@ -1,4 +1,4 @@
-module.exports = ({ host, port, jsx } = {}, pkg = {}) => ({
+module.exports = (cli = {}, pkg = {}) => ({
   srcDir: 'src',
   outDir: '__dist',
   publicPath: '/',
@@ -15,21 +15,21 @@ module.exports = ({ host, port, jsx } = {}, pkg = {}) => ({
   },
   match: 'vue',
   sourceMap: true,
-  minimize: 'auto',
+  minimize: true,
   plugins: [],
   constants: {},
 
   // Configure webpack-dev-server
   devServer: {
-    host: process.env.HOST || host || '0.0.0.0',
-    port: process.env.PORT || port || 4000
+    host: process.env.HOST || cli.host || '0.0.0.0',
+    port: process.env.PORT || cli.port || 4000
   },
 
   css: {
-    extract: 'auto',
+    extract: true,
     loaderOptions: {}
   },
 
   // Vue-jsx
-  jsx: Boolean(jsx)
+  jsx: Boolean(cli.jsx)
 })

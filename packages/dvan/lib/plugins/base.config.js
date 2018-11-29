@@ -19,9 +19,7 @@ exports.extend = api => {
     const { minimize } = api.config
     const isMinimizeObject = typeof minimize === 'object'
     const shouldMinimize =
-      minimize === 'auto' || minimize === undefined || isMinimizeObject
-        ? api.mode === 'production'
-        : minimize
+      minimize || isMinimizeObject ? api.mode === 'production' : minimize
 
     if (shouldMinimize) {
       const UglifyJSPlugin = require('uglifyjs-webpack-plugin')

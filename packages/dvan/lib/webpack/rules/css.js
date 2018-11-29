@@ -3,10 +3,7 @@ const path = require('upath')
 module.exports = (config, api, isServer) => {
   const { loaderOptions, extract } = api.config.css
   const { sourceMap } = api.config
-  const shouldExtractCSS =
-    extract === 'auto' || extract === undefined
-      ? api.mode === 'production'
-      : extract
+  const shouldExtractCSS = extract ? api.mode === 'production' : extract
 
   const createCSSRule = (lang, test, loader, options) => {
     const applyLoader = (rule, modules = false) => {

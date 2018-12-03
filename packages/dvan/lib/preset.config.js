@@ -14,6 +14,10 @@ module.exports = (cli = {}, pkg = {}) => ({
       : []
   },
   match: 'vue',
+
+  // Keep router.mode default
+  routerMode: undefined,
+
   sourceMap: true,
   minimize: true,
   plugins: [],

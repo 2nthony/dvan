@@ -3,7 +3,7 @@ const path = require('upath')
 exports.name = 'built-in:app.config'
 
 exports.extend = api => {
-  const { html, srcDir, match } = api.config
+  const { html, srcDir, match, routerMode } = api.config
 
   api.chainWebpack(config => {
     if (api.mode === 'production') {
@@ -53,9 +53,7 @@ exports.extend = api => {
 
     config.plugin('constants').tap(([options]) => [
       Object.assign({}, options, {
-        // https://router.vuejs.org/api/#mode
-        // keep router.mode default in client side
-        __ROUTER_MODE__: JSON.stringify(undefined)
+        __ROUTER_MODE__: JSON.stringify(routerMode)
       })
     ])
 

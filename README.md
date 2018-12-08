@@ -10,7 +10,7 @@
 
 [![NPM Version](https://flat.badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)
 [![NPM Next Version](https://flat.badgen.net/npm/v/dvan/next?icon=npm)](https://npmjs.com/package/dvan/v/next)
-[![NPM Insider Version](https://flat.badgen.net/npm/v/dvan/next?icon=npm)](https://npmjs.com/package/dvan/v/insider)
+[![NPM Insider Version](https://flat.badgen.net/npm/v/dvan/insider?icon=npm)](https://npmjs.com/package/dvan/v/insider)
 ![NPM Downloads](https://flat.badgen.net/npm/dt/dvan)
 ![NPM License](https://flat.badgen.net/npm/license/dvan)
 ![Project Status](https://flat.badgen.net/badge/status/alpha/yellow)

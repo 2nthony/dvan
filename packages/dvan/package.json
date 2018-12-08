@@ -1,6 +1,6 @@
 {
   "name": "dvan",
-  "version": "2.1.0-alpha.0",
+  "version": "2.1.0-alpha.1",
   "bin": "bin/cli.js",
   "main": "lib/index.js",
   "publishConfig": {
@@ -24,8 +24,8 @@
     "@babel/core": "^7.1.5",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.5",
-    "@dvan/cli-utils": "^2.1.0-alpha.0",
-    "@dvan/dev-utils": "^2.1.0-alpha.0",
+    "@dvan/cli-utils": "^2.1.0-alpha.1",
+    "@dvan/dev-utils": "^2.1.0-alpha.1",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "babel-loader": "^8.0.4",
     "cac": "^6.3.9",

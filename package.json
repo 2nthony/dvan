@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "repository": "https://github.com/dvanjs/dvan",
+  "author": "evila <ijoec123@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "husky": "^1.2.0",
+    "lerna": "^3.4.3",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.2",
+    "xo": "^0.23.0"
+  },
+  "lint-staged": {
+    "packages/**/*.js": [
+      "xo --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "xo": {
+    "space": true,
+    "parser": "babel-eslint",
+    "prettier": true,
+    "ignore": [
+      "packages/meta"
+    ],
+    "rules": {
+      "camelcase": 0,
+      "array-callback-return": 1,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-unresolved": 0,
+      "unicorn/filename-case": 0,
+      "unicorn/no-abusive-eslint-disable": 0
+    }
+  }
+}

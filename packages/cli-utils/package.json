@@ -1,0 +1,16 @@
+{
+  "name": "@dvan/cli-utils",
+  "version": "2.1.0-alpha.0",
+  "publishConfig": {
+    "access": "public",
+    "tag": "insider"
+  },
+  "files": [
+    "*.js"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "kleur": "^3.0.0",
+    "ora": "^3.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "dvan",
+  "version": "2.1.0-alpha.0",
+  "bin": "bin/cli.js",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "tag": "insider"
+  },
+  "author": "evila <ijoec123@gmail.com>",
+  "homepage": "https://dvan.js.org",
+  "license": "MIT",
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "dvanjs/dvan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dvanjs/dvan/issues"
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@dvan/cli-utils": "^2.1.0-alpha.0",
+    "@dvan/dev-utils": "^2.1.0-alpha.0",
+    "@intervolga/optimize-cssnano-plugin": "^1.0.6",
+    "babel-loader": "^8.0.4",
+    "cac": "^6.3.9",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.1.7",
+    "file-loader": "^2.0.0",
+    "fs-extra": "^7.0.0",
+    "get-port": "^4.0.0",
+    "globby": "^8.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "kleur": "^3.0.1",
+    "lodash.merge": "^4.6.1",
+    "mini-css-extract-plugin": "^0.4.2",
+    "postcss-loader": "^3.0.0",
+    "resolve-from": "^4.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "superstruct": "^0.6.0",
+    "terser-webpack-plugin": "^1.1.0",
+    "upath": "^1.1.0",
+    "url-loader": "^1.1.2",
+    "vue-loader": "^15.3.0",
+    "vue-style-loader": "^4.1.2",
+    "webpack": "^4.16.5",
+    "webpack-chain": "^4.9.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "devDependencies": {
+    "vue-template-compiler": "^2.5.17"
+  }
+}

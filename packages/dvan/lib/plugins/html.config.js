@@ -4,10 +4,14 @@ const isLocalPath = require('../utils/isLocalPath')
 exports.name = 'built-in:html.config'
 
 exports.extend = api => {
-  const { html = {} } = api.config
-  const { pkg } = api
+  api.hook('onInitCLI', ({ command }) => {
+    command.option('--html', 'HTML template options')
+  })
 
   api.hook('onCreateWebpackConfig', config => {
+    const { html = {} } = api.config
+    const { pkg } = api
+
     config.plugin('html').use('html-webpack-plugin', [
       Object.assign(
         {

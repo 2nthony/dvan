@@ -67,9 +67,9 @@ exports.extend = api => {
     config => {
       if (!api.cli.options.dev) return
 
-    config.devtool('cheap-source-map')
+      config.devtool('cheap-source-map')
 
-    const { hotEntries = ['index'] } = api.config.devServer || {}
+      const { hotEntries = ['index'] } = api.config.devServer || {}
       const { hot } = api.config.devServer
 
       config.output.filename('[name].js')

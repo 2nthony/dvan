@@ -1,3 +1,4 @@
+const { existsSync } = require('fs-extra')
 const path = require('upath')
 const isLocalPath = require('../utils/isLocalPath')
 
@@ -9,14 +10,31 @@ exports.extend = api => {
   })
 
   api.hook('onCreateWebpackConfig', config => {
-    const { html = {} } = api.config
-    const { pkg } = api
+    const {
+      isProd,
+      pkg,
+      config: { html = {} }
+    } = api
 
     config.plugin('html').use('html-webpack-plugin', [
       Object.assign(
         {
           inject: true,
-          filename: 'index.html'
+          filename: 'index.html',
+          minify: isProd
+            ? {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+              }
+            : undefined
         },
         {
           title: pkg.name || 'Dvan App',
@@ -35,6 +53,8 @@ exports.extend = api => {
             ? isLocalPath(html.template)
               ? api.resolveCwd(html.template)
               : html.template
+            : existsSync(api.resolveCwd('public/template.html'))
+            ? api.resolveCwd('public/template.html')
             : require.resolve(
                 path.join(__dirname, '../webpack/default.template.html')
               )

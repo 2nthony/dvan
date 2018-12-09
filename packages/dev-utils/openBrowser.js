@@ -1,7 +1,5 @@
 /* eslint-disable */
 
-// Modified module chalk -> kleur
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
@@ -11,7 +9,7 @@
 
 'use strict';
 
-var kleur = require('kleur');
+var chalk = require('chalk');
 var execSync = require('child_process').execSync;
 var spawn = require('cross-spawn');
 var opn = require('opn');
@@ -53,11 +51,11 @@ function executeNodeScript(scriptPath, url) {
     if (code !== 0) {
       console.log();
       console.log(
-        kleur.red(
+        chalk.red(
           'The script specified as BROWSER environment variable failed.'
         )
       );
-      console.log(kleur.cyan(scriptPath) + ' exited with code ' + code + '.');
+      console.log(chalk.cyan(scriptPath) + ' exited with code ' + code + '.');
       console.log();
       return;
     }

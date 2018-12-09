@@ -1,4 +1,4 @@
-const kleur = require('kleur')
+const chalk = require('chalk')
 
 class Logger {
   constructor(opts) {
@@ -21,39 +21,35 @@ class Logger {
     if (!this.opts.debug) {
       return
     }
-    this.log(kleur.magenta('debug'), ...args)
+    this.log(chalk.magenta('debug'), ...args)
   }
 
   error(...args) {
-    this.log(kleur.bold().red(`${['error', ' ', ...args].join('')}`))
+    this.log(chalk.bold.hex('#fd6f6b')('error', ...args))
     process.exitCode = process.exitCode || 1
   }
 
   warn(...args) {
-    this.log(kleur.yellow('warning'), ...args)
+    this.log(chalk.yellow('warning'), ...args)
     process.exitCode = process.exitCode || 1
   }
 
   success(...args) {
-    this.log(kleur.green('success'), ...args)
+    this.log(chalk.green('success'), ...args)
   }
 
   done(...args) {
     this.log(
-      kleur
-        .bold()
-        .green(
-          `${[process.platform === 'win32' ? '√' : '✔', ' ', ...args].join('')}`
-        )
+      chalk.bold.green(process.platform === 'win32' ? '√' : '✔', ...args)
     )
   }
 
   tips(...args) {
-    this.log(kleur.cyan('tips'), ...args)
+    this.log(chalk.cyan('tips'), ...args)
   }
 
   color(c, ...args) {
-    return kleur[c](args.join(''))
+    return chalk[c](...args)
   }
 }
 

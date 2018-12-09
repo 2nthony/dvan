@@ -1,7 +1,5 @@
 /* eslint-disable */
 
-// Modified module chalk -> kleur
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
@@ -11,7 +9,7 @@
 
 'use strict';
 
-const kleur = require('kleur');
+const chalk = require('chalk');
 const friendlySyntaxErrorLabel = 'Syntax error:';
 
 function isLikelyASyntaxError(message) {
@@ -88,7 +86,7 @@ function formatMessage(message, isError) {
       'Run `npm install node-sass` or `yarn add node-sass` inside your workspace.';
   }
 
-  lines[0] = kleur.inverse(lines[0]);
+  lines[0] = chalk.inverse(lines[0]);
 
   message = lines.join('\n');
   // Internal stacks are generally useless so we strip them... with the

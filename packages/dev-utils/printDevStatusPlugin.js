@@ -1,4 +1,4 @@
-const kleur = require('kleur')
+const chalk = require('chalk')
 const logger = require('@dvan/cli-utils/logger')
 
 module.exports = (host, port) =>
@@ -10,11 +10,11 @@ module.exports = (host, port) =>
         logger.log()
         logger.success('Running dev server with')
         logger.log(
-          `Local:\t\t\t${kleur.underline(`http://${host}:${kleur.bold(port)}`)}`
+          `Local:\t\t\t${chalk.underline(`http://${host}:${chalk.bold(port)}`)}`
         )
         logger.log(
-          `On your network:\t${kleur.underline(
-            `http://${require('ip').address()}:${kleur.bold(port)}`
+          `On your network:\t${chalk.underline(
+            `http://${require('ip').address()}:${chalk.bold(port)}`
           )}`
         )
         logger.log()

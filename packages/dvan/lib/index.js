@@ -171,7 +171,8 @@ class Dvan {
       require('./plugins/media.config'),
       require('./plugins/graphql.config'),
       require('./plugins/toml.config'),
-      require('./plugins/yaml.config')
+      require('./plugins/yaml.config'),
+      require('./plugins/eject.html.command')
     ]
 
     if ((this.config.plugins || []).length > 0) {

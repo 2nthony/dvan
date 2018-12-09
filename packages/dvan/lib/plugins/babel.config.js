@@ -18,7 +18,7 @@ exports.extend = api => {
           pragma: isReactJSX ? 'React.createElement' : jsx
         }
       ],
-      isVueJSX && ['@dvan/babel-preset-vue-jsx']
+      isVueJSX && '@dvan/vue-jsx'
     ].filter(Boolean)
 
     const plugins = [

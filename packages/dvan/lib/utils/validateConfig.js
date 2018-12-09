@@ -46,7 +46,7 @@ module.exports = (api, config) => {
     }
   )
   const extractCss = struct('boolean', true)
-  const jsx = struct('string', 'react')
+  const jsx = struct('boolean|string', false)
   const loaderOptions = struct('object', {})
   const evergreen = struct('boolean', false)
 

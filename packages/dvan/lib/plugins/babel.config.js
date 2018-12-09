@@ -2,22 +2,25 @@ exports.name = 'built-in:babel.config'
 
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
-    command.option('--jsx <syntax>', 'Set jsx syntax', { default: 'react' })
+    command.option('--jsx [syntax]', 'Set jsx syntax or pragma', {
+      default: 'false|react'
+    })
   })
 
   api.hook('onCreateWebpackConfig', config => {
     const { jsx } = api.config
-    const isReactJSX = jsx === 'react'
+    const isReactJSX = jsx === true || jsx === 'react'
     const isVueJSX = jsx === 'vue'
 
     const presets = [
       require('@babel/preset-env'),
-      !isVueJSX && [
-        require('@babel/preset-react'),
-        {
-          pragma: isReactJSX ? 'React.createElement' : jsx
-        }
-      ],
+      jsx &&
+        !isVueJSX && [
+          require('@babel/preset-react'),
+          {
+            pragma: isReactJSX ? 'React.createElement' : jsx
+          }
+        ],
       isVueJSX && '@dvan/vue-jsx'
     ].filter(Boolean)
 

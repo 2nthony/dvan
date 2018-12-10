@@ -1,5 +1,3 @@
-function clearConsole() {
+module.exports = () => {
   process.stdout.write('\u001Bc')
 }
-
-module.exports = clearConsole

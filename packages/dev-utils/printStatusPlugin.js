@@ -1,15 +1,20 @@
 const logger = require('@dvan/cli-utils/logger')
-const formatWebpackMessages = require('./formatWebpackMessages')
 
 module.exports = class PrintStatusPlugin {
+  constructor(opts) {
+    this.opts = opts
+  }
+
   apply(compiler) {
     compiler.hooks.done.tap('print-status', stats => {
+      if (this.opts.clearConsole !== false) require('./clearConsole')()
+
       if (stats.hasErrors() || stats.hasWarnings()) {
         if (stats.hasErrors()) {
           process.exitCode = 1
         }
 
-        const messages = formatWebpackMessages(stats.toJson())
+        const messages = require('./formatWebpackMessages')(stats.toJson())
         if (messages) {
           // Print full stats first
           logger.debug(() =>

@@ -157,5 +157,5 @@ module.exports = (config, api) => {
 
   config
     .plugin('print-status')
-    .use(require('@dvan/dev-utils/printStatusPlugin'))
+    .use(require('@dvan/dev-utils/printStatusPlugin'), [api.cli.options])
 }

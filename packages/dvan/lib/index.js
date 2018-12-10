@@ -74,7 +74,9 @@ class Dvan {
   }
 
   initCLI() {
-    const command = (this.defaultCommand = this.cli
+    const { cli } = this
+
+    const command = (this.defaultCommand = cli
       .command('[...entries]', 'Entry files for App', {
         ignoreOptionDefaultValue: true
       })
@@ -90,7 +92,7 @@ class Dvan {
     /**
      * Global cli options
      */
-    this.cli
+    cli
       .option('--mode <mode>', 'Set mode', { default: 'development' })
       .option('--prod, --production', 'Alias for --mode production')
       .option('--debug', 'Show debug logs')

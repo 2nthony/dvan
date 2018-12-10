@@ -7,8 +7,8 @@ exports.extend = api => {
     if (!args.has('dev')) return
 
     const cmd = require('../utils/easyCmdOption')(command)
-    cmd('--host', 'Development server host', '0.0.0.0')
-    cmd('--port', 'Development server port', 4000)
+    cmd('--host <host>', 'Development server host', '0.0.0.0')
+    cmd('--port <port>', 'Development server port', 4000)
     cmd('--hot', 'Hot reload', true)
     cmd('-o, --open', 'Open in browser')
 
@@ -18,32 +18,37 @@ exports.extend = api => {
       const { devServer } = api.config
       delete devServer.hotEntries
 
-      const { host: _host, port: _port, open } = devServer
+      const config = api.createWebpackConfig()
+
+      const { host, port: _port, open } = devServer
+
+      const isUnSpecifiedHost = host === '0.0.0.0' || host === '::'
+      const _host = isUnSpecifiedHost ? 'localhost' : host
 
       const port = await require('get-port')({ port: _port })
 
-      const config = api.createWebpackConfig()
-
-      const isUnSpecifiedHost = _host === '0.0.0.0' || _host === '::'
-      const host = isUnSpecifiedHost ? 'localhost' : _host
-
       config
         .plugin('print-dev-status')
-        .use(require('@dvan/dev-utils/printDevStatusPlugin')(host, port))
+        .use(require('@dvan/dev-utils/printDevStatusPlugin')(_host, port))
 
       if (open) {
         config
           .plugin('open-browser')
-          .use(require('@dvan/dev-utils/openBrowserPlugin')(host, port))
+          .use(require('@dvan/dev-utils/openBrowserPlugin')(_host, port))
       }
 
-      const compiler = api.createWebpackCompiler(config.toConfig())
+      const webpackConfig = config.toConfig()
+      const compiler = api.createWebpackCompiler(webpackConfig)
 
       const devServerOptions = Object.assign(
         {
           quiet: true,
           historyApiFallback: true,
           overlay: true,
+          disableHostCheck: true,
+          publicPath: webpackConfig.output.publicPath,
+          contentBase: api.resolveCwd('public'),
+          watchContentBase: true,
           stats: {
             colors: true
           }
@@ -55,6 +60,7 @@ exports.extend = api => {
         compiler,
         devServerOptions
       )
+
       server.listen(port, host)
     })
   })

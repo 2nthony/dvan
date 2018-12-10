@@ -87,6 +87,9 @@ class Dvan {
 
     this.hooks.invoke('onInitCLI', { command, args: this.parseArgs })
 
+    /**
+     * Global cli options
+     */
     this.cli
       .option('--mode <mode>', 'Set mode', { default: 'development' })
       .option('--prod, --production', 'Alias for --mode production')
@@ -161,7 +164,7 @@ class Dvan {
 
   applyPlugins() {
     this.plugins = [
-      require('./plugins/command.options'),
+      require('./plugins/config.flag.options'),
       require('./plugins/development'),
       require('./plugins/html.config'),
       require('./plugins/babel.config'),
@@ -207,6 +210,7 @@ class Dvan {
     this.config = validateConfig(this, merge(this.config, cliConfig))
 
     logger.debug('In run()')
+
     await this.cli.runMatchedCommand()
   }
 }

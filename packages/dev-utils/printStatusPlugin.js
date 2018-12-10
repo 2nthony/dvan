@@ -7,7 +7,9 @@ module.exports = class PrintStatusPlugin {
 
   apply(compiler) {
     compiler.hooks.done.tap('print-status', stats => {
-      if (this.opts.clearConsole !== false) require('./clearConsole')()
+      if (this.opts.clearConsole !== false) {
+        require('./clearConsole')()
+      }
 
       if (stats.hasErrors() || stats.hasWarnings()) {
         if (stats.hasErrors()) {

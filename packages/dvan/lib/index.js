@@ -27,7 +27,7 @@ class Dvan {
 
     this.cwd = this.parseArgs.get('cwd') || process.cwd()
 
-    process.env.NODE = this.mode
+    process.env.NODE_ENV = this.mode
 
     this.pkg = require(this.resolveCwd('package.json'))
 

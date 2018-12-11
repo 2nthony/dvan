@@ -35,7 +35,12 @@ module.exports = (config, api) => {
     entry[name] = entry[name].map(v => normalizeEntry(v))
   }
 
-  config.merge({ entry, mode: api.mode })
+  config.merge({ entry })
+
+  /**
+   * Set mode
+   */
+  config.mode(api.mode)
 
   /**
    * Set extensions

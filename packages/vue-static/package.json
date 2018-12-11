@@ -1,0 +1,15 @@
+{
+  "name": "@dvan/vue-static",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "files": [
+    "*.js"
+  ],
+  "publishConfig": {
+    "tag": "public"
+  },
+  "dependencies": {
+    "vue-server-renderer": "^2.5.20"
+  }
+}

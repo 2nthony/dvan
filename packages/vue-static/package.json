@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "vue-server-renderer": "^2.5.20"
+  },
+  "peerDependencies": {
+    "dvan": "^2.1.0-alpha.7"
   }
 }

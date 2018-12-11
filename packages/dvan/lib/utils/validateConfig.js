@@ -50,6 +50,9 @@ module.exports = (api, config) => {
   const loaderOptions = struct('object', {})
   const evergreen = struct('boolean', false)
 
+  // Build pipeline
+  const chainWebpack = struct('function?')
+
   const Struct = struct({
     entry,
     srcDir,
@@ -65,6 +68,7 @@ module.exports = (api, config) => {
     jsx,
     loaderOptions,
     evergreen,
+    chainWebpack,
     // Config file path
     configPath: 'string?'
   })

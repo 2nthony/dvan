@@ -35,7 +35,7 @@ exports.extend = api => {
         api.logger.debug(
           'Applying postcss config at',
           require('../utils/colorfulFile')(
-            require('upath').relative(api.cwd, hasPostcssConfig.configPath)
+            require('path').relative(api.cwd, hasPostcssConfig.configPath)
           )
         )
       }

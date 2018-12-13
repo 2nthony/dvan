@@ -1,4 +1,4 @@
-const path = require('upath')
+const path = require('path')
 const merge = require('lodash.merge')
 const logger = require('@dvan/cli-utils/logger')
 const runCompiler = require('@dvan/dev-utils/runCompiler')

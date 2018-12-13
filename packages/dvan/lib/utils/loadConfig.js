@@ -1,4 +1,4 @@
-const path = require('upath')
+const path = require('path')
 const globby = require('globby')
 const resolveFrom = require('resolve-from')
 

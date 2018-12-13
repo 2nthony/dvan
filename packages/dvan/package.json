@@ -48,7 +48,6 @@
     "stylus-loader": "^3.0.2",
     "superstruct": "^0.6.0",
     "terser-webpack-plugin": "^1.1.0",
-    "upath": "^1.1.0",
     "url-loader": "^1.1.2",
     "vue-loader": "^15.3.0",
     "vue-style-loader": "^4.1.2",

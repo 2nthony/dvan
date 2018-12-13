@@ -1,5 +1,5 @@
+const path = require('path')
 const { existsSync } = require('fs-extra')
-const path = require('upath')
 const isLocalPath = require('../utils/isLocalPath')
 
 exports.name = 'built-in:html.config'

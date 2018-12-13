@@ -1,5 +1,5 @@
 module.exports = (config, api) => {
-  const path = require('upath')
+  const path = require('path')
 
   config.plugin('progress').use(require('webpack').ProgressPlugin, [
     (per, message, ...args) => {

@@ -7,7 +7,7 @@ exports.extend = api => {
       .option('--override', 'Override existing file')
       .action(async (filePath = 'public/template.html', { override } = {}) => {
         const fs = require('fs-extra')
-        const path = require('upath')
+        const path = require('path')
         if (!override && (await fs.pathExists(api.resolveCwd(filePath)))) {
           api.logger.error(
             `${filePath} already existing, try \`--override\` flag to override file if you want`

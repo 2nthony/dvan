@@ -54,7 +54,7 @@ module.exports = (config, api) => {
   config.output
     .filename(filename)
     .publicPath(publicPath)
-    .path(api.resolveOutDir())
+    .path(require('path').normalize(api.resolveOutDir()))
     .chunkFilename(filename.replace(/\.js$/, '.chunk.js'))
 
   /**

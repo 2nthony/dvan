@@ -94,6 +94,7 @@ module.exports = (config, api) => {
       }
     })
   }
+
   // Keep the runtime chunk seperated to enable long term caching
   // https://twitter.com/wSokra/status/969679223278505985
   config.optimization.runtimeChunk(true)

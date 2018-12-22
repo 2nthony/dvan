@@ -177,6 +177,7 @@ class Dvan {
       require('./plugins/graphql.config'),
       require('./plugins/toml.config'),
       require('./plugins/yaml.config'),
+      require('./plugins/art.template.config'),
       require('./plugins/eject.html.command')
     ]
 

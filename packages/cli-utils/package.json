@@ -2,8 +2,7 @@
   "name": "@dvan/cli-utils",
   "version": "2.1.0-alpha.9",
   "publishConfig": {
-    "access": "public",
-    "tag": "insider"
+    "access": "public"
   },
   "files": [
     "*.js"

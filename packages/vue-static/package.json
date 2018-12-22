@@ -7,8 +7,7 @@
     "*.js"
   ],
   "publishConfig": {
-    "access": "public",
-    "tag": "insider"
+    "access": "public"
   },
   "dependencies": {
     "vue-server-renderer": "^2.5.20"

@@ -3,8 +3,7 @@
   "version": "2.1.0-alpha.9",
   "license": "MIT",
   "publishConfig": {
-    "access": "public",
-    "tag": "insider"
+    "access": "public"
   },
   "files": [
     "*.js",

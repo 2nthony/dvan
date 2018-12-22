@@ -1,7 +1,7 @@
 <br>
-<center>
+<p align="center">
   <img src="./logo.svg">
-</center>
+</p>
 <br>
 
 [![NPM Version](https://flat.badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)

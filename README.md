@@ -5,25 +5,21 @@
 <br>
 
 [![NPM Version](https://flat.badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)
-[![NPM Next Version](https://flat.badgen.net/npm/v/dvan/next?icon=npm)](https://npmjs.com/package/dvan/v/next)
-[![NPM Insider Version](https://flat.badgen.net/npm/v/dvan/insider?icon=npm)](https://npmjs.com/package/dvan/v/insider)
 ![NPM Downloads](https://flat.badgen.net/npm/dt/dvan)
 ![NPM License](https://flat.badgen.net/npm/license/dvan)
 ![Project Status](https://flat.badgen.net/badge/status/alpha/yellow)
 
 ## Here are something you have to know
 
-#### This project has big reference from [poi](https://github.com/egoist/poi).
+**This just a [Poi](https://github.com/egoist/poi) forked repository, but with hand wrote and LITTLE DIFFERENT.**
 
 ### FAQ
 - Q: Why would you do that?  
-  A: For training.
+  A: For training(study?).
 - Q: Which should I choose?  
-  A: [Poi](https://github.com/egoist/poi). **More features**, better experience and less bugs.
+  A: [Poi](https://github.com/egoist/poi) absolutely. **More features**, better experience and less bugs.
 
 ## Start
-
-> This branch for `Next`. Or switch branch to [v1.3.x](https://github.com/evillt/dvan/tree/v1.3.x)
 
 Check out the [documentation](https://dvan.js.org) for details.
 

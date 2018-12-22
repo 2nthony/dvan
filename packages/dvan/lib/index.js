@@ -25,9 +25,9 @@ class Dvan {
         ? 'production'
         : this.parseArgs.get('mode') || 'development'
 
-    this.cwd = this.parseArgs.get('cwd') || process.cwd()
-
     process.env.NODE_ENV = this.mode
+
+    this.cwd = this.parseArgs.get('cwd') || process.cwd()
 
     this.pkg = require(this.resolveCwd('package.json'))
 
@@ -177,8 +177,8 @@ class Dvan {
       require('./plugins/graphql.config'),
       require('./plugins/toml.config'),
       require('./plugins/yaml.config'),
-      require('./plugins/art.template.config'),
-      require('./plugins/eject.html.command')
+      require('./plugins/eject.html.command'),
+      require('./plugins/art.template.config')
     ]
 
     if ((this.config.plugins || []).length > 0) {

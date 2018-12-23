@@ -22,6 +22,7 @@ exports.extend = api => {
         sourceMap,
         minimize
       } = api.config
+      const shouldMinimize = Boolean(minimize)
       const isServer = type === 'server'
 
       const hasPostcssConfig = require('../utils/loadConfig')({
@@ -125,7 +126,7 @@ exports.extend = api => {
           .plugin('extract-css')
           .use('mini-css-extract-plugin', [extractOptions])
 
-        if (minimize) {
+        if (shouldMinimize) {
           config
             .plugin('optimize-css')
             .use(require('@intervolga/optimize-cssnano-plugin'), [

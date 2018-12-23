@@ -8,7 +8,7 @@ exports.extend = api => {
       .use('file-loader')
       .loader('file-loader')
       .options({
-        name: '__assets/font/[name].[hash].[ext]'
+        name: api.config.output.fileNames.font
       })
   })
 }

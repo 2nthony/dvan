@@ -11,15 +11,15 @@ module.exports = (api, config) => {
         format: struct('string', struct.enum(['iife', 'umd', 'cjs'])),
         moduleName: struct('string?'),
         fileNames: struct('object?', {
-          js: struct('string')
+          js: struct('string?'),
+          css: struct('string?'),
+          font: struct('string?'),
+          image: struct('string?'),
+          video: struct('string?')
         })
       },
       {
-        format: 'iife',
-        fileNames: {
-          js: 'assets/js/[name].[contenthash].js',
-          css: 'assets/css/styles.[contenthash].css'
-        }
+        format: 'iife'
       }
     )
   )
@@ -96,6 +96,17 @@ module.exports = (api, config) => {
   const [err, res] = Struct.validate(config)
 
   if (err) throw err
+
+  res.output.fileNames = Object.assign(
+    {
+      js: 'assets/js/[name].[contenthash].js',
+      css: 'assets/css/style.[contenthash].css',
+      font: 'assets/font/[name].[hash].[ext]',
+      image: 'assets/image/[name].[hash].[ext]',
+      video: 'assets/video/[name].[hash].[ext]'
+    },
+    res.output.fileNames
+  )
 
   api.logger.debug('Validated config', res)
 

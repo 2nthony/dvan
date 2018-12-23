@@ -13,8 +13,38 @@ exports.extend = api => {
     const {
       isProd,
       pkg,
-      config: { html = {} }
+      config: {
+        html = {},
+        output: { format }
+      }
     } = api
+
+    /**
+     * Split vendors and common chunks
+     */
+    if (isProd && format === 'iife') {
+      config.optimization.splitChunks({
+        cacheGroups: {
+          vendors: {
+            filename: `chunk-vendors.[contenthash].js`,
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            chunks: 'initial'
+          },
+          common: {
+            filename: `chunk-common.[contenthash].js`,
+            minChunks: 2,
+            priority: -20,
+            chunks: 'initial',
+            reuseExistingChunk: true
+          }
+        }
+      })
+
+      // Keep the runtime chunk seperated to enable long term caching
+      // https://twitter.com/wSokra/status/969679223278505985
+      config.optimization.runtimeChunk(true)
+    }
 
     config.plugin('html').use('html-webpack-plugin', [
       Object.assign(

@@ -57,33 +57,6 @@ module.exports = (config, api) => {
     .chunkFilename(api.config.output.fileNames.js.replace(/\.js$/, '.chunk.js'))
 
   /**
-   * Split vendors and common chunks
-   */
-  if (api.isProd) {
-    config.optimization.splitChunks({
-      cacheGroups: {
-        vendors: {
-          filename: `__assets/chunk-vendors.[contenthash].js`,
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          chunks: 'initial'
-        },
-        common: {
-          filename: `__assets/chunk-common.[contenthash].js`,
-          minChunks: 2,
-          priority: -20,
-          chunks: 'initial',
-          reuseExistingChunk: true
-        }
-      }
-    })
-  }
-
-  // Keep the runtime chunk seperated to enable long term caching
-  // https://twitter.com/wSokra/status/969679223278505985
-  config.optimization.runtimeChunk(true)
-
-  /**
    * Format
    */
   const { format, moduleName } = api.config.output

@@ -41,10 +41,12 @@ exports.extend = api => {
         )
       }
 
-      const filename = '__assets/css/styles.[contenthash].css'
       const extractOptions = {
-        filename,
-        chunkFilename: filename.replace(/\.css$/, '.chunk.css')
+        filename: api.config.output.fileNames.css,
+        chunkFilename: api.config.output.fileNames.css.replace(
+          /\.css$/,
+          '.chunk.css'
+        )
       }
 
       const cssnanoOptions = {

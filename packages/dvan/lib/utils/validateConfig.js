@@ -3,7 +3,26 @@ const { struct } = require('superstruct')
 module.exports = (api, config) => {
   const entry = struct('string|array|object', 'index')
   const srcDir = struct('string', 'src')
-  const outDir = struct('string', '__dist')
+  const outDir = struct('string', 'dist')
+  const output = struct(
+    'object',
+    struct.interface(
+      {
+        format: struct('string', struct.enum(['iife', 'umd', 'cjs'])),
+        moduleName: struct('string?'),
+        fileNames: struct('object?', {
+          js: struct('string')
+        })
+      },
+      {
+        format: 'iife',
+        fileNames: {
+          js: 'assets/js/[name].[contenthash].js',
+          css: 'assets/css/styles.[contenthash].css'
+        }
+      }
+    )
+  )
   const publicPath = struct('string', '/')
   const html = struct.interface(
     {
@@ -57,6 +76,7 @@ module.exports = (api, config) => {
     entry,
     srcDir,
     outDir,
+    output,
     publicPath,
     html,
     sourceMap,

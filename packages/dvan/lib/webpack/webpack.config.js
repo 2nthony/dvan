@@ -50,27 +50,11 @@ module.exports = (config, api) => {
   /**
    * Output
    */
-  const filename = '__assets/js/[name].[contenthash].js'
   config.output
-    .filename(filename)
+    .filename(api.config.output.fileNames.js)
     .publicPath(publicPath)
     .path(require('path').normalize(api.resolveOutDir()))
-    .chunkFilename(filename.replace(/\.js$/, '.chunk.js'))
-
-  /**
-   * Alias @ to source directory
-   * Alias @@ to root directory
-   */
-  config.resolve.alias.set('@', api.resolveCwd(srcDir)).set('@@', api.cwd)
-
-  /**
-   * Disable webpack's default minimizer
-   */
-  config.merge({
-    optimization: {
-      minimize: false
-    }
-  })
+    .chunkFilename(api.config.output.fileNames.js.replace(/\.js$/, '.chunk.js'))
 
   /**
    * Split vendors and common chunks
@@ -98,6 +82,32 @@ module.exports = (config, api) => {
   // Keep the runtime chunk seperated to enable long term caching
   // https://twitter.com/wSokra/status/969679223278505985
   config.optimization.runtimeChunk(true)
+
+  /**
+   * Format
+   */
+  const { format, moduleName } = api.config.output
+  if (format === 'cjs') {
+    config.output.libraryTarget('commonjs2')
+  } else if (format === 'umd') {
+    config.output.libraryTarget('umd')
+    config.output.library(moduleName)
+  }
+
+  /**
+   * Alias @ to source directory
+   * Alias @@ to root directory
+   */
+  config.resolve.alias.set('@', api.resolveCwd(srcDir)).set('@@', api.cwd)
+
+  /**
+   * Disable webpack's default minimizer
+   */
+  config.merge({
+    optimization: {
+      minimize: false
+    }
+  })
 
   /**
    * Minimize js files

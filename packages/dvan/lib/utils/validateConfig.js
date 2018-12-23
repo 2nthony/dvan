@@ -24,6 +24,7 @@ module.exports = (api, config) => {
     )
   )
   const publicPath = struct('string', '/')
+  const publicFolder = struct('string', 'public')
   const html = struct.interface(
     {
       title: 'string',
@@ -78,6 +79,7 @@ module.exports = (api, config) => {
     outDir,
     output,
     publicPath,
+    publicFolder,
     html,
     sourceMap,
     minimize,

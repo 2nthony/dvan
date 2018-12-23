@@ -47,7 +47,7 @@ exports.extend = api => {
           overlay: true,
           disableHostCheck: true,
           publicPath: webpackConfig.output.publicPath,
-          contentBase: api.resolveCwd('public'),
+          contentBase: api.resolveCwd(api.config.publicFolder || 'public'),
           watchContentBase: true,
           stats: {
             colors: true

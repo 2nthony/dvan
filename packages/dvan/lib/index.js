@@ -53,7 +53,10 @@ class Dvan {
         logger.debug('Not using any config file')
       }
 
-      this.config = config
+      this.config = Object.assign(
+        config,
+        require(this.resolveCwd(this.parseArgs.get('config')))
+      )
     }
 
     this.applyPlugins()
@@ -96,6 +99,7 @@ class Dvan {
       .option('--mode <mode>', 'Set mode', { default: 'development' })
       .option('--prod, --production', 'Alias for --mode production')
       .option('--debug', 'Show debug logs')
+      .option('--config [path]', 'Specify config file')
       .option('--no-config', 'Disable config file')
       .option('--no-clean', 'Do not clean output directory before bundling')
       .option('--no-clear-console', 'Do not clear console')
@@ -108,6 +112,7 @@ class Dvan {
       srcDir,
       outDir,
       publicPath,
+      publicFolder,
       html,
       sourceMap,
       minimize,
@@ -125,6 +130,7 @@ class Dvan {
       srcDir,
       outDir,
       publicPath,
+      publicFolder,
       html,
       sourceMap,
       minimize,
@@ -173,7 +179,8 @@ class Dvan {
       require('./plugins/css.config'),
       require('./plugins/vue.config'),
       require('./plugins/font.config'),
-      require('./plugins/media.config'),
+      require('./plugins/image.config'),
+      require('./plugins/video.config'),
       require('./plugins/graphql.config'),
       require('./plugins/toml.config'),
       require('./plugins/yaml.config'),

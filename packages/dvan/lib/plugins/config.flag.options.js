@@ -6,6 +6,7 @@ exports.extend = api => {
     cmd('-s, --src-dir <dir>', 'Source directory', 'src')
     cmd('-d, --out-dir <dir>', 'Output directory', '__dist')
     cmd('--public-path <path>', 'Public path', '/')
+    cmd('--public-folder <folder>', 'Public folder', 'public')
     cmd('--constants', 'Global constants')
     cmd('--evergreen', 'Only targeting evergreen browsers', false)
 

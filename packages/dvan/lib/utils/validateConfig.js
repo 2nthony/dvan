@@ -1,32 +1,34 @@
 const { struct } = require('superstruct')
 
 module.exports = (api, config) => {
-  const entry = struct('string|array|object', 'index')
+  const entry = struct.optional(
+    struct.union(['string', 'array', 'object']),
+    'index'
+  )
   const srcDir = struct('string', 'src')
   const outDir = struct('string', 'dist')
   const output = struct(
-    'object',
-    struct.interface(
-      {
-        format: struct('string', struct.enum(['iife', 'umd', 'cjs'])),
-        moduleName: struct('string?'),
-        fileNames: struct('object?', {
+    {
+      format: struct.enum(['iife', 'umd', 'cjs']),
+      moduleName: struct.optional('string'),
+      fileNames: struct.optional(
+        struct.object({
           js: struct('string?'),
           css: struct('string?'),
           font: struct('string?'),
           image: struct('string?'),
           video: struct('string?')
         })
-      },
-      {
-        format: 'iife'
-      }
-    )
+      )
+    },
+    {
+      format: 'iife'
+    }
   )
   const publicPath = struct('string', '/')
   const publicFolder = struct('string', 'public')
-  const html = struct(
-    'boolean|object',
+  const html = struct.optional(
+    struct.union(['boolean', 'object']),
     struct.interface(
       {
         title: 'string',
@@ -74,7 +76,7 @@ module.exports = (api, config) => {
   const evergreen = struct('boolean', false)
 
   // Build pipeline
-  const chainWebpack = struct('function?')
+  const chainWebpack = struct.optional('function')
 
   const Struct = struct({
     entry,

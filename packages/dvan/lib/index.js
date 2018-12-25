@@ -55,7 +55,9 @@ class Dvan {
 
       this.config = Object.assign(
         config,
-        require(this.resolveCwd(this.parseArgs.get('config')))
+        this.parseArgs.get('config')
+          ? require(this.resolveCwd(this.parseArgs.get('config')))
+          : {}
       )
     }
 

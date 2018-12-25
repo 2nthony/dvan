@@ -25,22 +25,25 @@ module.exports = (api, config) => {
   )
   const publicPath = struct('string', '/')
   const publicFolder = struct('string', 'public')
-  const html = struct.interface(
-    {
-      title: 'string',
-      meta: struct('array|object')
-    },
-    {
-      title: api.pkg.name || 'Dvan App',
-      meta: api.pkg.description
-        ? [
-            {
-              name: 'description',
-              content: api.pkg.description
-            }
-          ]
-        : []
-    }
+  const html = struct(
+    'boolean|object',
+    struct.interface(
+      {
+        title: 'string',
+        meta: struct('array|object')
+      },
+      {
+        title: api.pkg.name || 'Dvan App',
+        meta: api.pkg.description
+          ? [
+              {
+                name: 'description',
+                content: api.pkg.description
+              }
+            ]
+          : []
+      }
+    )
   )
   const sourceMap = struct('boolean', !api.isProd)
   const minimize = struct('boolean|object', api.isProd)

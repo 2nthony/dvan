@@ -7,6 +7,7 @@ exports.name = 'built-in:html.config'
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
     command.option('--html', 'HTML template options')
+    command.option('--no-html', 'Disable HTML template')
   })
 
   api.hook('onCreateWebpackConfig', config => {
@@ -46,6 +47,7 @@ exports.extend = api => {
       config.optimization.runtimeChunk(true)
     }
 
+    if (html === false) return
     config.plugin('html').use('html-webpack-plugin', [
       Object.assign(
         {

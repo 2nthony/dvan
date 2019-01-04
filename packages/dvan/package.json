@@ -1,6 +1,6 @@
 {
   "name": "dvan",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "bin": "bin/cli.js",
   "main": "lib/index.js",
   "author": "evila <ijoec123@gmail.com>",

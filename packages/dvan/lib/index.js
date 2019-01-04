@@ -25,8 +25,6 @@ class Dvan {
         ? 'production'
         : this.parseArgs.get('mode') || 'development'
 
-    process.env.NODE_ENV = this.mode
-
     this.cwd = this.parseArgs.get('cwd') || process.cwd()
 
     this.pkg = require(this.resolveCwd('package.json'))
@@ -60,6 +58,12 @@ class Dvan {
           : {}
       )
     }
+
+    /**
+     * Set process.env
+     */
+    process.env.NODE_ENV = this.mode
+    process.env.DVAN_ENV = this.hasDependency('vue') ? 'vue' : 'react'
 
     this.applyPlugins()
 

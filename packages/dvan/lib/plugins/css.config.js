@@ -54,6 +54,7 @@ exports.extend = api => {
         autoprefixer: { disable: true },
         mergeLonghand: false
       }
+
       if (sourceMap) {
         cssnanoOptions.map = { inline: false }
       }
@@ -82,7 +83,9 @@ exports.extend = api => {
                   modules,
                   sourceMap,
                   importLoaders: 1 + (hasPostcssConfig ? 1 : 0),
-                  localIdentName: '[local]_[hash:base64:6]'
+                  localIdentName: api.isProd
+                    ? '[local]_[hash:base64:6]'
+                    : '[path][name]__[local]--[hash:base64:6]'
                 },
                 loaderOptions.css
               )

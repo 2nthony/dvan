@@ -63,7 +63,7 @@ class Dvan {
      * Set process.env
      */
     process.env.NODE_ENV = this.mode
-    process.env.DVAN_ENV = this.hasDependency('vue') ? 'vue' : 'react'
+    process.env.DVAN_APP = this.hasDependency('vue') ? 'vue' : 'react'
 
     this.applyPlugins()
 

@@ -82,7 +82,7 @@ exports.extend = api => {
                   modules,
                   sourceMap,
                   importLoaders: 1 + (hasPostcssConfig ? 1 : 0),
-                  localIdentName: '[local_hash:base64:6]'
+                  localIdentName: '[local]_[hash:base64:6]'
                 },
                 loaderOptions.css
               )

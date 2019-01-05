@@ -178,14 +178,14 @@ class Dvan {
 
   applyPlugins() {
     this.plugins = [
-      require('./plugins/options-flag'),
+      require('./plugins/optionsFlag'),
       require('./plugins/development'),
 
       /**
        * Cli commands
        */
-      require('./plugins/command/eject-html'),
-      require('./plugins/command/sfc'),
+      require('./plugins/command/ejectHTML'),
+      require('./plugins/command/vueSFC'),
 
       /**
        * Webpack config
@@ -200,7 +200,7 @@ class Dvan {
       require('./plugins/config/graphql'),
       require('./plugins/config/toml'),
       require('./plugins/config/yaml'),
-      require('./plugins/config/art-template')
+      require('./plugins/config/artTemplate')
     ]
 
     if ((this.config.plugins || []).length > 0) {

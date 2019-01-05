@@ -70,7 +70,7 @@ module.exports = (api, config) => {
       open: false
     }
   )
-  const extractCss = struct('boolean', true)
+  const extractCss = struct('boolean', api.isProd)
   const jsx = struct('boolean|string', false)
   const loaderOptions = struct('object', {})
   const evergreen = struct('boolean', false)

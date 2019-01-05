@@ -1,4 +1,4 @@
-exports.name = 'built-in:art.template.config'
+exports.name = 'built-in:config-art-template'
 
 exports.extend = api => {
   api.hook('onCreateWebpackConfig', config => {

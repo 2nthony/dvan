@@ -1,4 +1,4 @@
-exports.name = 'built-in:toml.config'
+exports.name = 'built-in:config-toml'
 
 exports.extend = api => {
   api.hook('onCreateWebpackConfig', config => {

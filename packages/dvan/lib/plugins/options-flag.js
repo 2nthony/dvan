@@ -1,4 +1,4 @@
-exports.name = 'built-in:config.flag.options'
+exports.name = 'built-in:options-flag'
 
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {

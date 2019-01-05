@@ -178,20 +178,29 @@ class Dvan {
 
   applyPlugins() {
     this.plugins = [
-      require('./plugins/config.flag.options'),
+      require('./plugins/options-flag'),
       require('./plugins/development'),
-      require('./plugins/html.config'),
-      require('./plugins/babel.config'),
-      require('./plugins/css.config'),
-      require('./plugins/vue.config'),
-      require('./plugins/font.config'),
-      require('./plugins/image.config'),
-      require('./plugins/video.config'),
-      require('./plugins/graphql.config'),
-      require('./plugins/toml.config'),
-      require('./plugins/yaml.config'),
-      require('./plugins/eject.html.command'),
-      require('./plugins/art.template.config')
+
+      /**
+       * Cli commands
+       */
+      require('./plugins/command/eject-html'),
+      require('./plugins/command/sfc'),
+
+      /**
+       * Webpack config
+       */
+      require('./plugins/config/html'),
+      require('./plugins/config/babel'),
+      require('./plugins/config/css'),
+      require('./plugins/config/vue'),
+      require('./plugins/config/font'),
+      require('./plugins/config/image'),
+      require('./plugins/config/video'),
+      require('./plugins/config/graphql'),
+      require('./plugins/config/toml'),
+      require('./plugins/config/yaml'),
+      require('./plugins/config/art-template')
     ]
 
     if ((this.config.plugins || []).length > 0) {

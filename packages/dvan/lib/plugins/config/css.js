@@ -1,8 +1,8 @@
-exports.name = 'built-in:css.config'
+exports.name = 'built-in:config-css'
 
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
-    const cmd = require('../utils/easyCmdOption')(command)
+    const cmd = require('../../utils/easyCmdOption')(command)
     if (api.isProd) {
       cmd('--no-extract-css', 'Do not extract CSS files')
     } else {
@@ -25,7 +25,7 @@ exports.extend = api => {
       const shouldMinimize = Boolean(minimize)
       const isServer = type === 'server'
 
-      const hasPostcssConfig = require('../utils/loadConfig')({
+      const hasPostcssConfig = require('../../utils/loadConfig')({
         files: ['package.json'],
         matches: ['.postcssrc*', 'postcss.config.*'],
         dir: api.cwd,
@@ -35,7 +35,7 @@ exports.extend = api => {
       if (hasPostcssConfig.configPath) {
         api.logger.debug(
           'Applying postcss config at',
-          require('../utils/colorfulFile')(
+          require('../../utils/colorfulFile')(
             require('path').relative(api.cwd, hasPostcssConfig.configPath)
           )
         )

@@ -1,4 +1,4 @@
-exports.name = 'built-in:yaml.config'
+exports.name = 'built-in:config-yaml'
 
 exports.extend = api => {
   api.hook('onCreateWebpackConfig', config => {

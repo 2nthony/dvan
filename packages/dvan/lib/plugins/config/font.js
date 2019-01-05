@@ -1,4 +1,4 @@
-exports.name = 'built-in:font.config'
+exports.name = 'built-in:config-font'
 
 exports.extend = api => {
   api.hook('onCreateWebpackConfig', config => {

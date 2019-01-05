@@ -1,4 +1,4 @@
-exports.name = 'built-in:babel.config'
+exports.name = 'built-in:config-babel'
 
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {

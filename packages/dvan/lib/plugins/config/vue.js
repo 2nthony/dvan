@@ -1,6 +1,6 @@
 const resolveFrom = require('resolve-from')
 
-exports.name = 'built-in:vue.config'
+exports.name = 'built-in:config-vue'
 
 exports.extend = api => {
   if (!api.hasDependency('vue')) return

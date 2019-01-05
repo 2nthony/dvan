@@ -1,8 +1,8 @@
 const path = require('path')
 const { existsSync } = require('fs-extra')
-const isLocalPath = require('../utils/isLocalPath')
+const isLocalPath = require('../../utils/isLocalPath')
 
-exports.name = 'built-in:html.config'
+exports.name = 'built-in:config-html'
 
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
@@ -88,7 +88,7 @@ exports.extend = api => {
             : existsSync(api.resolveCwd('public/template.html'))
             ? api.resolveCwd('public/template.html')
             : require.resolve(
-                path.join(__dirname, '../webpack/default.template.html')
+                path.join(__dirname, '../webpack/default-template.html')
               )
         }
       )

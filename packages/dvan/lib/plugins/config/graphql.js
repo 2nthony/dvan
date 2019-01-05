@@ -1,4 +1,4 @@
-exports.name = 'built-in:graphql.config'
+exports.name = 'built-in:config-graphql'
 
 exports.extend = api => {
   api.hook('onCreateWebpackConfig', config => {

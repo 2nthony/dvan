@@ -1,4 +1,4 @@
-exports.name = 'built-in:eject.html.command'
+exports.name = 'built-in:command-eject-html'
 
 exports.extend = api => {
   api.hook('onInitCLI', () => {
@@ -15,7 +15,7 @@ exports.extend = api => {
           return
         }
         await fs.copy(
-          path.resolve(__dirname, '../webpack/default.template.html'),
+          path.resolve(__dirname, '../webpack/default-template.html'),
           api.resolveCwd(filePath)
         )
         api.logger.done(`Ejected to ${filePath}`)

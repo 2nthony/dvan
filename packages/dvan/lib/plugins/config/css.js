@@ -2,12 +2,7 @@ exports.name = 'built-in:config-css'
 
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
-    const cmd = require('../../utils/easyCmdOption')(command)
-    if (api.isProd) {
-      cmd('--no-extract-css', 'Do not extract CSS files')
-    } else {
-      cmd('--extract-css', 'Extract CSS to standalone files')
-    }
+    require('../shared/extractCssOptions')(api, command)
   })
 
   api.hook(

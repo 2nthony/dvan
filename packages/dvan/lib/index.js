@@ -185,6 +185,7 @@ class Dvan {
        * Cli commands
        */
       require('./plugins/command/ejectHTML'),
+      require('./plugins/command/vueSFC'),
 
       /**
        * Webpack config

@@ -2,7 +2,7 @@ exports.name = 'built-in:config-video'
 
 exports.extend = api => {
   api.hook('onCreateWebpackConfig', config => {
-    const createMediaRule = require('./shared/createMediaRule')(api, config)
+    const createMediaRule = require('../shared/createMediaRule')(api, config)
 
     createMediaRule(
       'video',

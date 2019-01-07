@@ -7,9 +7,10 @@ exports.name = 'built-in:command-vue-sfc'
 exports.extend = api => {
   api.hook('onInitCLI', ({ args }) => {
     const command = api.cli.command('vue-sfc <file-path>', 'Vue SFC')
-    command.option('--dev', 'Start develop vue file on local server')
+    command
+      .option('--dev', 'Start develop vue file on local server')
+      .option('--out-dir [path]', 'Output directory')
 
-    require('../shared/extractCssOptions')(api, command)
     require('../shared/devOptions')(command)
 
     command.action(async filePath => {
@@ -39,9 +40,11 @@ exports.extend = api => {
 
         new Vue({
           el: '#app',
-          template: '<dotvue />',
           components: {
             dotvue
+          },
+          render(h) {
+            return h('dotvue')
           }
         })`
       )
@@ -64,6 +67,7 @@ exports.extend = api => {
        */
       api.config = Object.assign(api.config, {
         entry: api.resolveCwd(filePath),
+        outDir: command.cli.options.outDir || 'dist',
         output: {
           format: 'cjs',
           fileNames: {
@@ -71,15 +75,25 @@ exports.extend = api => {
             js: `${entry.name}.js`
           }
         },
-        html: false
+        html: false,
+        extractCss: true
       })
 
       /**
        * Recommend to use rollup to build library
        */
-      api.logger.warn('Recommend to use `Rollup` to build Vue SFC library')
+      api.logger.tips(
+        'You are using `Webpack` to build Vue SFC library, DONNOT use use production mode'
+      )
+      api.logger.tips('RECOMMEND to use `Rollup` to build Vue SFC library')
 
       const config = api.createWebpackConfig()
+      /**
+       * Do not use babel to build standalone Vue SFC
+       * Because it just a SFC to run under the based Vue
+       * TODO: JSX
+       */
+      config.module.rules.delete('babel')
       const compiler = api.createWebpackCompiler(config.toConfig())
       await runCompiler(compiler)
     })

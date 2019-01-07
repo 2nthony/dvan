@@ -44,7 +44,7 @@ exports.extend = api => {
     }
 
     config.module
-      .rule('js')
+      .rule('babel')
       .test(/\.m?jsx?$/)
       .include.add(fp => !/node_modules/.test(fp))
       .end()

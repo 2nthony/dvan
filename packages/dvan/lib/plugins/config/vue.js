@@ -3,8 +3,6 @@ const resolveFrom = require('resolve-from')
 exports.name = 'built-in:config-vue'
 
 exports.extend = api => {
-  if (!api.hasDependency('vue')) return
-
   api.hook('onCreateWebpackConfig', config => {
     config.resolve.extensions.add('.vue')
 

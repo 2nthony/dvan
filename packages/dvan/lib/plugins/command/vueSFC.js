@@ -82,9 +82,8 @@ exports.extend = api => {
       /**
        * Recommend to use rollup to build library
        */
-      api.logger.tips(
-        'You are using `Webpack` to build Vue SFC library, DONNOT use use production mode'
-      )
+      api.logger.tips('You are using `Webpack` to build Vue SFC library')
+      api.logger.tips('DONNOT use use production mode')
       api.logger.tips('RECOMMEND to use `Rollup` to build Vue SFC library')
 
       const config = api.createWebpackConfig()

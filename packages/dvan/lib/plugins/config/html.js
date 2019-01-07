@@ -88,7 +88,7 @@ exports.extend = api => {
             : existsSync(api.resolveCwd('public/template.html'))
             ? api.resolveCwd('public/template.html')
             : require.resolve(
-                path.join(__dirname, '../webpack/default-template.html')
+                path.join(__dirname, '../../webpack/default-template.html')
               )
         }
       )

@@ -10,9 +10,12 @@
     "access": "public"
   },
   "dependencies": {
-    "vue-server-renderer": "^2.5.20"
+    "vue-auto-routes": "^1.2.2",
+    "vue-server-renderer": "^2.5.22"
   },
   "peerDependencies": {
-    "dvan": "^2.1.0-alpha.7"
+    "dvan": "^2.1.0-alpha.7",
+    "vue": "^2.5.22",
+    "vue-router": "^3.0.2"
   }
 }

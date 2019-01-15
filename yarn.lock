@@ -9431,6 +9431,13 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-auto-routes@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/vue-auto-routes/-/vue-auto-routes-1.2.2.tgz#17cd7a4f49a400c6199ddf4b12f915e10a975146"
+  integrity sha512-HxywQ3ZvGfqgjdRHXgGr8JhSoIdn7jjGuPb6RrncJzeQfOCV3PA23kLpTE/PZJM66iYP465t6L2ifLm5HkTNdg==
+  dependencies:
+    lodash.sortby "^4.7.0"
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"
   resolved "https://registry.npmjs.org/vue-hot-reload-api/-/vue-hot-reload-api-2.3.1.tgz#b2d3d95402a811602380783ea4f566eb875569a2"
@@ -9447,10 +9454,10 @@ vue-loader@^15.3.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-server-renderer@^2.5.20:
-  version "2.5.20"
-  resolved "https://registry.npmjs.org/vue-server-renderer/-/vue-server-renderer-2.5.20.tgz#b4d4718949592f7138d7fa2b370f2a00b967af37"
-  integrity sha512-q3ulfGr3a8UUbLs2tQWEBeQfl8HwUWoXF5N7H1ZGo+eL4y+xIpjpV1z14Hx8tQGoY64xja7QdSyjNWVuGmLjXg==
+vue-server-renderer@^2.5.22:
+  version "2.5.22"
+  resolved "https://registry.npmjs.org/vue-server-renderer/-/vue-server-renderer-2.5.22.tgz#f119efef289c865adc22fda0ae7595299bedbdcf"
+  integrity sha512-PQ0PubA6b2MyZud/gepWeiUuDFSbRfa6h1qYINcbwXRr4Z3yLTHprEQuFnWikdkTkZpeLFYUqZrDxPbDcJ71mA==
   dependencies:
     chalk "^1.1.3"
     hash-sum "^1.0.2"

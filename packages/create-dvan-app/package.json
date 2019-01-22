@@ -1,0 +1,19 @@
+{
+  "name": "create-dvan-app",
+  "version": "0.0.1",
+  "author": "evila <ijoec123@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "cda": "bin/cli.js",
+    "create-dvan-app": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "generator"
+  ],
+  "xo": false,
+  "dependencies": {
+    "cac": "^6.4.0",
+    "sao": "^1.6.1"
+  }
+}

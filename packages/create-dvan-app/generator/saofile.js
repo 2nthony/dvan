@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   prepare() {
     if (this.outDir === process.cwd()) {
@@ -58,12 +60,26 @@ module.exports = {
     await this.npmInstall()
     this.showProjectTips()
 
+    const logCd = () => {
+      if (this.outDir !== process.cwd()) {
+        console.log(
+          `${this.chalk.bold('cd')} ${this.chalk.cyan(
+            path.relative(process.cwd(), this.outDir)
+          )}`
+        )
+      }
+    }
+
+    console.log('')
+
     this.logger.tip(`To start dev server, run following commands:`)
+    logCd()
     console.log(
       `${this.chalk.bold(this.npmClient)} ${this.chalk.cyan('run dev')}`
     )
 
     this.logger.tip(`To build for production, run following commands:`)
+    logCd()
     console.log(
       `${this.chalk.bold(this.npmClient)} ${this.chalk.cyan('run build')}`
     )

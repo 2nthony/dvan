@@ -42,7 +42,7 @@ module.exports = {
               build: 'dvan --prod'
             },
             dependencies: {
-              dvan: '^2.2.2'
+              dvan: '^2.3.2'
             }
           }
         }

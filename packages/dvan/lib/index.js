@@ -1,5 +1,6 @@
 const path = require('path')
 const merge = require('lodash.merge')
+const resolveFrom = require('resolve-from')
 const logger = require('@dvan/cli-utils/logger')
 const runCompiler = require('@dvan/dev-utils/runCompiler')
 const Hooks = require('./Hooks')
@@ -237,6 +238,15 @@ class Dvan {
     logger.debug('In run()')
 
     await this.cli.runMatchedCommand()
+  }
+
+  localResolve(name, cwd = this.cwd) {
+    return resolveFrom.silent(cwd, name)
+  }
+
+  localRequire(name, cwd) {
+    const resolved = this.localResolve(name, cwd)
+    return resolved ? require(resolved) : null
   }
 }
 

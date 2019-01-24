@@ -1,5 +1,3 @@
-const resolveFrom = require('resolve-from')
-
 exports.name = 'built-in:config-vue'
 
 exports.extend = api => {
@@ -13,10 +11,7 @@ exports.extend = api => {
       .loader('vue-loader')
       .options(
         Object.assign({}, api.config.loaderOptions.vue, {
-          compiler: require(resolveFrom.silent(
-            api.cwd,
-            'vue-template-compiler'
-          ))
+          compiler: api.localRequire('vue-template-compiler')
         })
       )
 

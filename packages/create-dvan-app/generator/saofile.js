@@ -28,7 +28,7 @@ module.exports = {
             disabled: true
           },
           {
-            name: 'Vanilla',
+            name: 'Vanilla JavaScript',
             value: 'vanilla'
           }
         ]

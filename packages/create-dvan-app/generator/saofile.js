@@ -23,7 +23,7 @@ module.exports = {
       {
         type: 'modify',
         files: 'dvan.config.js',
-        handler() {
+        handler: () => {
           return `module.exports = {
   entry: 'src/index.js'
 }`
@@ -32,7 +32,7 @@ module.exports = {
       {
         type: 'modify',
         files: 'package.json',
-        handler() {
+        handler: () => {
           return {
             name: this.outFolder,
             private: true,

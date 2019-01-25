@@ -1,4 +1,5 @@
 const path = require('path')
+const packageJson = require('./handler/packageJson')
 
 const when = (condition, value, fallback) => (condition ? value : fallback)
 
@@ -37,8 +38,6 @@ module.exports = {
   },
 
   actions() {
-    const { frameworks } = this.answers
-
     return [
       {
         type: 'add',
@@ -58,25 +57,7 @@ module.exports = {
         type: 'modify',
         files: 'package.json',
         handler: () => {
-          return {
-            name: this.outFolder,
-            private: true,
-            scripts: {
-              dvan: 'dvan',
-              dev: 'dvan --dev',
-              build: 'dvan --prod'
-            },
-            dependencies: {
-              vue: when(frameworks.includes('vue'), '^2.5.22'),
-              'vue-template-compiler': when(
-                frameworks.includes('vue'),
-                '^2.5.22'
-              )
-            },
-            devDependencies: {
-              dvan: '^2.3.2'
-            }
-          }
+          return packageJson(this, when)
         }
       },
       {

@@ -8,6 +8,10 @@
 
 Start a dev server to preview your app
 
-### `npm run build
+### `npm run build`
 
 Build app for production to `./dist` folder
+
+### `npm run dvan`
+
+You can run and add `-h` flag for helps

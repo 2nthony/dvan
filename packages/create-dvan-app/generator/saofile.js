@@ -1,5 +1,7 @@
 const path = require('path')
 
+const when = (condition, value, fallback) => (condition ? value : fallback)
+
 module.exports = {
   prepare() {
     if (this.outDir === process.cwd()) {
@@ -8,12 +10,35 @@ module.exports = {
       )
     }
   },
-  /**
-   * TODO
-   * Other options
-   * See generator/template
-   */
+
+  prompts() {
+    return [
+      {
+        name: 'frameworks',
+        message: 'Choose a framework for you app',
+        type: 'list',
+        choices: [
+          {
+            name: 'Vue',
+            value: 'vue'
+          },
+          {
+            name: 'React (TODO)',
+            value: 'react',
+            disabled: true
+          },
+          {
+            name: 'Vanilla',
+            value: 'vanilla'
+          }
+        ]
+      }
+    ]
+  },
+
   actions() {
+    const { frameworks } = this.answers
+
     return [
       {
         type: 'add',
@@ -42,6 +67,13 @@ module.exports = {
               build: 'dvan --prod'
             },
             dependencies: {
+              vue: when(frameworks.includes('vue'), '^2.5.22'),
+              'vue-template-compiler': when(
+                frameworks.includes('vue'),
+                '^2.5.22'
+              )
+            },
+            devDependencies: {
               dvan: '^2.3.2'
             }
           }
@@ -55,6 +87,7 @@ module.exports = {
       }
     ]
   },
+
   async completed() {
     this.gitInit()
     await this.npmInstall()

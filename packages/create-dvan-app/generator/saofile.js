@@ -1,5 +1,4 @@
 const path = require('path')
-const packageJson = require('./handler/packageJson')
 
 const when = (condition, value, fallback) => (condition ? value : fallback)
 
@@ -16,9 +15,13 @@ module.exports = {
     return [
       {
         name: 'frameworks',
-        message: 'Choose a framework for you app',
+        message: 'Choose a framework for your app',
         type: 'list',
         choices: [
+          {
+            name: 'Vanilla JavaScript',
+            value: 'vanilla'
+          },
           {
             name: 'Vue',
             value: 'vue'
@@ -27,10 +30,6 @@ module.exports = {
             name: 'React (TODO)',
             value: 'react',
             disabled: true
-          },
-          {
-            name: 'Vanilla JavaScript',
-            value: 'vanilla'
           }
         ]
       }
@@ -41,7 +40,7 @@ module.exports = {
     return [
       {
         type: 'add',
-        templateDir: 'template/main',
+        templateDir: 'templates/main',
         files: '**'
       },
       {
@@ -57,7 +56,7 @@ module.exports = {
         type: 'modify',
         files: 'package.json',
         handler: () => {
-          return packageJson(this, when)
+          return require('./handler/packageJson')(this, when)
         }
       },
       {

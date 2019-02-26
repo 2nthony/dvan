@@ -6,8 +6,8 @@ module.exports = ({
   author,
   email,
   frameworks,
-  vueRouter,
-  vueAutoRoutes
+  VueRouter,
+  VueAutoRoutes
 }) => {
   return {
     name,
@@ -21,8 +21,8 @@ module.exports = ({
     },
     dependencies: {
       vue: when(frameworks.includes('vue'), '^2.6.7'),
-      'vue-router': when(vueRouter, '^3.0.2'),
-      'vue-auto-routes': when(vueAutoRoutes, '^1.3.0')
+      'vue-router': when(VueRouter, '^3.0.2'),
+      'vue-auto-routes': when(VueAutoRoutes, '^1.3.0')
     },
     devDependencies: {
       dvan: '^2.3.7',

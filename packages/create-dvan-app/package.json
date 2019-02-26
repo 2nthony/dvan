@@ -9,6 +9,7 @@
   },
   "files": [
     "bin",
+    "lib",
     "generator"
   ],
   "xo": false,

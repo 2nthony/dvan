@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <router-link to="bar">bar</router-link>
+    <p>Edit `src/pages/**` and save to reload</p>
+    <router-link to="bar">Go to bar</router-link>
   </div>
 </template>
 

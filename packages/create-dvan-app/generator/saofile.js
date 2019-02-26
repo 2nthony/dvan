@@ -13,7 +13,8 @@ module.exports = {
     return [
       {
         name: 'name',
-        message: 'What is the name of the new project'
+        message: 'What is the name of the new project',
+        default: this.outFolder
       },
       {
         name: 'description',
@@ -54,51 +55,50 @@ module.exports = {
         ]
       },
       {
-        name: 'vue-router',
+        name: 'VueRouter',
         message: 'Do you need `vue-router` for your Vue app',
         type: 'confirm',
         default: true,
         when: ({ frameworks }) => frameworks === 'vue'
       },
       {
-        name: 'vue-auto-routes',
+        name: 'VueAutoRoutes',
         message: 'Do you want to use `vue-auto-routes` to manage your routes',
         type: 'confirm',
         default: true,
-        when: 'vue-router'
+        when: ({ VueRouter }) => VueRouter
       }
     ]
   },
 
   actions() {
+    const { frameworks, VueRouter, VueAutoRoutes } = this.answers
+
     return [
       {
         type: 'add',
         templateDir: 'templates/main',
         files: '**'
       },
-      {
+      frameworks === 'vue' && {
         type: 'add',
         templateDir: 'templates/vue/main',
-        files: '**',
-        when: ({ frameworks }) => frameworks === 'vue'
+        files: '**'
       },
-      {
-        name: 'add',
+      VueRouter && {
+        type: 'add',
         templateDir: 'templates/vue/router',
-        files: '**',
-        when: 'vue-router'
+        files: '**'
       },
-      {
-        name: 'add',
+      VueAutoRoutes && {
+        type: 'add',
         templateDir: 'templates/vue/vue-auto-routes',
-        files: '**',
-        when: 'vue-auto-routes'
+        files: '**'
       },
       {
         type: 'modify',
         files: 'package.json',
-        handler: () => require('../lib/update-pkg')(this)
+        handler: () => require('../lib/update-pkg')(this.answers)
       },
       {
         type: 'move',
@@ -106,7 +106,7 @@ module.exports = {
           _gitignore: '.gitignore'
         }
       }
-    ]
+    ].filter(Boolean)
   },
 
   async completed() {

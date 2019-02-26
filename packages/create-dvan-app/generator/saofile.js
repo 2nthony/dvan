@@ -1,7 +1,5 @@
 const path = require('path')
 
-const when = (condition, value, fallback) => (condition ? value : fallback)
-
 module.exports = {
   prepare() {
     if (this.outDir === process.cwd()) {
@@ -13,6 +11,28 @@ module.exports = {
 
   prompts() {
     return [
+      {
+        name: 'name',
+        message: 'What is the name of the new project'
+      },
+      {
+        name: 'description',
+        message: 'How would you describe the new project',
+        default: `My awesome project`
+      },
+      {
+        name: 'author',
+        message: 'What is your name',
+        default: this.gitUser.username || this.gitUser.name,
+        store: true
+      },
+      {
+        name: 'email',
+        message: 'What is your email',
+        default: this.gitUser.email,
+        store: true,
+        validate: v => /.+@.+/.test(v)
+      },
       {
         name: 'frameworks',
         message: 'Choose a framework for your app',
@@ -32,6 +52,20 @@ module.exports = {
             disabled: true
           }
         ]
+      },
+      {
+        name: 'vue-router',
+        message: 'Do you need `vue-router` for your Vue app',
+        type: 'confirm',
+        default: true,
+        when: ({ frameworks }) => frameworks === 'vue'
+      },
+      {
+        name: 'vue-auto-routes',
+        message: 'Do you want to use `vue-auto-routes` to manage your routes',
+        type: 'confirm',
+        default: true,
+        when: 'vue-router'
       }
     ]
   },
@@ -44,16 +78,27 @@ module.exports = {
         files: '**'
       },
       {
-        type: 'modify',
-        files: 'dvan.config.js',
-        handler: () => `module.exports = {
-  entry: 'src/index.js'
-}`
+        type: 'add',
+        templateDir: 'templates/vue/main',
+        files: '**',
+        when: ({ frameworks }) => frameworks === 'vue'
+      },
+      {
+        name: 'add',
+        templateDir: 'templates/vue/router',
+        files: '**',
+        when: 'vue-router'
+      },
+      {
+        name: 'add',
+        templateDir: 'templates/vue/vue-auto-routes',
+        files: '**',
+        when: 'vue-auto-routes'
       },
       {
         type: 'modify',
         files: 'package.json',
-        handler: () => require('../lib/update-pkg')(this, when)
+        handler: () => require('../lib/update-pkg')(this)
       },
       {
         type: 'move',
@@ -65,7 +110,7 @@ module.exports = {
   },
 
   async completed() {
-    this.gitInit()
+    await this.gitInit()
     await this.npmInstall()
     this.showProjectTips()
 

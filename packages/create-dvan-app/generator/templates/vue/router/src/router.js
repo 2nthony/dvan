@@ -7,11 +7,11 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      template: `
-        <div>
-          page/index
-        </div>
-      `
+      component: () => import('./pages/index.vue')
+    },
+    {
+      path: '/bar',
+      component: () => import('./pages/bar.vue')
     }
   ]
 })

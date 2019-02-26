@@ -13,7 +13,7 @@ module.exports = (api, when) => {
       vue: when(frameworks.includes('vue'), '^2.5.22')
     },
     devDependencies: {
-      dvan: '^2.3.2',
+      dvan: '^2.3.7',
       'vue-template-compiler': when(frameworks.includes('vue'), '^2.5.22')
     }
   }

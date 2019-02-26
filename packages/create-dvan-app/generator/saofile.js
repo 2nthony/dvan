@@ -46,18 +46,14 @@ module.exports = {
       {
         type: 'modify',
         files: 'dvan.config.js',
-        handler: () => {
-          return `module.exports = {
+        handler: () => `module.exports = {
   entry: 'src/index.js'
 }`
-        }
       },
       {
         type: 'modify',
         files: 'package.json',
-        handler: () => {
-          return require('./handler/packageJson')(this, when)
-        }
+        handler: () => require('../lib/update-pkg')(this, when)
       },
       {
         type: 'move',

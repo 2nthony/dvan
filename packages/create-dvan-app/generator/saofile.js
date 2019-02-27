@@ -1,4 +1,5 @@
 const path = require('path')
+const superb = require('superb')
 
 module.exports = {
   prepare() {
@@ -19,7 +20,7 @@ module.exports = {
       {
         name: 'description',
         message: 'How would you describe the new project',
-        default: `My awesome project`
+        default: `My ${superb.random()} project`
       },
       {
         name: 'author',
@@ -36,7 +37,7 @@ module.exports = {
       },
       {
         name: 'frameworks',
-        message: 'Choose a framework for your app',
+        message: 'Choose a framework for the app',
         type: 'list',
         choices: [
           {
@@ -55,15 +56,22 @@ module.exports = {
         ]
       },
       {
+        name: 'Vuex',
+        message: 'Do you need `Vuex` for the app',
+        type: 'confirm',
+        default: false,
+        when: ({ frameworks }) => frameworks === 'vue'
+      },
+      {
         name: 'VueRouter',
-        message: 'Do you need `vue-router` for your Vue app',
+        message: 'Do you need `vue-router` for the app',
         type: 'confirm',
         default: true,
         when: ({ frameworks }) => frameworks === 'vue'
       },
       {
         name: 'VueAutoRoutes',
-        message: 'Do you want to use `vue-auto-routes` to manage your routes',
+        message: 'Do you want to use `vue-auto-routes` for the routes',
         type: 'confirm',
         default: true,
         when: ({ VueRouter }) => VueRouter
@@ -72,7 +80,7 @@ module.exports = {
   },
 
   actions() {
-    const { frameworks, VueRouter, VueAutoRoutes } = this.answers
+    const { frameworks, Vuex, VueRouter } = this.answers
 
     return [
       {
@@ -83,17 +91,24 @@ module.exports = {
       frameworks === 'vue' && {
         type: 'add',
         templateDir: 'templates/vue/main',
+        files: '**',
+        filters: {
+          'src/App.router.vue': 'VueRouter',
+          'src/App.vue': '!VueRouter'
+        }
+      },
+      Vuex && {
+        type: 'add',
+        templateDir: 'templates/vue/vuex',
         files: '**'
       },
       VueRouter && {
         type: 'add',
         templateDir: 'templates/vue/router',
-        files: '**'
-      },
-      VueAutoRoutes && {
-        type: 'add',
-        templateDir: 'templates/vue/vue-auto-routes',
-        files: '**'
+        files: '**',
+        filters: {
+          'dvan.config.js': 'VueAutoRoutes'
+        }
       },
       {
         type: 'modify',
@@ -103,7 +118,8 @@ module.exports = {
       {
         type: 'move',
         patterns: {
-          _gitignore: '.gitignore'
+          _gitignore: '.gitignore',
+          'src/App.router.vue': 'src/App.vue'
         }
       }
     ].filter(Boolean)

@@ -15,6 +15,7 @@
   "xo": false,
   "dependencies": {
     "cac": "^6.4.0",
-    "sao": "^1.6.1"
+    "sao": "^1.6.1",
+    "superb": "^3.0.0"
   }
 }

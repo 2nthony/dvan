@@ -9420,6 +9420,13 @@ stylus@^0.54.5:
     sax "0.5.x"
     source-map "0.1.x"
 
+superb@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/superb/-/superb-3.0.0.tgz#d29a17cf090f4658813c8debbb89033d3f1cf5bb"
+  integrity sha512-2N5f/nIVjOM5NimhLr9+KPPRo2OAtTVIxxshyOrBQsteUhCZJo7a+0I5TG/yt32v0hzOjXuxnUiHEWwYiPpVfg==
+  dependencies:
+    unique-random-array "^1.0.0"
+
 superstruct@^0.6.0:
   version "0.6.0"
   resolved "https://registry.npmjs.org/superstruct/-/superstruct-0.6.0.tgz#20d2073526cf683a57f258695e009c4a19134ad0"
@@ -9880,6 +9887,18 @@ unique-filename@^1.1.0, unique-filename@^1.1.1:
   integrity sha512-Vmp0jIp2ln35UTXuryvjzkjGdRyf9b2lTXuSYUiPmzRcl3FDtYqAwOnTJkAngD9SWhnoJzDbTKwaOrZ+STtxNQ==
   dependencies:
     unique-slug "^2.0.0"
+
+unique-random-array@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/unique-random-array/-/unique-random-array-1.0.1.tgz#f29bda2a62be8860a703c4739c8f4fdb4d722cc7"
+  integrity sha512-z9J/SV8CUIhIRROcHe9YUoAT6XthUJt0oUyLGgobiXJprDP9O9dsErNevvSaAv5BkhwFEVPn6nIEOKeNE6Ck1Q==
+  dependencies:
+    unique-random "^1.0.0"
+
+unique-random@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/unique-random/-/unique-random-1.0.0.tgz#ce3e224c8242cd33a0e77b0d7180d77e6b62d0c4"
+  integrity sha1-zj4iTIJCzTOg53sNcYDXfmti0MQ=
 
 unique-slug@^2.0.0:
   version "2.0.1"

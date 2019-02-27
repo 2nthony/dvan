@@ -6,9 +6,15 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "lint": "xo"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-rem": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.2.0",
     "lerna": "^3.4.3",
     "lint-staged": "^8.1.0",
@@ -16,9 +22,18 @@
     "xo": "^0.23.0"
   },
   "lint-staged": {
-    "packages/**/*.js": [
-      "xo --fix",
-      "git add"
+    "linter": {
+      "*.js": [
+        "xo --fix",
+        "git add"
+      ],
+      "*.{md,json}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "packages/create-dvan-app/generator/templates/**"
     ]
   },
   "husky": {
@@ -27,9 +42,15 @@
     }
   },
   "xo": {
+    "extends": [
+      "rem",
+      "plugin:prettier/recommended"
+    ],
     "parser": "babel-eslint",
-    "space": true,
     "prettier": true,
+    "ignores": [
+      "packages/create-dvan-app/generator/templates/**"
+    ],
     "rules": {
       "camelcase": 0,
       "array-callback-return": 1,

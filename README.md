@@ -1,17 +1,17 @@
 <br>
-<center>
+<p align="center">
   <img src="./logo.svg">
-</center>
+</p>
 <br>
 
-<center>
+<p align="center">
 
 [![NPM Version](https://badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)
 ![NPM Downloads](https://badgen.net/npm/dm/dvan)
 ![NPM License](https://badgen.net/npm/license/dvan)
 [![install size](https://packagephobia.now.sh/badge?p=dvan)](https://packagephobia.now.sh/result?p=dvan)
 
-</center>
+</p>
 
 ## Ecosystem
 

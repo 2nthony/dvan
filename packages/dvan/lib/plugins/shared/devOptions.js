@@ -4,4 +4,5 @@ module.exports = command => {
   cmd('--port <port>', 'Development server port', 4000)
   cmd('--hot', 'Hot reload', true)
   cmd('-o, --open', 'Open in browser')
+  cmd('--local', 'Alias for --host localhost')
 }

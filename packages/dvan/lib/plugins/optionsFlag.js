@@ -4,7 +4,7 @@ exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
     const cmd = require('../utils/easyCmdOption')(command)
     cmd('-s, --src-dir <dir>', 'Source directory', 'src')
-    cmd('-d, --out-dir <dir>', 'Output directory', '__dist')
+    cmd('-d, --out-dir <dir>', 'Output directory', 'dist')
     cmd('--public-path <path>', 'Public path', '/')
     cmd('--public-folder <folder>', 'Public folder', 'public')
     cmd('--constants', 'Global constants')

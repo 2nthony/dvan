@@ -54,5 +54,16 @@
   },
   "devDependencies": {
     "vue-template-compiler": "^2.5.17"
-  }
+  },
+  "keywords": [
+    "dvan",
+    "poi",
+    "webpack",
+    "zero-config",
+    "bundler",
+    "vue-cli",
+    "parcel",
+    "create-react-app",
+    "babel"
+  ]
 }

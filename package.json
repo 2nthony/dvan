@@ -6,7 +6,6 @@
   "workspaces": [
     "core/*",
     "plugins/*",
-    "other-packages/*",
     "create-dvan-app"
   ],
   "scripts": {

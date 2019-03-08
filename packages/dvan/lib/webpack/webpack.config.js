@@ -12,12 +12,8 @@ const normalizeEntry = v => {
   return `./${v}`
 }
 
-/**
- * @param {import('webpack-chain') config
- * @param {import('..') api
- */
 module.exports = (config, api) => {
-  let { entry, srcDir, publicPath, minimize, sourceMap } = api.config
+  let { entry, srcDir } = api.config
 
   if (typeof entry === 'string') {
     entry = {
@@ -45,16 +41,29 @@ module.exports = (config, api) => {
   /**
    * Set extensions
    */
-  config.resolve.extensions.merge(['.js', '.jsx', '.json'])
+  config.resolve.extensions.merge(['.mjs', '.js', '.jsx', '.json'])
 
   /**
    * Output
    */
   config.output
     .filename(api.config.output.fileNames.js)
-    .publicPath(publicPath)
-    .path(require('path').normalize(api.resolveOutDir()))
-    .chunkFilename(api.config.output.fileNames.js.replace(/\.js$/, '.chunk.js'))
+    .publicPath(api.config.output.publicUrl)
+    .path(api.resolveOutDir())
+    .chunkFilename(
+      api.config.output.fileNames.js.replace(/\.js$/, '.chunk.js')
+    )
+
+  /**
+   * output.sourceMap defaults to false in production mode
+   */
+  config.devtool(
+    api.config.output.sourceMap === false
+      ? false
+      : api.isProd
+        ? 'source-map'
+        : 'cheap-module-source-map'
+  )
 
   /**
    * Format
@@ -71,7 +80,9 @@ module.exports = (config, api) => {
    * Alias @ to source directory
    * Alias @@ to root directory
    */
-  config.resolve.alias.set('@', api.resolveCwd(srcDir)).set('@@', api.cwd)
+  config.resolve.alias
+    .set('@', api.resolveCwd(srcDir))
+    .set('@@', api.cwd)
 
   /**
    * Disable webpack's default minimizer
@@ -85,53 +96,48 @@ module.exports = (config, api) => {
   /**
    * Minimize js files
    */
-  const isMinimizeObject = typeof minimize === 'object'
-  const shouldMinimize = isMinimizeObject || minimize
 
-  if (shouldMinimize) {
+  if (api.config.output.minimize) {
     config.plugin('minimize').use(require('terser-webpack-plugin'), [
-      Object.assign(
-        {
-          cache: true,
-          parallel: true,
-          sourceMap,
-          terserOptions: {
-            parse: {
-              // We want terser to parse ecma 8 code. However, we don't want it
-              // to apply any minfication steps that turns valid ecma 5 code
-              // into invalid ecma 5 code. This is why the 'compress' and 'output'
-              // sections only apply transformations that are ecma 5 safe
-              // https://github.com/facebook/create-react-app/pull/4234
-              ecma: 8
-            },
-            compress: {
-              ecma: 5,
-              warnings: false,
-              // Disabled because of an issue with Uglify breaking seemingly valid code:
-              // https://github.com/facebook/create-react-app/issues/2376
-              // Pending further investigation:
-              // https://github.com/mishoo/UglifyJS2/issues/2011
-              comparisons: false,
-              // Disabled because of an issue with Terser breaking valid code:
-              // https://github.com/facebook/create-react-app/issues/5250
-              // Pending futher investigation:
-              // https://github.com/terser-js/terser/issues/120
-              inline: 2
-            },
-            mangle: {
-              safari10: true
-            },
-            output: {
-              ecma: 5,
-              comments: false,
-              // Turned on because emoji and regex is not minified properly using default
-              // https://github.com/facebook/create-react-app/issues/2488
-              ascii_only: true
-            }
+      {
+        cache: true,
+        parallel: true,
+        sourceMap: api.config.output.sourceMap,
+        terserOptions: {
+          parse: {
+            // We want terser to parse ecma 8 code. However, we don't want it
+            // to apply any minfication steps that turns valid ecma 5 code
+            // into invalid ecma 5 code. This is why the 'compress' and 'output'
+            // sections only apply transformations that are ecma 5 safe
+            // https://github.com/facebook/create-react-app/pull/4234
+            ecma: 8
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            // Disabled because of an issue with Uglify breaking seemingly valid code:
+            // https://github.com/facebook/create-react-app/issues/2376
+            // Pending further investigation:
+            // https://github.com/mishoo/UglifyJS2/issues/2011
+            comparisons: false,
+            // Disabled because of an issue with Terser breaking valid code:
+            // https://github.com/facebook/create-react-app/issues/5250
+            // Pending futher investigation:
+            // https://github.com/terser-js/terser/issues/120
+            inline: 2
+          },
+          mangle: {
+            safari10: true
+          },
+          output: {
+            ecma: 5,
+            comments: false,
+            // Turned on because emoji and regex is not minified properly using default
+            // https://github.com/facebook/create-react-app/issues/2488
+            ascii_only: true
           }
-        },
-        isMinimizeObject ? minimize.js : {}
-      )
+        }
+      }
     ])
   }
 

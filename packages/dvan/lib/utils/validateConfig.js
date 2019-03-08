@@ -6,26 +6,35 @@ module.exports = (api, config) => {
     'index'
   )
   const srcDir = struct('string', 'src')
-  const outDir = struct('string', 'dist')
   const output = struct(
     {
+      dir: 'string',
+      sourceMap: 'boolean',
+      minimize: 'boolean',
+      publicUrl: 'string',
+      clean: 'boolean',
       format: struct.enum(['iife', 'umd', 'cjs']),
       moduleName: struct.optional('string'),
       fileNames: struct.optional(
         struct.object({
-          js: struct('string?'),
-          css: struct('string?'),
-          font: struct('string?'),
-          image: struct('string?'),
-          video: struct('string?')
+          js: struct.optional('string'),
+          css: struct.optional('string'),
+          font: struct.optional('string'),
+          image: struct.optional('string'),
+          video: struct.optional('string')
         })
-      )
+      ),
+      html: struct.union(['boolean', 'object'])
     },
     {
+      dir: 'dist',
+      sourceMap: !api.isProd,
+      minimize: api.isProd,
+      publicUrl: '/',
+      clean: true,
       format: 'iife'
     }
   )
-  const publicPath = struct('string', '/')
   const publicFolder = struct('string', 'public')
   const html = struct.optional(
     struct.union(['boolean', 'object']),
@@ -47,19 +56,17 @@ module.exports = (api, config) => {
       }
     )
   )
-  const sourceMap = struct('boolean', !api.isProd)
-  const minimize = struct('boolean|object', api.isProd)
   const plugins = struct('array', [])
   const constants = struct('object', {})
   const devServer = struct.interface(
     {
       hot: 'boolean',
       host: 'string',
-      port: 'number|string',
+      port: struct.union(['number', 'string']),
       hotEntries: struct.tuple(['string']),
-      https: struct.optional('boolean|object'),
-      before: 'function?',
-      after: 'function?',
+      https: struct.union(['boolean', 'object']),
+      before: struct.optional('function'),
+      after: struct.optional('function'),
       open: 'boolean'
     },
     {
@@ -81,13 +88,9 @@ module.exports = (api, config) => {
   const Struct = struct({
     entry,
     srcDir,
-    outDir,
     output,
-    publicPath,
     publicFolder,
     html,
-    sourceMap,
-    minimize,
     plugins,
     constants,
     devServer,
@@ -97,7 +100,7 @@ module.exports = (api, config) => {
     evergreen,
     chainWebpack,
     // Config file path
-    configPath: 'string?'
+    configPath: struct.optional('string')
   })
 
   const [err, res] = Struct.validate(config)
@@ -114,6 +117,13 @@ module.exports = (api, config) => {
     },
     res.output.fileNames
   )
+
+  // Ensure publicUrl
+  res.output.publicUrl = res.output.publicUrl
+    // Must end with slash
+    .replace(/\/?$/, '/')
+    // Remove leading ./
+    .replace(/^\.\//, '')
 
   api.logger.debug('Validated config', res)
 

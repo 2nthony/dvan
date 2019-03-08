@@ -24,7 +24,7 @@ module.exports = (api, config) => {
           video: struct.optional('string')
         })
       ),
-      html: struct.union(['boolean', 'object'])
+      html: struct.optional(struct.union(['boolean', 'object']))
     },
     {
       dir: 'dist',

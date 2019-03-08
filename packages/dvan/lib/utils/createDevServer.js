@@ -35,7 +35,7 @@ module.exports = async api => {
           overlay: true,
           disableHostCheck: true,
           publicPath: webpackConfig.output.publicPath,
-          contentBase: api.resolveCwd(api.config.publicFolder || 'public'),
+          contentBase: api.config.publicFolder && api.resolveCwd(api.config.publicFolder),
           watchContentBase: true,
           stats: {
             colors: true

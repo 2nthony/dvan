@@ -4,7 +4,10 @@
   "author": "evila <ijoec123@gmail.com>",
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "core/*",
+    "plugins/*",
+    "other-packages/*",
+    "create-dvan-app"
   ],
   "scripts": {
     "lint": "xo"

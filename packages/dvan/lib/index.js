@@ -80,7 +80,7 @@ class Dvan {
   }
 
   resolveOutDir(...args) {
-    return this.resolveCwd(this.config.outDir, ...args)
+    return this.resolveCwd(this.config.output.dir, ...args)
   }
 
   initCLI() {
@@ -117,8 +117,7 @@ class Dvan {
   initConfigFromCLIOptions() {
     const {
       srcDir,
-      outDir,
-      publicPath,
+      publicUrl,
       publicFolder,
       html,
       sourceMap,
@@ -135,12 +134,13 @@ class Dvan {
     return {
       entry: this.cli.args.length > 0 ? this.cli.args : undefined,
       srcDir,
-      outDir,
-      publicPath,
+      output: {
+        publicUrl,
+        sourceMap,
+        minimize,
+      },
       publicFolder,
       html,
-      sourceMap,
-      minimize,
       constants,
       devServer: {
         host,

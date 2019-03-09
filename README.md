@@ -21,10 +21,10 @@
 
 ## Ecosystem
 
-|Project|Status|Description|
-|---|---|---|
-|[create-dvan-app](https://github.com/evillt/dvan/tree/master/packages/create-dvan-app)|![](https://badgen.net/npm/v/create-dvan-app?icon=npm)|Create _Dvan app_ in seconds|
-|[@dvan/vue-static](https://github.com/evillt/dvan/tree/master/packages/vue-static)|WIP|Plugin - generate app to static html files|
+| Project                                                                           | Status                                                 | Description                                |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------ |
+| [create-dvan-app](https://github.com/evillt/dvan/tree/master/create-dvan-app)     | ![](https://badgen.net/npm/v/create-dvan-app?icon=npm) | Create _Dvan app_ in seconds               |
+| [@dvan/vue-static](https://github.com/evillt/dvan/tree/master/plugins/vue-static) | WIP                                                    | Plugin - generate app to static html files |
 
 ## Here are something you have to know
 
@@ -52,10 +52,12 @@ When you’re ready to deploy to production, create a minified bundle with npm r
 📚 https://dvan.js.org
 
 ### FAQ
+
 - Q: Why would you do that?  
   A: For training(study?).
 - Q: Which should I choose?  
   A: [Poi](https://github.com/egoist/poi) absolutely. **More features**, better experience and less bugs.
 
 ## License
+
 MIT [@evillt](https://github.com/evillt)

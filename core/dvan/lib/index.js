@@ -138,9 +138,9 @@ class Dvan {
         publicUrl,
         sourceMap,
         minimize,
+        html
       },
       publicFolder,
-      html,
       constants,
       devServer: {
         host,
@@ -185,8 +185,8 @@ class Dvan {
       /**
        * Cli commands
        */
-      require('./plugins/command/ejectHTML'),
-      require('./plugins/command/vueSFC'),
+      require('./plugins/command/ejectHtml'),
+      require('./plugins/command/vueSfc'),
 
       /**
        * Webpack config
@@ -200,8 +200,7 @@ class Dvan {
       require('./plugins/config/video'),
       require('./plugins/config/graphql'),
       require('./plugins/config/toml'),
-      require('./plugins/config/yaml'),
-      require('./plugins/config/artTemplate')
+      require('./plugins/config/yaml')
     ]
 
     if ((this.config.plugins || []).length > 0) {

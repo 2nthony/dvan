@@ -5,7 +5,7 @@ exports.extend = api => {
     require('../shared/extractCssOptions')(api, command)
   })
 
-  api.hook('onCreateWebpackConfig', (config, { type }) => {
+  api.hook('onCreateWebpackChain', (config, { type }) => {
     const {
       loaderOptions,
       extractCss: shouldExtract,

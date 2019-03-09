@@ -2,4 +2,4 @@ const Dvan = require('.')
 
 const dvan = new Dvan()
 
-module.exports = dvan.createWebpackConfig().toConfig()
+module.exports = dvan.createWebpackChain().toConfig()

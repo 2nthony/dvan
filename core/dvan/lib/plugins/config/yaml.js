@@ -1,7 +1,7 @@
 exports.name = 'built-in:config-yaml'
 
 exports.extend = api => {
-  api.hook('onCreateWebpackConfig', config => {
+  api.hook('onCreateWebpackChain', config => {
     config.module
       .rule('yaml')
       .test(/\.ya?ml$/)

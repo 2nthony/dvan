@@ -10,7 +10,7 @@ exports.extend = api => {
     command.option('--no-html', 'Disable HTML template')
   })
 
-  api.hook('onCreateWebpackConfig', config => {
+  api.hook('onCreateWebpackChain', config => {
     const {
       isProd,
       pkg,

@@ -7,7 +7,7 @@ exports.extend = api => {
     })
   })
 
-  api.hook('onCreateWebpackConfig', config => {
+  api.hook('onCreateWebpackChain', config => {
     const { jsx } = api.config
     const isReactJSX = jsx === true || jsx === 'react'
     const isVueJSX = jsx === 'vue'

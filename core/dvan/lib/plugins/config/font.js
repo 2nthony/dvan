@@ -1,7 +1,7 @@
 exports.name = 'built-in:config-font'
 
 exports.extend = api => {
-  api.hook('onCreateWebpackConfig', config => {
+  api.hook('onCreateWebpackChain', config => {
     config.module
       .rule('font')
       .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/)

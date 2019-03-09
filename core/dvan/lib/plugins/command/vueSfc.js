@@ -86,7 +86,7 @@ exports.extend = api => {
       api.logger.tips('DONNOT use use production mode')
       api.logger.tips('RECOMMEND to use `Rollup` to build Vue SFC library')
 
-      const config = api.createWebpackConfig()
+      const config = api.createWebpackChain()
       /**
        * Do not use babel to build standalone Vue SFC
        * Because it just a SFC to run under the based Vue
@@ -98,7 +98,7 @@ exports.extend = api => {
     })
   })
 
-  api.hook('onCreateWebpackConfig', config => {
+  api.hook('onCreateWebpackChain', config => {
     require('../shared/webpackDevConfig')(api, config)
   })
 }

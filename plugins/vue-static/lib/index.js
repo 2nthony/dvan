@@ -8,9 +8,9 @@ exports.extend = api => {
     // TODO
     // Override default command action to build client manifest and server bundle
     api.defaultCommand.action(async () => {
-      const clientConfig = api.createWebpackConfig().toConfig()
+      const clientConfig = api.createWebpackChain().toConfig()
       const serverConfig = api
-        .createWebpackConfig({ type: 'server' })
+        .createWebpackChain({ type: 'server' })
         .toConfig()
 
       const clientCompiler = api.createWebpackCompiler(clientConfig)
@@ -29,7 +29,7 @@ exports.extend = api => {
       })
   })
 
-  api.hook('onCreateWebpackConfig', (config, { type }) => {
+  api.hook('onCreateWebpackChain', (config, { type }) => {
     config.plugins.delete('html')
 
     const __CLIENT_MANIFEST__ = 'ssr/clientManifest.json'

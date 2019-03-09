@@ -17,7 +17,7 @@ exports.extend = api => {
     })
   })
 
-  api.hook('onCreateWebpackConfig', config => {
+  api.hook('onCreateWebpackChain', config => {
     require('./shared/webpackDevConfig')(api, config)
   })
 }

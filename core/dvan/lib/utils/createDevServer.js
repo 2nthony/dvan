@@ -2,7 +2,7 @@ module.exports = async api => {
   const { devServer } = api.config
   delete devServer.hotEntries
 
-  const config = api.createWebpackConfig()
+  const config = api.createWebpackChain()
 
   const { host, port: _port, open } = devServer
 

@@ -93,6 +93,7 @@ module.exports = (api, config) => {
     jsx,
     loaderOptions,
     evergreen,
+    configureWebpack,
     chainWebpack,
     // Config file path
     configPath: struct.optional('string')

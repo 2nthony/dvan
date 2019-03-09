@@ -92,7 +92,7 @@ class Dvan {
       })
       .usage('[...entries] [options]')).action(async () => {
       logger.debug('Using default action')
-      const webpackConfig = this.createWebpackConfig().toConfig()
+      const webpackConfig = this.createWebpackChain().toConfig()
       const compiler = this.createWebpackCompiler(webpackConfig)
       await runCompiler(compiler)
     })
@@ -160,15 +160,19 @@ class Dvan {
     ].includes(name)
   }
 
-  createWebpackConfig(opts) {
-    const WebpackConfig = require('webpack-chain')
-    const config = new WebpackConfig()
-
-    require('./webpack/webpack.config')(config, this)
+  createWebpackChain(opts) {
+    const WebpackChain = require('./utils/WebpackChain')
 
     opts = Object.assign({ type: 'client' }, opts)
 
-    this.hooks.invoke('onCreateWebpackConfig', config, opts)
+    const config = new WebpackChain({
+      configureWebpack: this.config.configureWebpack,
+      opts
+    })
+
+    require('./webpack/webpack.config')(config, this)
+
+    this.hooks.invoke('onCreateWebpackChain', config, opts)
 
     if (this.config.chainWebpack) {
       this.config.chainWebpack(config, opts)

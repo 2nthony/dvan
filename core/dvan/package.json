@@ -8,7 +8,8 @@
   "license": "MIT",
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "webpack.config.js"
   ],
   "repository": {
     "type": "git",
@@ -50,7 +51,8 @@
     "vue-style-loader": "^4.1.2",
     "webpack": "^4.16.5",
     "webpack-chain": "^4.9.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
     "vue-template-compiler": "^2.5.17"

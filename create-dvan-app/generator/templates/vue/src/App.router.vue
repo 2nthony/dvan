@@ -2,11 +2,11 @@
   <div id="app">
     <h1>{{ title }}</h1>
     <p>Edit `src/pages/**` and save to reload</p>
-    <router-link to="/">Home</router-link>
-    <router-link to="bar">Bar</router-link>
 
-    <br>
-    <br>
+    <p>
+      <router-link to="/">Home</router-link>
+      <router-link to="bar">Bar</router-link>
+    </p>
 
     <router-view></router-view>
   </div>

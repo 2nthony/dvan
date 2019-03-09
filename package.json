@@ -10,7 +10,8 @@
     "create-dvan-app"
   ],
   "scripts": {
-    "lint": "xo"
+    "lint": "xo",
+    "release": "lerna version --conventional-commits"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

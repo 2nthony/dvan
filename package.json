@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "dvan-monorepo",
   "repository": "https://github.com/dvanjs/dvan",
   "author": "evila <ijoec123@gmail.com>",
   "license": "MIT",
@@ -24,7 +25,7 @@
     "xo": "^0.23.0"
   },
   "lint-staged": {
-    "linter": {
+    "linters": {
       "*.js": [
         "xo --fix",
         "git add"
@@ -35,7 +36,7 @@
       ]
     },
     "ignore": [
-      "packages/create-dvan-app/generator/templates/**"
+      "create-dvan-app/generator/templates/**"
     ]
   },
   "husky": {
@@ -51,7 +52,7 @@
     "parser": "babel-eslint",
     "prettier": true,
     "ignores": [
-      "packages/create-dvan-app/generator/templates/**"
+      "create-dvan-app/generator/templates/**"
     ],
     "rules": {
       "camelcase": 0,

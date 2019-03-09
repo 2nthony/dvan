@@ -15,8 +15,10 @@ exports.extend = api => {
       isProd,
       pkg,
       config: {
-        html = {},
-        output: { format }
+        output: {
+          format,
+          html = {}
+        }
       }
     } = api
 
@@ -69,7 +71,7 @@ exports.extend = api => {
             : undefined
         },
         {
-          title: pkg.name || 'Dvan App',
+          title: pkg.productName || pkg.name || 'Dvan App',
           meta: pkg.description
             ? [
                 {
@@ -86,10 +88,10 @@ exports.extend = api => {
               ? api.resolveCwd(html.template)
               : html.template
             : existsSync(api.resolveCwd('public/template.html'))
-            ? api.resolveCwd('public/template.html')
-            : require.resolve(
-                path.join(__dirname, '../../webpack/default-template.html')
-              )
+              ? api.resolveCwd('public/template.html')
+              : require.resolve(
+                  path.join(__dirname, '../../webpack/default-template.html')
+                )
         }
       )
     ])

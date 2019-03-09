@@ -10,20 +10,10 @@ module.exports = (api, config) => {
     struct.union(['boolean', 'object']),
     struct.interface(
       {
-        title: 'string',
-        meta: struct.union(['array', 'object'])
+        title: struct.optional('string'),
+        meta: struct.optional(struct.union(['array', 'object']))
       },
-      {
-        title: api.pkg.name || 'Dvan App',
-        meta: api.pkg.description
-          ? [
-              {
-                name: 'description',
-                content: api.pkg.description
-              }
-            ]
-          : []
-      }
+      {}
     )
   )
   const output = struct(

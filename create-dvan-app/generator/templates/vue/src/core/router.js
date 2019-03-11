@@ -14,11 +14,11 @@ export function createRouter() {
     routes: [
       {
         path: '/',
-        component: () => import('@/pages/index.vue')
+        component: () => import('@/views/index.vue')
       },
       {
         path: '/bar',
-        component: () => import('@/pages/bar.vue')
+        component: () => import('@/views/bar.vue')
       }
     ]
 <% } -%>

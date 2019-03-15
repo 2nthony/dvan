@@ -50,7 +50,7 @@ module.exports = async api => {
 				devServerOptions
 			)
 
-			server.listen(port, api.parseArgs.has('local') ? 'localhost' : host)
+			server.listen(port, api.args.has('local') ? 'localhost' : host)
 		}
 	}
 }

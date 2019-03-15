@@ -9,248 +9,248 @@ const loadPlugins = require('./utils/loadPlugins')
 const parseArgs = require('./utils/parseArgs')
 const validateConfig = require('./utils/validateConfig')
 
-class Dvan {
-  constructor() {
-    this.cli = require('cac')()
-    this.hooks = new Hooks()
-    this.args = process.argv
-    this.parseArgs = parseArgs(this.args.slice(2))
-    this.logger = logger
+module.exports = class DvanCore {
+	constructor(rawArgs = process.argv) {
+		this.cli = require('cac')()
+		this.hooks = new Hooks()
+		this.rawArgs = rawArgs
+		this.args = parseArgs(rawArgs)
+		this.logger = logger
 
-    if (this.parseArgs.has('debug')) {
-      logger.setOptions({ debug: true })
-    }
+		if (this.args.has('debug')) {
+			logger.setOptions({ debug: true })
+		}
 
-    this.mode =
-      this.parseArgs.has('prod') || this.parseArgs.has('production')
-        ? 'production'
-        : this.parseArgs.get('mode') || 'development'
+		this.mode =
+			this.args.has('prod') || this.args.has('production')
+				? 'production'
+				: this.args.get('mode') || 'development'
 
-    this.cwd = this.parseArgs.get('cwd') || process.cwd()
+		logger.debug(`Running in ${this.mode} mode`)
 
-    this.pkg = require(this.resolveCwd('package.json'))
+		this.cwd = this.args.get('cwd') || process.cwd()
 
-    this.config = {}
+		this.pkg = require(this.resolveCwd('package.json'))
 
-    if (this.parseArgs.has('no-config')) {
-      logger.debug('Config file was disabled')
-    } else {
-      const config = loadConfig({
-        files: ['package.json'],
-        matches: ['dvan.config.*', '.dvanrc*'],
-        dir: this.cwd,
-        packageKey: 'dvan'
-      })
-      const { configPath } = config
-      if (configPath) {
-        logger.debug(
-          `Using config: '${require('./utils/colorfulFile')(
-            path.basename(configPath)
-          )}'`
-        )
-      } else {
-        logger.debug('Not using any config file')
-      }
+		this.config = {}
 
-      this.config = Object.assign(
-        config,
-        this.parseArgs.get('config')
-          ? require(this.resolveCwd(this.parseArgs.get('config')))
-          : {}
-      )
-    }
+		if (this.args.has('no-config')) {
+			logger.debug('Config file was disabled')
+		} else {
+			const config = loadConfig({
+				files: ['package.json'],
+				matches: ['dvan.config.*', '.dvanrc*'],
+				dir: this.cwd,
+				packageKey: 'dvan'
+			})
+			const { configPath } = config
+			if (configPath) {
+				logger.debug(
+					`Using config: '${require('./utils/colorfulFile')(
+						path.basename(configPath)
+					)}'`
+				)
+			} else {
+				logger.debug('Not using any config file')
+			}
 
-    /**
-     * Set process.env
-     */
-    process.env.NODE_ENV = this.mode
-    process.env.DVAN_APP = this.hasDependency('vue') ? 'vue' : 'react'
+			this.config = Object.assign(
+				config,
+				this.args.get('config')
+					? require(this.resolveCwd(this.args.get('config')))
+					: {}
+			)
+		}
 
-    this.applyPlugins()
+		/**
+		 * Set process.env
+		 */
+		process.env.NODE_ENV = this.mode
+		process.env.DVAN_APP = this.hasDependency('vue') ? 'vue' : 'react'
 
-    this.initCLI()
-  }
+		this.applyPlugins()
 
-  get isProd() {
-    return this.mode === 'production'
-  }
+		this.initCLI()
+	}
 
-  resolveCwd(...args) {
-    return path.resolve(this.cwd, ...args)
-  }
+	get isProd() {
+		return this.mode === 'production'
+	}
 
-  resolveOutDir(...args) {
-    return this.resolveCwd(this.config.output.dir, ...args)
-  }
+	resolveCwd(...args) {
+		return path.resolve(this.cwd, ...args)
+	}
 
-  initCLI() {
-    const { cli } = this
+	resolveOutDir(...args) {
+		return this.resolveCwd(this.config.output.dir, ...args)
+	}
 
-    const command = (this.defaultCommand = cli
-      .command('[...entries]', 'Entry files for App', {
-        ignoreOptionDefaultValue: true
-      })
-      .usage('[...entries] [options]')).action(async () => {
-      logger.debug('Using default action')
-      const webpackConfig = this.createWebpackChain().toConfig()
-      const compiler = this.createWebpackCompiler(webpackConfig)
-      await runCompiler(compiler)
-    })
+	initCLI() {
+		const { cli } = this
 
-    this.hooks.invoke('onInitCLI', { command, args: this.parseArgs })
+		const command = (this.defaultCommand = cli
+			.command('[...entries]', 'Entry files for App', {
+				ignoreOptionDefaultValue: true
+			})
+			.usage('[...entries] [options]')).action(async () => {
+			logger.debug('Using default action')
+			const webpackConfig = this.createWebpackChain().toConfig()
+			const compiler = this.createWebpackCompiler(webpackConfig)
+			await runCompiler(compiler)
+		})
 
-    /**
-     * Global cli options
-     */
-    cli
-      .option('--mode <mode>', 'Set mode', { default: 'development' })
-      .option('--prod, --production', 'Alias for --mode production')
-      .option('--debug', 'Show debug logs')
-      .option('--config [path]', 'Specify config file')
-      .option('--no-config', 'Disable config file')
-      .option('--no-clean', 'Do not clean output directory before bundling')
-      .option('--no-clear-console', 'Do not clear console')
-      .version(require('../package.json').version)
-      .help()
-  }
+		this.hooks.invoke('onInitCLI', { command, args: this.args })
 
-  initConfigFromCLIOptions() {
-    const {
-      srcDir,
-      publicUrl,
-      publicFolder,
-      html,
-      sourceMap,
-      minimize,
-      constants,
-      host,
-      hot,
-      port,
-      open,
-      extractCss,
-      jsx
-    } = this.cli.options
+		/**
+		 * Global cli options
+		 */
+		cli
+			.option('--mode <mode>', 'Set mode', { default: 'development' })
+			.option('--prod, --production', 'Alias for --mode production')
+			.option('--debug', 'Show debug logs')
+			.option('--config [path]', 'Specify config file')
+			.option('--no-config', 'Disable config file')
+			.option('--no-clean', 'Do not clean output directory before bundling')
+			.option('--no-clear-console', 'Do not clear console')
+			.version(require('../package.json').version)
+			.help()
+	}
 
-    return {
-      entry: this.cli.args.length > 0 ? this.cli.args : undefined,
-      srcDir,
-      output: {
-        publicUrl,
-        sourceMap,
-        minimize,
-        html
-      },
-      publicFolder,
-      constants,
-      devServer: {
-        host,
-        hot,
-        port,
-        open
-      },
-      extractCss,
-      jsx
-    }
-  }
+	initConfigFromCLIOptions() {
+		const {
+			srcDir,
+			publicUrl,
+			publicFolder,
+			html,
+			sourceMap,
+			minimize,
+			constants,
+			host,
+			hot,
+			port,
+			open,
+			extractCss,
+			jsx
+		} = this.cli.options
 
-  hasDependency(name) {
-    return [
-      ...Object.keys(this.pkg.dependencies || {}),
-      ...Object.keys(this.pkg.devDependencies || {})
-    ].includes(name)
-  }
+		return {
+			entry: this.cli.args.length > 0 ? this.cli.args : undefined,
+			srcDir,
+			output: {
+				publicUrl,
+				sourceMap,
+				minimize,
+				html
+			},
+			publicFolder,
+			constants,
+			devServer: {
+				host,
+				hot,
+				port,
+				open
+			},
+			extractCss,
+			jsx
+		}
+	}
 
-  createWebpackChain(opts) {
-    const WebpackChain = require('./utils/WebpackChain')
+	hasDependency(name) {
+		return [
+			...Object.keys(this.pkg.dependencies || {}),
+			...Object.keys(this.pkg.devDependencies || {})
+		].includes(name)
+	}
 
-    opts = Object.assign({ type: 'client' }, opts)
+	createWebpackChain(opts) {
+		const WebpackChain = require('./utils/WebpackChain')
 
-    const config = new WebpackChain({
-      configureWebpack: this.config.configureWebpack,
-      opts
-    })
+		opts = Object.assign({ type: 'client' }, opts)
 
-    require('./webpack/webpack.config')(config, this)
+		const config = new WebpackChain({
+			configureWebpack: this.config.configureWebpack,
+			opts
+		})
 
-    this.hooks.invoke('onCreateWebpackChain', config, opts)
+		require('./webpack/webpack.config')(config, this)
 
-    if (this.config.chainWebpack) {
-      this.config.chainWebpack(config, opts)
-    }
+		this.hooks.invoke('onCreateWebpackChain', config, opts)
 
-    return config
-  }
+		if (this.config.chainWebpack) {
+			this.config.chainWebpack(config, opts)
+		}
 
-  applyPlugins() {
-    this.plugins = [
-      require('./plugins/optionsFlag'),
-      require('./plugins/development'),
+		return config
+	}
 
-      /**
-       * Cli commands
-       */
-      require('./plugins/command/ejectHtml'),
-      require('./plugins/command/vueSfc'),
+	applyPlugins() {
+		this.plugins = [
+			require('./plugins/optionsFlag'),
+			require('./plugins/development'),
 
-      /**
-       * Webpack config
-       */
-      require('./plugins/config/html'),
-      require('./plugins/config/babel'),
-      require('./plugins/config/css'),
-      require('./plugins/config/vue'),
-      require('./plugins/config/font'),
-      require('./plugins/config/image'),
-      require('./plugins/config/video'),
-      require('./plugins/config/graphql'),
-      require('./plugins/config/toml'),
-      require('./plugins/config/yaml')
-    ]
+			/**
+			 * Cli commands
+			 */
+			require('./plugins/command/ejectHtml'),
+			require('./plugins/command/vueSfc'),
 
-    if ((this.config.plugins || []).length > 0) {
-      this.plugins = this.plugins.concat(loadPlugins(this, this.config.plugins))
-    }
+			/**
+			 * Webpack config
+			 */
+			require('./plugins/config/html'),
+			require('./plugins/config/babel'),
+			require('./plugins/config/css'),
+			require('./plugins/config/vue'),
+			require('./plugins/config/font'),
+			require('./plugins/config/image'),
+			require('./plugins/config/video'),
+			require('./plugins/config/graphql'),
+			require('./plugins/config/toml'),
+			require('./plugins/config/yaml')
+		]
 
-    for (const plugin of this.plugins) {
-      if (plugin.extend) {
-        logger.debug(`Using plugin: '${plugin.name}'`)
+		if ((this.config.plugins || []).length > 0) {
+			this.plugins = this.plugins.concat(loadPlugins(this, this.config.plugins))
+		}
 
-        plugin.extend(this)
-      }
-    }
-  }
+		for (const plugin of this.plugins) {
+			if (plugin.extend) {
+				logger.debug(`Using plugin: '${plugin.name}'`)
 
-  hook(name, fn) {
-    return this.hooks.add(name, fn)
-  }
+				plugin.extend(this)
+			}
+		}
+	}
 
-  createWebpackCompiler(config) {
-    return require('webpack')(config)
-  }
+	hook(name, fn) {
+		return this.hooks.add(name, fn)
+	}
 
-  async run() {
-    this.cli.parse(this.args, { run: false })
+	createWebpackCompiler(config) {
+		return require('webpack')(config)
+	}
 
-    logger.debug('CLI args', this.cli.args)
-    logger.debug('CLI options', this.cli.options)
+	async run() {
+		this.cli.parse(this.args, { run: false })
 
-    const cliConfig = this.initConfigFromCLIOptions()
+		logger.debug('CLI args', this.cli.args)
+		logger.debug('CLI options', this.cli.options)
 
-    this.config = validateConfig(this, merge(this.config, cliConfig))
+		const cliConfig = this.initConfigFromCLIOptions()
 
-    logger.debug('In run()')
+		this.config = validateConfig(this, merge(this.config, cliConfig))
 
-    await this.cli.runMatchedCommand()
-  }
+		logger.debug('In run()')
 
-  localResolve(name, cwd = this.cwd) {
-    return resolveFrom.silent(cwd, name)
-  }
+		await this.cli.runMatchedCommand()
+	}
 
-  localRequire(name, cwd) {
-    const resolved = this.localResolve(name, cwd)
-    return resolved ? require(resolved) : null
-  }
+	localResolve(name, cwd = this.cwd) {
+		return resolveFrom.silent(cwd, name)
+	}
+
+	localRequire(name, cwd) {
+		const resolved = this.localResolve(name, cwd)
+		return resolved ? require(resolved) : null
+	}
 }
-
-module.exports = Dvan

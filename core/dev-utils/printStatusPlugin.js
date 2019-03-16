@@ -28,10 +28,10 @@ module.exports = class PrintStatusPlugin {
 					// These are points
 					const { errors, warnings } = messages
 					for (const error of errors) {
-						logger.color('#fd6f6b', error)
+						logger.log(logger.color('#fd6f6b', error))
 					}
 					for (const warning of warnings) {
-						logger.color('yellow', warning)
+						logger.log(logger.color('yellow', warning))
 					}
 				}
 			} else {

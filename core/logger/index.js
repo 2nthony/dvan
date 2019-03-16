@@ -50,9 +50,9 @@ class Logger {
 
 	color(type, ...args) {
 		if (type.startsWith('#')) {
-			return this.log(chalk.hex(type)(...args))
+			return chalk.hex(type)(...args)
 		}
-		return this.log(chalk[type](...args))
+		return chalk[type](...args)
 	}
 }
 

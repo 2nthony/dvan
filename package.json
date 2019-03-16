@@ -14,7 +14,6 @@
     "release": "lerna version --conventional-commits"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-rem": "^4.0.0",

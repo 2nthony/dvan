@@ -231,7 +231,7 @@ module.exports = class DvanCore {
 	}
 
 	async run() {
-		this.cli.parse(this.args, { run: false })
+		this.cli.parse(this.rawArgs, { run: false })
 
 		logger.debug('CLI args', this.cli.args)
 		logger.debug('CLI options', this.cli.options)

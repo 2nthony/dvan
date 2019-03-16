@@ -49,7 +49,6 @@
       "rem",
       "plugin:prettier/recommended"
     ],
-    "prettier": true,
     "ignores": [
       "create-dvan-app/generator/templates/**"
     ],

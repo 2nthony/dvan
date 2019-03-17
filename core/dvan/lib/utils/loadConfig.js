@@ -6,7 +6,7 @@ module.exports = ({ files = [], matches = [], dir, packageKey }) => {
   const matchFiles = files.concat(matches)
   const configFiles = globby.sync(matchFiles, { cwd: dir })
 
-  let config
+  let config = {}
   let configFilePath
 
   if (configFiles.length > 0) {

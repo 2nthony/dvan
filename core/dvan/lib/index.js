@@ -62,7 +62,7 @@ module.exports = class DvanCore {
 
       this.config = Object.assign(
         config,
-        this.args.get('config')
+        this.args.has('config')
           ? require(this.resolveCwd(this.args.get('config')))
           : {}
       )

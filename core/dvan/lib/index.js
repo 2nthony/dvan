@@ -200,7 +200,7 @@ module.exports = class DvanCore {
   applyPlugins() {
     this.plugins = [
       require('./plugins/optionsFlag'),
-      require('./plugins/development'),
+      require('./plugins/serve'),
 
       /**
        * Cli commands

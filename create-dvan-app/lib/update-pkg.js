@@ -17,7 +17,7 @@ module.exports = ({
     author: `${author} <${email}>`,
     scripts: {
       dvan: 'dvan',
-      dev: 'dvan --dev',
+      serve: 'dvan --serve',
       build: 'dvan --prod'
     },
     dependencies: {

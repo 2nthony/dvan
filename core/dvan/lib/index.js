@@ -143,7 +143,8 @@ module.exports = class DvanCore {
       port,
       open,
       extractCss,
-      jsx
+      jsx,
+      local
     } = this.cli.options
 
     return {
@@ -158,7 +159,7 @@ module.exports = class DvanCore {
       publicFolder,
       constants,
       devServer: {
-        host,
+        host: local ? 'localhost' : host,
         hot,
         port,
         open

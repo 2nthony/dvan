@@ -10,7 +10,7 @@ exports.extend = api => {
       loaderOptions,
       extractCss: shouldExtract,
       sourceMap,
-      minimize
+      output: { minimize }
     } = api.config
     const shouldMinimize = Boolean(minimize)
     const isServer = type === 'server'

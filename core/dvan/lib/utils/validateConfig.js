@@ -1,6 +1,8 @@
 const { struct } = require('superstruct')
+const getFileNames = require('./getFileNames')
 
 module.exports = (api, config) => {
+  api.logger.debug('Validating config', config)
   const entry = struct.optional(
     struct.union(['string', 'array', 'object']),
     'index'
@@ -101,13 +103,7 @@ module.exports = (api, config) => {
   if (err) throw err
 
   res.output.fileNames = Object.assign(
-    {
-      js: 'assets/js/[name].[chunkhash:8].js',
-      css: 'assets/css/style.[chunkhash:8].css',
-      font: 'assets/font/[name].[hash:8].[ext]',
-      image: 'assets/image/[name].[hash:8].[ext]',
-      video: 'assets/video/[name].[hash:8].[ext]'
-    },
+    getFileNames({ useHash: api.isProd, format: res.output.format }),
     res.output.fileNames
   )
 

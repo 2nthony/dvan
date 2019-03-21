@@ -12,8 +12,8 @@ module.exports = async api => {
   const port = await require('get-port')({ port: _port })
 
   config
-    .plugin('print-dev-status')
-    .use(require('@dvan/dev-utils/printDevStatusPlugin')(_host, port))
+    .plugin('print-serve-message')
+    .use(require('@dvan/dev-utils/printServeMessage')(_host, port))
 
   if (open) {
     config

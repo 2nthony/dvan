@@ -1,10 +1,10 @@
 exports.name = 'built-in:serve'
 
 exports.extend = api => {
-  api.hook('onInitCLI', ({ command, args }) => {
+  api.hook('onInitCLI', ({ command }) => {
     command.option('-s, --serve', 'Serve assets on local server')
 
-    if (!args.has('s') && !args.has('serve')) return
+    if (!api.isServe) return
 
     const cmd = require('../utils/easyCmdOption')(command)
     cmd('--host <host>', 'Serve host', '0.0.0.0')

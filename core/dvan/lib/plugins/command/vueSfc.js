@@ -5,7 +5,7 @@ const runCompiler = require('@dvan/dev-utils/runCompiler')
 exports.name = 'built-in:command-vue-sfc'
 
 exports.extend = api => {
-  api.hook('onInitCLI', ({ args }) => {
+  api.hook('onInitCLI', () => {
     const command = api.cli.command('vue-sfc <file-path>', 'Vue SFC')
     command
       .option('--dev', 'Start develop vue file on local server')
@@ -52,7 +52,7 @@ exports.extend = api => {
       /**
        * Serve Vue SFC on local server
        */
-      if (args.has('dev')) {
+      if (api.isServe) {
         const { config, run } = await require('../../utils/createDevServer')(
           api
         )

@@ -1,5 +1,5 @@
 module.exports = (api, config) => {
-  if (!api.cli.options.serve) return
+  if (!api.isServe) return
 
   const { hotEntries = ['index'], hot } = api.config.devServer || {}
 

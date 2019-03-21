@@ -48,7 +48,7 @@ When you’re ready to deploy to production, create a minified bundle with npm r
 
 Dvan won't exist without the inspirations from following projects:
 
-- Poi
+- **Poi**
 - Webpack
 
 ## FAQ

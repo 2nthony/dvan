@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: 'src/main.js',
+  entry: 'src/index.js',
   chainWebpack(config) {
     config.plugin('auto-routes').use(
       require('vue-auto-routes/plugin'), [

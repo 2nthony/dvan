@@ -1,3 +1,3 @@
 module.exports = {
-  entry: 'src/main.js'
+  entry: 'src/index.js'
 }

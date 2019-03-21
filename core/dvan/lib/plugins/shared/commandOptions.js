@@ -3,7 +3,7 @@ exports.name = 'built-in:shared-command-options'
 exports.extend = api => {
   api.hook('onInitCLI', ({ command }) => {
     const cmd = require('../../utils/easyCmdOption')(command)
-    cmd('-s, --src-dir <dir>', 'Source directory', 'src')
+    cmd('--src-dir', 'Source directory', 'src')
     cmd('-d, --out-dir <dir>', 'Output directory', 'dist')
     cmd('--public-url <url>', 'Set the public URL to serve on', '/')
     cmd('--public-folder <folder>', 'Use a public folder', 'public')

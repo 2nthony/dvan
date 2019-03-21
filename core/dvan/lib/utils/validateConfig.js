@@ -70,10 +70,7 @@ module.exports = (api, config) => {
     }
   )
   const extractCss = struct('boolean', api.isProd)
-  const jsx = struct.optional(
-    struct.union(['boolean', 'string']),
-    false
-  )
+  const jsx = struct.optional(struct.union(['boolean', 'string']), false)
   const loaderOptions = struct('object', {})
   const evergreen = struct('boolean', false)
 
@@ -105,11 +102,11 @@ module.exports = (api, config) => {
 
   res.output.fileNames = Object.assign(
     {
-      js: 'assets/js/[name].[contenthash].js',
-      css: 'assets/css/style.[contenthash].css',
-      font: 'assets/font/[name].[hash].[ext]',
-      image: 'assets/image/[name].[hash].[ext]',
-      video: 'assets/video/[name].[hash].[ext]'
+      js: 'assets/js/[name].[chunkhash:8].js',
+      css: 'assets/css/style.[chunkhash:8].css',
+      font: 'assets/font/[name].[hash:8].[ext]',
+      image: 'assets/image/[name].[hash:8].[ext]',
+      video: 'assets/video/[name].[hash:8].[ext]'
     },
     res.output.fileNames
   )

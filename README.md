@@ -34,7 +34,7 @@ yarn global add create-dvan-app
 create-dvan-app my-app
 
 cd my-app
-npm run dev
+npm run serve
 ```
 
 Then open http://localhost:4000 to see your app.
@@ -44,7 +44,14 @@ When you’re ready to deploy to production, create a minified bundle with npm r
 
 📚 https://dvan.js.org
 
-### FAQ
+## Credits
+
+Dvan won't exist without the inspirations from following projects:
+
+- Poi
+- Webpack
+
+## FAQ
 
 - Q: Why would you do that?  
   A: For training(study?).
@@ -53,4 +60,4 @@ When you’re ready to deploy to production, create a minified bundle with npm r
 
 ## License
 
-MIT [@evillt](https://github.com/evillt)
+MIT © [EVILLT](https://evila.me)

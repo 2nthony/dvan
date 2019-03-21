@@ -85,6 +85,10 @@ module.exports = class DvanCore {
     return this.mode === 'production'
   }
 
+  get isServe() {
+    return this.args.has('s') || this.args.has('serve')
+  }
+
   resolveCwd(...args) {
     return path.resolve(this.cwd, ...args)
   }

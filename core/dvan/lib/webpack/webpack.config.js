@@ -105,7 +105,6 @@ module.exports = (config, api) => {
   /**
    * Minimize js files
    */
-
   if (api.config.output.minimize) {
     config.plugin('minimize').use(require('terser-webpack-plugin'), [
       {
@@ -148,6 +147,33 @@ module.exports = (config, api) => {
         }
       }
     ])
+  }
+
+  /**
+   * Split vendors and common chunks
+   */
+  if (api.isProd && api.config.output.format === 'iife') {
+    config.optimization.splitChunks({
+      cacheGroups: {
+        vendors: {
+          name: `chunk-vendors`,
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          chunks: 'initial'
+        },
+        common: {
+          name: `chunk-common`,
+          minChunks: 2,
+          priority: -20,
+          chunks: 'initial',
+          reuseExistingChunk: true
+        }
+      }
+    })
+
+    // Keep the runtime chunk seperated to enable long term caching
+    // https://twitter.com/wSokra/status/969679223278505985
+    config.optimization.runtimeChunk(true)
   }
 
   /**

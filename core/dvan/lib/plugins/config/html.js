@@ -15,39 +15,9 @@ exports.extend = api => {
       isProd,
       pkg,
       config: {
-        output: {
-          format,
-          html = {}
-        }
+        output: { html = {} }
       }
     } = api
-
-    /**
-     * Split vendors and common chunks
-     */
-    if (isProd && format === 'iife') {
-      config.optimization.splitChunks({
-        cacheGroups: {
-          vendors: {
-            filename: `chunk-vendors.[contenthash].js`,
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-            chunks: 'initial'
-          },
-          common: {
-            filename: `chunk-common.[contenthash].js`,
-            minChunks: 2,
-            priority: -20,
-            chunks: 'initial',
-            reuseExistingChunk: true
-          }
-        }
-      })
-
-      // Keep the runtime chunk seperated to enable long term caching
-      // https://twitter.com/wSokra/status/969679223278505985
-      config.optimization.runtimeChunk(true)
-    }
 
     if (html === false) return
     config.plugin('html').use('html-webpack-plugin', [
@@ -88,10 +58,10 @@ exports.extend = api => {
               ? api.resolveCwd(html.template)
               : html.template
             : existsSync(api.resolveCwd('public/template.html'))
-              ? api.resolveCwd('public/template.html')
-              : require.resolve(
-                  path.join(__dirname, '../../webpack/default-template.html')
-                )
+            ? api.resolveCwd('public/template.html')
+            : require.resolve(
+                path.join(__dirname, '../../webpack/default-template.html')
+              )
         }
       )
     ])

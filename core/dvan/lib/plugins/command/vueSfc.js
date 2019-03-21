@@ -8,10 +8,10 @@ exports.extend = api => {
   api.hook('onInitCLI', () => {
     const command = api.cli.command('vue-sfc <file-path>', 'Vue SFC')
     command
-      .option('--dev', 'Start develop vue file on local server')
+      .option('-s, --serve', 'Serve a vue file on local server')
       .option('--out-dir [path]', 'Output directory')
 
-    require('../shared/devOptions')(command)
+    require('../shared/serveOptions')(command)
 
     command.action(async filePath => {
       api.logger.debug('Using vue-sfc action')
@@ -80,11 +80,13 @@ exports.extend = api => {
       })
 
       /**
-       * Recommend to use rollup to build library
+       * Recommend to use `rollup` or `bili` to build library
        */
       api.logger.tips('You are using `Webpack` to build Vue SFC library')
       api.logger.tips('DONNOT use use production mode')
-      api.logger.tips('RECOMMEND to use `Rollup` to build Vue SFC library')
+      api.logger.tips(
+        'RECOMMEND to use `Rollup` or `bili` to build Vue SFC library'
+      )
 
       const config = api.createWebpackChain()
       /**

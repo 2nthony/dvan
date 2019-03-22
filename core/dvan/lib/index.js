@@ -210,7 +210,6 @@ module.exports = class DvanCore {
        * Cli commands
        */
       require('./plugins/command/ejectHtml'),
-      require('./plugins/command/vueSfc'),
 
       /**
        * Webpack config

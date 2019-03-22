@@ -6,7 +6,12 @@ module.exports = (config, api) => {
       const spinner = require('../../utils/spinner')
 
       const msg = `${(per * 100).toFixed(2)}% ${message} ${args
-        .map(arg => path.relative(api.cwd, arg))
+        .map(arg => {
+          const message = path.relative(api.cwd, arg)
+          return message.length > 40
+            ? `...${message.substr(message.length - 39)}`
+            : message
+        })
         .join(' ')}`
 
       if (per === 0) {

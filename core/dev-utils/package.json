@@ -1,6 +1,6 @@
 {
   "name": "@dvan/dev-utils",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

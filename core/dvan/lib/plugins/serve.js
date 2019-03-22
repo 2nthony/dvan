@@ -6,7 +6,12 @@ exports.extend = api => {
 
     if (!api.isServe) return
 
-    require('./shared/serveOptions')(command)
+    command
+      .option('--host <host>', 'Serve host', { default: '0.0.0.0' })
+      .option('-p, --port <port>', 'Serve port', { default: '4000' })
+      .option('-o, --open', 'Open in browser')
+      .option('--no-hot', 'Disable hot reloading')
+      .option('--local', 'Alias for --host localhost')
 
     command.action(async () => {
       api.logger.debug('Starting server...')

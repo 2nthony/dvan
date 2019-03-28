@@ -1,7 +1,7 @@
 exports.name = 'built-in:config-image'
 
-exports.extend = api => {
-  api.hook('onCreateWebpackChain', config => {
+exports.apply = api => {
+  api.hook('createWebpackChain', config => {
     const createMediaRule = require('../shared/createMediaRule')(api, config)
 
     createMediaRule('image', /\.(png|jpe?g|webp|bmp|gif)(\?.*)?$/, 'url-loader')

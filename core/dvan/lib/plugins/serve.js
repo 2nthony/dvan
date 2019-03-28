@@ -1,72 +1,71 @@
 exports.name = 'built-in:serve'
 
-exports.extend = api => {
-  api.hook('onInitCLI', ({ command }) => {
-    command.option('-s, --serve', 'Serve assets on local server')
+exports.cli = api => {
+  const { command } = api
 
-    if (!api.isServe) return
+  command.option('-s, --serve', 'Serve assets on local server')
 
-    command
-      .option('--host <host>', 'Serve host', { default: '0.0.0.0' })
-      .option('-p, --port <port>', 'Serve port', { default: '4000' })
-      .option('-o, --open', 'Open in browser')
-      .option('--no-hot', 'Disable hot reloading')
-      .option('--local', 'Alias for --host localhost')
+  if (!api.isServe) return
 
-    command.action(async () => {
-      api.logger.debug('Starting server...')
+  command
+    .option('--host <host>', 'Serve host', { default: '0.0.0.0' })
+    .option('-p, --port <port>', 'Serve port', { default: '4000' })
+    .option('-o, --open', 'Open in browser')
+    .option('--no-hot', 'Disable hot reloading')
+    .option('--local', 'Alias for --host localhost')
 
-      const { devServer } = api.config
-      delete devServer.hotEntries
+  command.action(async () => {
+    api.logger.debug('Starting server...')
 
-      const config = api.createWebpackChain()
+    const { devServer } = api.config
+    delete devServer.hotEntries
 
-      const { host: _host, port: _port, open } = devServer
+    const config = api.createWebpackChain()
 
-      const isUnSepecifiedHost = _host === '0.0.0.0' || _host === '::'
-      const host = isUnSepecifiedHost ? 'localhost' : _host
-      const port = await require('get-port')({ port: _port, host })
+    const { host: _host, port: _port, open } = devServer
 
+    const isUnSepecifiedHost = _host === '0.0.0.0' || _host === '::'
+    const host = isUnSepecifiedHost ? 'localhost' : _host
+    const port = await require('get-port')({ port: _port, host })
+
+    config
+      .plugin('print-serve-message')
+      .use(require('@dvan/dev-utils/printServeMessage')({ host, port }))
+
+    if (open) {
       config
-        .plugin('print-serve-message')
-        .use(require('@dvan/dev-utils/printServeMessage')({ host, port }))
+        .plugin('open-browser')
+        .use(require('@dvan/dev-utils/openBrowserPlugin')({ host, port }))
+    }
 
-      if (open) {
-        config
-          .plugin('open-browser')
-          .use(require('@dvan/dev-utils/openBrowserPlugin')({ host, port }))
-      }
+    const webpackConfig = config.toConfig()
+    const compiler = api.createWebpackCompiler(webpackConfig)
 
-      const webpackConfig = config.toConfig()
-      const compiler = api.createWebpackCompiler(webpackConfig)
+    const devServerOpts = Object.assign(
+      {
+        quiet: true,
+        historyApiFallback: true,
+        overlay: true,
+        disableHostCheck: true,
+        publicPath: webpackConfig.output.publicPath,
+        contentBase:
+          api.config.publicFolder && api.resolveCwd(api.config.publicFolder),
+        watchContentBase: true,
+        stats: {
+          colors: true
+        }
+      },
+      devServer
+    )
 
-      const devServerOpts = Object.assign(
-        {
-          quiet: true,
-          historyApiFallback: true,
-          overlay: true,
-          disableHostCheck: true,
-          publicPath: webpackConfig.output.publicPath,
-          contentBase:
-            api.config.publicFolder && api.resolveCwd(api.config.publicFolder),
-          watchContentBase: true,
-          stats: {
-            colors: true
-          }
-        },
-        devServer
-      )
+    const server = new (require('webpack-dev-server'))(compiler, devServerOpts)
 
-      const server = new (require('webpack-dev-server'))(
-        compiler,
-        devServerOpts
-      )
-
-      server.listen(port, host)
-    })
+    server.listen(port, host)
   })
+}
 
-  api.hook('onCreateWebpackChain', config => {
+exports.apply = api => {
+  api.hook('createWebpackChain', config => {
     if (!api.isServe) return
 
     const { hotEntries = ['index'], hot } = api.config.devServer

@@ -1,11 +1,15 @@
 exports.name = 'built-in:config-css'
 
-exports.extend = api => {
-  api.hook('onInitCLI', ({ command }) => {
-    require('../shared/extractCssOptions')(api, command)
-  })
+exports.cli = ({ command, isProd }) => {
+  if (isProd) {
+    command.option('--no-extract-css', 'Do not extract CSS files')
+  } else {
+    command.option('--extract-css', 'Extract CSS to standalone files')
+  }
+}
 
-  api.hook('onCreateWebpackChain', (config, { type }) => {
+exports.apply = api => {
+  api.hook('createWebpackChain', (config, { type }) => {
     const {
       loaderOptions,
       extractCss: shouldExtract,

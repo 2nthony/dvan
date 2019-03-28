@@ -4,13 +4,13 @@ const isLocalPath = require('../../utils/isLocalPath')
 
 exports.name = 'built-in:config-html'
 
-exports.extend = api => {
-  api.hook('onInitCLI', ({ command }) => {
-    command.option('--html', 'HTML template options')
-    command.option('--no-html', 'Disable HTML template')
-  })
+exports.cli = ({ command }) => {
+  command.option('--html', 'HTML template options')
+  command.option('--no-html', 'Disable HTML template')
+}
 
-  api.hook('onCreateWebpackChain', config => {
+exports.apply = api => {
+  api.hook('createWebpackChain', config => {
     const {
       isProd,
       pkg,

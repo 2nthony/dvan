@@ -1,7 +1,7 @@
 exports.name = 'built-in:config-vue'
 
-exports.extend = api => {
-  api.hook('onCreateWebpackChain', config => {
+exports.apply = api => {
+  api.hook('createWebpackChain', config => {
     config.resolve.extensions.add('.vue')
 
     config.module

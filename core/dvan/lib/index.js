@@ -1,6 +1,7 @@
 const path = require('path')
 const merge = require('lodash.merge')
 const resolveFrom = require('resolve-from')
+const cac = require('cac')
 const logger = require('@dvan/logger')
 const runCompiler = require('@dvan/dev-utils/runCompiler')
 const Hooks = require('./Hooks')
@@ -11,7 +12,6 @@ const validateConfig = require('./utils/validateConfig')
 
 module.exports = class DvanCore {
   constructor(rawArgs = process.argv) {
-    this.cli = require('cac')()
     this.hooks = new Hooks()
     this.rawArgs = rawArgs
     this.args = parseArgs(rawArgs)
@@ -74,11 +74,17 @@ module.exports = class DvanCore {
     process.env.NODE_ENV = this.mode
     process.env.DVAN_APP = this.hasDependency('vue') ? 'vue' : 'react'
 
-    this.applyPlugins()
+    // init plugins
+    this.initPlugins()
 
+    // init CLI instance, call plugin.cli parse CLI args
     this.initCLI()
 
+    // merge CLI config with config file
     this.mergeConfig()
+
+    // call plugin.apply
+    this.applyPlugins()
   }
 
   get isProd() {
@@ -98,20 +104,21 @@ module.exports = class DvanCore {
   }
 
   initCLI() {
-    const { cli } = this
+    const cli = (this.cli = cac())
 
-    const command = (this.defaultCommand = cli
+    this.command = cli
       .command('[...entries]', 'Entry files for App', {
         ignoreOptionDefaultValue: true
       })
-      .usage('[...entries] [options]')).action(async () => {
-      logger.debug('Using default action')
-      const webpackConfig = this.createWebpackChain().toConfig()
-      const compiler = this.createWebpackCompiler(webpackConfig)
-      await runCompiler(compiler)
-    })
+      .usage('[...entries] [options]')
+      .action(async () => {
+        logger.debug('Using default action')
+        const webpackConfig = this.createWebpackChain().toConfig()
+        const compiler = this.createWebpackCompiler(webpackConfig)
+        await runCompiler(compiler)
+      })
 
-    this.hooks.invoke('onInitCLI', { command, args: this.args })
+    this.extendCLI()
 
     /**
      * Global cli options
@@ -192,7 +199,7 @@ module.exports = class DvanCore {
 
     require('./webpack/webpack.config')(config, this)
 
-    this.hooks.invoke('onCreateWebpackChain', config, opts)
+    this.hooks.invoke('createWebpackChain', config, opts)
 
     if (this.config.chainWebpack) {
       this.config.chainWebpack(config, opts)
@@ -201,9 +208,9 @@ module.exports = class DvanCore {
     return config
   }
 
-  applyPlugins() {
+  initPlugins() {
     this.plugins = [
-      require('./plugins/shared/commandOptions'),
+      require('./plugins/config/commandOptions'),
       require('./plugins/serve'),
 
       /**
@@ -221,20 +228,32 @@ module.exports = class DvanCore {
       require('./plugins/config/font'),
       require('./plugins/config/image'),
       require('./plugins/config/video'),
-      require('./plugins/config/graphql'),
-      require('./plugins/config/toml'),
-      require('./plugins/config/yaml')
+      require('./plugins/config/misc-loaders')
     ]
+  }
+
+  extendCLI() {
+    for (const plugin of this.plugins) {
+      if (plugin.cli) {
+        plugin.cli(this)
+      }
+    }
+  }
+
+  applyPlugins() {
+    let plugins = this.plugins.filter(plugin => {
+      return !plugin.when || plugin.when(this)
+    })
 
     if ((this.config.plugins || []).length > 0) {
-      this.plugins = this.plugins.concat(loadPlugins(this, this.config.plugins))
+      plugins = this.plugins.concat(loadPlugins(this, this.config.plugins))
     }
 
-    for (const plugin of this.plugins) {
-      if (plugin.extend) {
-        logger.debug(`Using plugin: '${plugin.name}'`)
+    for (const plugin of plugins) {
+      if (plugin.apply) {
+        logger.debug(`Apply plugin: '${plugin.name}'`)
 
-        plugin.extend(this)
+        plugin.apply(this)
       }
     }
   }

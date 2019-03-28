@@ -1,13 +1,13 @@
 exports.name = 'built-in:config-babel'
 
-exports.extend = api => {
-  api.hook('onInitCLI', ({ command }) => {
-    command.option('--jsx [syntax]', 'Set jsx syntax or pragma', {
-      default: 'false|react'
-    })
+exports.cli = ({ command }) => {
+  command.option('--jsx [syntax]', 'Set jsx syntax or pragma', {
+    default: 'false|react'
   })
+}
 
-  api.hook('onCreateWebpackChain', config => {
+exports.apply = api => {
+  api.hook('createWebpackChain', config => {
     const { jsx } = api.config
     const isReactJSX = jsx === true || jsx === 'react'
     const isVueJSX = jsx === 'vue'

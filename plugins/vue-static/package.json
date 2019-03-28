@@ -1,6 +1,6 @@
 {
   "name": "@dvan/vue-static",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "main": "lib/index.js",
   "license": "MIT",
   "files": [

@@ -71,7 +71,9 @@ module.exports = class DvanCore {
     /**
      * Set process.env
      */
-    process.env.NODE_ENV = this.mode
+    if (!process.env.NODE_ENV) {
+      process.env.NODE_ENV = this.mode
+    }
     process.env.DVAN_APP = this.hasDependency('vue') ? 'vue' : 'react'
 
     // init plugins

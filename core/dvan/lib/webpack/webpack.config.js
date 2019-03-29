@@ -105,7 +105,7 @@ module.exports = (config, api) => {
       minimize: false
     },
     /**
-     * disalbe webpack's default performance hints
+     * Disalbe webpack's default performance hints
      */
     performance: {
       hints: false

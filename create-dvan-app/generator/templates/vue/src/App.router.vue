@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>{{ title }}</h1>
-    <p>Edit `src/pages/**` and save to reload</p>
+    <p>Edit `src/views/**` and save to reload</p>
 
     <p>
       <router-link to="/">Home</router-link>

@@ -117,8 +117,8 @@ module.exports = class DvanCore {
       .usage('[...entries] [options]')
       .action(async () => {
         logger.debug('Using default action')
-        const webpackConfig = this.createWebpackChain().toConfig()
-        const compiler = this.createWebpackCompiler(webpackConfig)
+        const chain = this.createWebpackChain()
+        const compiler = this.createWebpackCompiler(chain.toConfig())
         await runCompiler(compiler)
       })
 

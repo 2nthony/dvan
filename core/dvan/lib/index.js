@@ -99,6 +99,10 @@ module.exports = class DvanCore {
     return path.resolve(this.cwd, ...args)
   }
 
+  resolveSrc(...args) {
+    return this.resolveCwd(this.config.srcDir, ...args)
+  }
+
   resolveOutDir(...args) {
     return this.resolveCwd(this.config.output.dir, ...args)
   }

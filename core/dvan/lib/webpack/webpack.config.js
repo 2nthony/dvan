@@ -77,10 +77,20 @@ module.exports = (config, api) => {
   }
 
   /**
-   * Alias @ to source directory
-   * Alias @@ to root directory
+   * Alias `@` to source directory
+   * Alias `@@` to root directory
+   * Alias `@views` to views directory
+   * Alias `@pages` to pages directory
+   * Alias `@plugins` to plugins directory
+   * Alias `@components` to components directory
    */
-  config.resolve.alias.set('@', api.resolveCwd(srcDir)).set('@@', api.cwd)
+  config.resolve.alias
+    .set('@', api.resolveCwd(srcDir))
+    .set('@@', api.cwd)
+    .set('@views', api.resolveSrc('views'))
+    .set('@pages', api.resolveSrc('pages'))
+    .set('@plugins', api.resolveSrc('plugins'))
+    .set('@components', api.resolveSrc('components'))
 
   config.resolve.alias.set(
     '#webpack-hot-client$',

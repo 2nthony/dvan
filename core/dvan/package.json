@@ -53,8 +53,7 @@
     "vue-style-loader": "^4.1.2",
     "webpack": "^4.16.5",
     "webpack-chain": "^5.2.4",
-    "webpack-dev-server": "^3.1.5",
-    "webpack-merge": "^4.2.1"
+    "webpack-dev-server": "^3.1.5"
   },
   "devDependencies": {
     "vue-template-compiler": "^2.5.17"

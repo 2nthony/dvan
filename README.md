@@ -14,10 +14,11 @@
 
 ## Ecosystem
 
-| Project                                                                           | Status                                                 | Description                                |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------ |
-| [create-dvan-app](https://github.com/evillt/dvan/tree/master/create-dvan-app)     | ![](https://badgen.net/npm/v/create-dvan-app?icon=npm) | Create _Dvan app_ in seconds               |
-| [@dvan/vue-static](https://github.com/evillt/dvan/tree/master/plugins/vue-static) | WIP                                                    | Plugin - generate app to static html files |
+| Project                                                                           | Status                                                 | Description                                                                                           |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| [create-dvan-app](https://github.com/evillt/dvan/tree/master/create-dvan-app)     | ![](https://badgen.net/npm/v/create-dvan-app?icon=npm) | Create _Dvan app_ in seconds                                                                          |
+| [@dvan/vue-static](https://github.com/evillt/dvan/tree/master/plugins/vue-static) | WIP                                                    | Plugin - Generate app to static html files                                                            |
+| @dvan/plugin-pwa                                                                  | TODO                                                   | Plugin - Build a progressive web app with [Workbox](https://developers.google.com/web/tools/workbox/) |
 
 ## Here are something you have to know
 

@@ -13,7 +13,12 @@ exports.apply = api => {
     const isVueJSX = jsx === 'vue'
 
     const presets = [
-      require('@babel/preset-env'),
+      [
+        require('@babel/preset-env'),
+        {
+          modules: false
+        }
+      ],
       jsx &&
         !isVueJSX && [
           require('@babel/preset-react'),

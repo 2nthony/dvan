@@ -4,9 +4,9 @@
 
 ## Project scripts
 
-### `npm run dev`
+### `npm run serve`
 
-Start a dev server to preview your app
+Serve static assets to preview your app
 
 ### `npm run build`
 

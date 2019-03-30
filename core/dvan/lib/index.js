@@ -194,14 +194,14 @@ module.exports = class DvanCore {
   }
 
   createWebpackChain(opts) {
-    const WebpackChain = require('./utils/WebpackChain')
+    this.createWebpackOptions = opts
+    const { configureWebpack } = this.config
+
+    const WebpackChain = require('webpack-chain')
 
     opts = Object.assign({ type: 'client' }, opts)
 
-    const config = new WebpackChain({
-      configureWebpack: this.config.configureWebpack,
-      opts
-    })
+    const config = new WebpackChain()
 
     require('./webpack/webpack.config')(config, this)
 
@@ -211,7 +211,18 @@ module.exports = class DvanCore {
       this.config.chainWebpack(config, opts)
     }
 
+    if (typeof configureWebpack === 'function') {
+      this.hook('resolveWebpackConfig', configureWebpack)
+    } else if (typeof configureWebpack === 'object') {
+      config.merge(configureWebpack)
+    }
+
     return config
+  }
+
+  createWebpackCompiler(config) {
+    this.hooks.invoke('resolveWebpackConfig', config, this.createWebpackOptions)
+    return require('webpack')(config)
   }
 
   initPlugins() {
@@ -273,10 +284,6 @@ module.exports = class DvanCore {
 
   hook(name, fn) {
     return this.hooks.add(name, fn)
-  }
-
-  createWebpackCompiler(config) {
-    return require('webpack')(config)
   }
 
   async run() {

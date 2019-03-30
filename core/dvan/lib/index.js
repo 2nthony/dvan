@@ -39,7 +39,6 @@ module.exports = class DvanCore {
     })
 
     this.config = {}
-
     if (this.args.has('no-config')) {
       logger.debug('Config file was disabled')
     } else {

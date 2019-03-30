@@ -29,7 +29,7 @@ module.exports = ({ files = [], matches = [], dir, packageKey }) => {
 function resolveConfig(dir, fp, packageKey) {
   if (/\.js(on)?$/.test(fp)) {
     if (fp.endsWith('package.json')) {
-      const configFromPkg = require(fp)[packageKey]
+      const configFromPkg = packageKey ? require(fp)[packageKey] : require(fp)
       return Object.assign(
         configFromPkg ? {} : { configPath: undefined },
         configFromPkg

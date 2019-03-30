@@ -2,7 +2,7 @@ const path = require('path')
 const globby = require('globby')
 const resolveFrom = require('resolve-from')
 
-module.exports = ({ files = [], matches = [], dir, packageKey }) => {
+module.exports = ({ files = [], matches = [], dir, packageKey }, api) => {
   const matchFiles = files.concat(matches)
   const configFiles = globby.sync(matchFiles, { cwd: dir })
 
@@ -18,7 +18,7 @@ module.exports = ({ files = [], matches = [], dir, packageKey }) => {
         {
           configPath: configFilePath
         },
-        resolveConfig(dir, configFilePath, packageKey)
+        resolveConfig(dir, configFilePath, packageKey, api)
       )
     }
   }
@@ -26,17 +26,15 @@ module.exports = ({ files = [], matches = [], dir, packageKey }) => {
   return config
 }
 
-function resolveConfig(dir, fp, packageKey) {
+function resolveConfig(dir, fp, packageKey, api) {
   if (/\.js(on)?$/.test(fp)) {
     if (fp.endsWith('package.json')) {
-      const configFromPkg = packageKey ? require(fp)[packageKey] : require(fp)
-      return Object.assign(
-        configFromPkg ? {} : { configPath: undefined },
-        configFromPkg
-      )
+      const pkg = require(fp)
+      return packageKey ? pkg[packageKey] || { configPath: undefined } : pkg
     }
 
-    return require(fp)
+    const config = require(fp)
+    return typeof config === 'function' ? config(api) : config
   }
 
   const { readFileSync } = require('fs')
@@ -51,5 +49,6 @@ function resolveConfig(dir, fp, packageKey) {
     )
   }
 
+  // To resolve config file like `.dvanrc` with no extension
   return JSON.parse(readFileSync(fp, 'utf8'))
 }

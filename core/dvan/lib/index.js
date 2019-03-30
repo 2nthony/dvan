@@ -42,12 +42,15 @@ module.exports = class DvanCore {
     if (this.args.has('no-config')) {
       logger.debug('Config file was disabled')
     } else {
-      const config = loadConfig({
-        files: ['package.json'],
-        matches: ['dvan.config.*', '.dvanrc*'],
-        dir: this.cwd,
-        packageKey: 'dvan'
-      })
+      const config = loadConfig(
+        {
+          files: ['package.json'],
+          matches: ['dvan.config.*', '.dvanrc*'],
+          dir: this.cwd,
+          packageKey: 'dvan'
+        },
+        this
+      )
       const { configPath } = config
       if (configPath) {
         logger.debug(

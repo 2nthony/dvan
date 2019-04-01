@@ -195,6 +195,23 @@ module.exports = (config, api) => {
   require('./plugins/progressBar')(config, api)
   require('./plugins/cleanOutDir')(config, api)
 
+  /**
+   * Copy public folder
+   */
+  config.plugin('copy-public-folder').use(require('copy-webpack-plugin'), [
+    [
+      {
+        from: {
+          glob: '**/*',
+          dot: true
+        },
+        context: api.resolveCwd(api.config.publicFolder),
+        to: '.',
+        ignore: ['.DS_Store']
+      }
+    ]
+  ])
+
   config
     .plugin('print-status')
     .use(require('@dvan/dev-utils/printStatusPlugin'), [api.cli.options])

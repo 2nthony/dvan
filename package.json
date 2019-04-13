@@ -14,9 +14,12 @@
   ],
   "scripts": {
     "lint": "xo",
+    "commit": "git-cz",
     "release": "lerna version --conventional-commits"
   },
   "devDependencies": {
+    "commitizen": "^3.0.7",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-rem": "^4.0.0",
@@ -24,7 +27,6 @@
     "husky": "^1.2.0",
     "lerna": "^3.4.3",
     "lint-staged": "^8.1.0",
-    "prettier": "^1.15.2",
     "xo": "^0.23.0"
   },
   "lint-staged": {
@@ -63,6 +65,11 @@
       "unicorn/filename-case": 0,
       "unicorn/no-abusive-eslint-disable": 0,
       "no-multi-assign": 1
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
   }
 }

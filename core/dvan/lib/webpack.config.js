@@ -1,4 +1,7 @@
-const isLocalPath = require('../utils/isLocalPath')
+const path = require('path')
+const isLocalPath = require('@dvan/utils/isLocalPath')
+const { emptyDir } = require('fs-extra')
+const webpack = require('webpack')
 
 const normalizeEntry = v => {
   if (v.startsWith('module:')) {
@@ -94,7 +97,7 @@ module.exports = (config, api) => {
 
   config.resolve.alias.set(
     '#webpack-hot-client$',
-    require.resolve('@dvan/dev-utils/webpackHotDevClient')
+    require.resolve('@dvan/dev-utils/hotDevClient')
   )
 
   config.merge({
@@ -187,13 +190,61 @@ module.exports = (config, api) => {
   }
 
   /**
-   * Constants plugin
-   * Progress-bar plugin
-   * Clean-out-dir plugin
+   * Constants
    */
-  require('./plugins/constants')(config, api)
-  require('./plugins/progressBar')(config, api)
-  require('./plugins/cleanOutDir')(config, api)
+  config.plugin('constants').use(webpack.DefinePlugin, [
+    Object.assign(
+      {
+        PUBLIC_URL: JSON.stringify(api.config.output.publicUrl),
+        DVAN_APP: JSON.stringify(process.env.DVAN_APP),
+        IS_VUE: JSON.stringify(process.env.DVAN_APP === 'vue')
+      },
+      api.config.constants
+    )
+  ])
+
+  /**
+   * Building progress
+   */
+  config.plugin('progress').use(webpack.ProgressPlugin, [
+    (per, message, ...args) => {
+      const spinner = require('@dvan/utils/spinner')
+
+      const msg = `${(per * 100).toFixed(2)}% ${message} ${args
+        .map(arg => {
+          const message = path.relative(api.cwd, arg)
+          return message.length > 40
+            ? `...${message.substr(message.length - 39)}`
+            : message
+        })
+        .join(' ')}`
+
+      if (per === 0) {
+        spinner.start(msg)
+      } else if (per === 1) {
+        spinner.stop()
+      } else {
+        spinner.text = msg
+      }
+    }
+  ])
+
+  /**
+   * Empty dist
+   */
+  config.plugin('empty-dist').use(
+    class EmptyDist {
+      apply(compiler) {
+        compiler.hooks.before.tapPromise('empty-dist', async () => {
+          if (api.resolveOutDir() === api.cwd) {
+            api.logger.error('Refused to empty current working directory')
+            return
+          }
+          await emptyDir(api.resolveOutDir())
+        })
+      }
+    }
+  )
 
   /**
    * Copy public folder

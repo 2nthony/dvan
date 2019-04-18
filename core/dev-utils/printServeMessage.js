@@ -13,10 +13,12 @@ module.exports = ({ host, port }) =>
 
         logger.log()
         logger.success('Running server with')
-        logger.log(`Local:             ${`http://${host}:${chalk.bold(port)}`}`)
-        logger.log(`On Your Network:   ${`http://${ip}:${chalk.bold(port)}`}`)
+        logger.log(
+          `  Local:             ${`http://${host}:${chalk.bold(port)}`}`
+        )
+        logger.log(`  On Your Network:   ${`http://${ip}:${chalk.bold(port)}`}`)
         logger.log()
-        logger.log(chalk.dim(`> ${prettyBytes(heapUsed)} memory used`))
+        logger.log(chalk.dim(`  > ${prettyBytes(heapUsed)} memory used`))
         logger.log()
       })
     }

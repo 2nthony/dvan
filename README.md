@@ -1,10 +1,6 @@
 > Refactoring!But still feel the same.
 
-<br>
-<p align="center">
-  <img src="./logo.png">
-</p>
-<br>
+![](https://i.loli.net/2019/06/21/5d0c9719a6b9d70455.png)
 
 <p align="center">
   <a href="https://github.com/evillt/dvan/tree/master/packages/dvan"><img src="https://badgen.net/npm/v/dvan?icon=npm"></a>

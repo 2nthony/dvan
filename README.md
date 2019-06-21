@@ -3,9 +3,9 @@
 ![](https://i.loli.net/2019/06/21/5d0c9719a6b9d70455.png)
 
 <p align="center">
-  <a href="https://github.com/evillt/dvan/tree/master/packages/dvan"><img src="https://badgen.net/npm/v/dvan?icon=npm"></a>
-  <a href="https://github.com/evillt/dvan/tree/master/packages/dvan"><img src="https://badgen.net/npm/dm/dvan"></a>
-  <a href="./LICENSE"><img src="https://badgen.net/npm/license/dvan"></a>
+  <a href="https://github.com/evillt/dvan/tree/master/core/dvan"><img src="https://badgen.net/npm/v/dvan?icon=npm"></a>
+  <img src="https://badgen.net/npm/dm/dvan">
+  <img src="https://badgen.net/npm/license/dvan">
   <a href="https://packagephobia.now.sh/result?p=dvan"><img src="https://badgen.net/packagephobia/install/dvan"></a>
   <a href="https://packagephobia.now.sh/result?p=dvan"><img src="https://badgen.net/packagephobia/publish/dvan"></a>
 </p>

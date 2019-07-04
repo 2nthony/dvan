@@ -1,0 +1,59 @@
+{
+  "private": true,
+  "name": "dvan-monorepo",
+  "repository": {
+    "url": "evillt/dvan",
+    "type": "git"
+  },
+  "author": "evila <ijoec123@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "core/*",
+    "plugins/*",
+    "create-dvan-app"
+  ],
+  "scripts": {
+    "lint": "xo",
+    "release": "lerna version --conventional-commits"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-rem": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^3.0.0",
+    "lerna": "^3.15.0",
+    "lint-staged": "^9.0.2",
+    "prettier": "^1.15.2",
+    "xo": "^0.24.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "xo --fix",
+      "git add"
+    ],
+    "*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "xo": {
+    "extends": [
+      "rem",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "camelcase": 0,
+      "array-callback-return": 1,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-unresolved": 0,
+      "unicorn/filename-case": 0,
+      "unicorn/no-abusive-eslint-disable": 0,
+      "no-multi-assign": 1
+    }
+  }
+}

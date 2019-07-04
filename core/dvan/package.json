@@ -1,0 +1,22 @@
+{
+  "name": "dvan",
+  "version": "1.0.0",
+  "author": "evillt <ijoec123@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "evillt/dvan"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "cac": "^6.5.2",
+    "parcel-bundler": "^1.12.3"
+  }
+}

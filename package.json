@@ -5,7 +5,7 @@
     "url": "evillt/dvan",
     "type": "git"
   },
-  "author": "evila <ijoec123@gmail.com>",
+  "author": "evillt <ijoec123@gmail.com>",
   "license": "MIT",
   "workspaces": [
     "core/*",

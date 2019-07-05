@@ -1,12 +1,14 @@
-![](https://i.loli.net/2019/06/21/5d0c9719a6b9d70455.png)
+# dvan
 
-<p align="center">
-  <a href="https://github.com/evillt/dvan/tree/master/core/dvan"><img src="https://badgen.net/npm/v/dvan?icon=npm"></a>
-  <img src="https://badgen.net/npm/dm/dvan">
-  <img src="https://badgen.net/npm/license/dvan">
-  <a href="https://packagephobia.now.sh/result?p=dvan"><img src="https://badgen.net/packagephobia/install/dvan"></a>
-  <a href="https://packagephobia.now.sh/result?p=dvan"><img src="https://badgen.net/packagephobia/publish/dvan"></a>
-</p>
+> My dandy project
+
+Please consider starring the project to show your ❤️ and support.
+
+[![NPM version](https://badgen.net/npm/v/dvan?icon=npm)](https://npmjs.com/package/dvan)
+[![NPM download](https://badgen.net/npm/dm/dvan?icon=npm)](https://npmjs.com/package/dvan)
+[![CircleCI](https://badgen.net/circleci/github/evillt/dvan?icon=circleci)](https://circleci.com/gh/evillt/dvan/tree/master)
+[![License](https://badgen.net/npm/license/dvan)](./LICENSE)
+[![donate](https://badgen.net/badge/support%20me/donate/f2a)](https://donate.evila.me)
 
 ## Contributing
 
